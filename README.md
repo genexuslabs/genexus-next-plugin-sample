@@ -1,0 +1,1 @@
+# genexusm-plugin-sample
