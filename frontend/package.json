@@ -1,0 +1,17 @@
+{
+  "name": "@genexusm-plugin-sample/root",
+  "description": "GeneXus Plugin Sample",
+  "private": true,
+  "workspaces": [
+    "packages/**/*"
+  ],
+  "scripts": {
+    "build": "lerna run build",
+    "watch": "lerna run watch",
+    "test": "lerna run test",
+    "start": "lerna run start"
+  },
+  "devDependencies": {
+    "lerna": "5.4.3"
+  }
+}

@@ -1,0 +1,33 @@
+{
+	"name": "@genexusm-sdk/patterns-common",
+	"version": "0.0.28",
+	"main": "lib/index.js",
+	"typings": "lib/index.d.ts",
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"lib/"
+	],
+	"scripts": {
+		"clean": "rimraf lib",
+		"build": "tsc && yarn run  postBuild",
+		"prebuild": "yarn run clean",
+		"watch": "tsc -w",
+		"postBuild": "copyfiles -u 1 src/*.d.ts lib"
+	},
+	"dependencies": {
+		"@genexusm-sdk/common": "0.0.28",
+		"@genexusm-sdk/architecture-common": "0.0.28",
+		"@genexusm-sdk/architecture-ui-framework": "0.0.28",
+		"@genexusm-sdk/common-components": "0.0.28",
+		"@genexusm-sdk/common-comm-layer": "0.0.28",
+		"@genexusm-sdk/common-properties": "0.0.28",
+		"@genexusm-sdk/genexus-comm-layer": "0.0.28"
+	},
+	"devDependencies": {
+		"rimraf": "3.0.2",
+		"typescript": "4.5.5",
+		"copyfiles": "2.4.0"
+	}
+}

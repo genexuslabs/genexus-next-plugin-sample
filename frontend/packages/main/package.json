@@ -1,0 +1,38 @@
+{
+  "name": "@genexusm-plugin-sample/main",
+  "version": "0.0.47",
+  "main": "index.js",
+  "author": "GeneXus",
+  "license": "Apache-2.0",
+  "type": "module",
+  "files": [
+    "dist/"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "rimraf lib && rimraf dist",
+    "compile": "tsc",
+    "compileWatch": "tsc -w",
+    "start": "vite --port 5200 --open src/",
+    "build": "tsc && vite build",
+    "watch": "tsc && vite build --watch",
+    "preview": "vite preview --port 5200 --outDir dist"
+  },
+  "dependencies": {
+    "@genexusm-sdk/common": "*",
+    "@genexusm-sdk/architecture-common": "*",
+    "@genexusm-sdk/architecture-ui-framework": "*",
+    "@genexusm-plugin-sample/components": "*",
+    "@genexusm-plugin-sample/comm-layer": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "rimraf": "3.0.2",
+    "typescript": "~5.2.2",
+    "vite": "5.2.4",
+    "vite-plugin-static-copy": "1.0.1",
+    "vite-plugin-require": "1.1.14"
+  }
+}

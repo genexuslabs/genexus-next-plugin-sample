@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "skipLibCheck": true,
+        "declaration": true,
+        "declarationMap": true,
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "noEmitOnError": false,
+        "noImplicitThis": true,
+        "noUnusedLocals": false,
+        "strictNullChecks": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "downlevelIteration": true,
+        "resolveJsonModule": true,
+        "module": "es2022",
+        "moduleResolution": "node",
+        "target": "ES2015",
+        "jsx": "react",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "sourceMap": true,
+        "rootDir": "src",
+        "outDir": "lib"
+    },
+    "include": [
+        "src/**/*"
+    ]
+}

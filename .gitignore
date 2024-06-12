@@ -1,0 +1,6 @@
+backend/GXServicesSampleExtension/.idea
+bin
+Obj
+node_modules
+lib
+*.log
