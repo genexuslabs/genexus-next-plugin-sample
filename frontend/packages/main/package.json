@@ -31,7 +31,7 @@
     "@types/node": "^20.11.19",
     "rimraf": "3.0.2",
     "typescript": "~5.2.2",
-    "vite": "5.2.4",
+    "vite": "5.2.6",
     "vite-plugin-static-copy": "1.0.1",
     "vite-plugin-require": "1.1.14"
   }
