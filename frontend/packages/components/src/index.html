@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="en" class="light">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>GeneXus IDE plugin</title>
+
+    <link rel="stylesheet" href="mercury.css" />
 
     <script type="module" src="/build/plugin-components-sample.esm.js"></script>
     <script nomodule src="/build/plugin-components-sample.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <ch-theme name="mercury" href="./mercury.css"></ch-theme>
+    <k2b-connect-gx-server enable-user-logged="true"></k2b-connect-gx-server>
   </body>
 </html>
