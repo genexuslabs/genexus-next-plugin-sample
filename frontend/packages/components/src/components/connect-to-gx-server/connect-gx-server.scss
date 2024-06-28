@@ -1,0 +1,28 @@
+:host {
+  display: grid;
+  grid-template-areas:
+    "server-url server-url"
+    "continue-with-genexus-account continue-with-genexus-account"
+    "username password"
+    "footer footer";
+}
+
+.server-url {
+  grid-area: server-url;
+}
+
+.continue-with-genexus-account {
+  grid-area: continue-with-genexus-account;
+}
+
+.username {
+  grid-area: username;
+}
+
+.password {
+  grid-area: password;
+}
+
+.footer {
+  grid-area: footer;
+}
