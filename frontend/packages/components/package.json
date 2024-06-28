@@ -1,7 +1,7 @@
 {
   "name": "@genexusm-plugin-sample/components",
   "version": "0.0.1",
-  "description": "Stencil Component Starter",  
+  "description": "Component samples for GeneXus IDE plugins",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "es2015": "dist/esm/index.js",
@@ -12,7 +12,7 @@
   "unpkg": "dist/plugin-components-sample/plugin-components-sample.esm.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ionic-team/stencil-component-starter.git"
+    "url": "git+https://github.com/genexuslabs/genexusm-plugin-sample/tree/main/frontend/packages/components"
   },
   "files": [
     "dist/",
@@ -27,14 +27,23 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@stencil/core": "^4.7.0"
+    "@stencil/core": "^4.19.1"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.6",
-    "@types/node": "^16.18.11",
-    "jest": "^29.7.0",
-    "jest-cli": "^29.7.0",
-    "puppeteer": "^21.9.0"
+    "@stencil/sass": "~3.0.9",
+    "@types/jest": "~29.5.12",
+    "@types/node": "^20.14.9",
+    "@typescript-eslint/eslint-plugin": "~6.20.0",
+    "@typescript-eslint/parser": "~6.20.0",
+    "eslint": "~8.56.0",
+    "eslint-config-prettier": "~8.8.0",
+    "eslint-plugin-prettier": "~4.2.1",
+    "eslint-plugin-react": "~7.33.2",
+    "jest": "~29.7.0",
+    "jest-cli": "~29.7.0",
+    "prettier": "~2.8.8",
+    "puppeteer": "~22.12.1",
+    "typescript": "~5.4.5"
   },
   "license": "MIT"
 }
