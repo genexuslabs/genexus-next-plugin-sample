@@ -1,11 +1,11 @@
-import { Config } from '@stencil/core';
+import { Config } from "@stencil/core";
 
 export const config: Config = {
-  namespace: 'plugin-components-sample',
+  namespace: "plugin-components-sample",
   outputTargets: [
     {
-      type: 'dist',
-      esmLoaderPath: '../loader'
+      type: "dist",
+      esmLoaderPath: "../loader"
     },
     {
       type: "dist-custom-elements",
@@ -13,12 +13,22 @@ export const config: Config = {
       empty: true
     },
     {
-      type: 'docs-readme',
+      type: "docs-readme"
     },
     {
-      type: 'www',
-      serviceWorker: null, // disable service workers
-    },
+      type: "www",
+      serviceWorker: null, // disable service workers,
+      copy: [
+        {
+          src: "../../../node_modules/@genexus/mercury/dist/css",
+          dest: ""
+        },
+        {
+          src: "../../../node_modules/@genexus/mercury/dist/assets",
+          dest: "assets"
+        }
+      ]
+    }
   ],
   extras: {
     // Enabling this flag will allow downstream projects that consume a Stencil
@@ -27,6 +37,6 @@ export const config: Config = {
     enableImportInjection: true
   },
   testing: {
-    browserHeadless: "new",
-  },
+    browserHeadless: "new"
+  }
 };
