@@ -55,10 +55,10 @@ export class Kb2KBManagerImport {
    * The component hard-coded strings translations.
    */
   // eslint-disable-next-line @stencil-community/own-props-must-be-private
-  #componentLocale: any;
+  #componentLocale!: { [key in string]: any };
 
   /**
-   * ImportCategoryBasicData Holds the original name of category data, and its
+   * ImportCategoryBasicData holds the original name of category data, and its
    * id. Used to create parent nodes on the imported tree
    */
   // eslint-disable-next-line @stencil-community/own-props-must-be-private
@@ -495,8 +495,6 @@ export class Kb2KBManagerImport {
                 class="tree-view"
                 checkbox={true}
                 checked={true}
-                dragDisabled={true}
-                dropDisabled={true}
                 getImagePathCallback={getImagePathCallbackIde}
                 model={this.objectsTreeState}
                 showLines="last"
