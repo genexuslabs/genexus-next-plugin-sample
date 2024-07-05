@@ -1,10 +1,14 @@
 :host {
   display: grid;
-  grid-template-areas:
-    "server-url server-url"
-    "continue-with-genexus-account continue-with-genexus-account"
-    "username password"
-    "footer footer";
+  grid-template:
+    "server-url server-url" max-content
+    "continue-with-genexus-account continue-with-genexus-account" max-content
+    "username password" max-content
+    "footer footer" max-content / 1fr 1fr;
+}
+
+form {
+  display: contents;
 }
 
 .server-url {

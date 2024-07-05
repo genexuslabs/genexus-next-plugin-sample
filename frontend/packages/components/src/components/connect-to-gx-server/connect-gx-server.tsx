@@ -83,9 +83,6 @@ export class K2BConnectGxServer {
   };
 
   #connectClickHandler = async () => {
-    if (!this.connectCallback) {
-      return;
-    }
     const connectionResultData = await this.connectCallback({
       serverUrl: this.#serverURLRef.value!,
       userName: this.#usernameRef?.value,
@@ -107,69 +104,79 @@ export class K2BConnectGxServer {
 
   render() {
     return (
-      <Host role="group" class="fieldset">
+      <Host role="group" class="layout">
         <ch-theme name="mercury"></ch-theme>
 
-        <div class="fieldset-group server-url">
-          <label htmlFor="server-url" class="label label--above">
-            Server URL
-          </label>
-          <ch-combo-box
-            id="server-url"
-            class="combo-box"
-            accessibleName="Server URL"
-            model={this.serverUrls}
-            placeholder="Select the server URL"
-            filterType={this.enableCustomServer ? "caption" : "none"}
-            filterDebounce={100}
-            value={this.defaultConnectionData?.serverUrl}
-            // onFilterChange={handleFilterChange}
-            ref={el => (this.#serverURLRef = el as HTMLChComboBoxElement)}
-          ></ch-combo-box>
-        </div>
+        <form>
+          <div class="fieldset-group server-url">
+            <label htmlFor="server-url" class="label label--above">
+              Server URL
+            </label>
+            <ch-combo-box
+              id="server-url"
+              class="combo-box"
+              accessibleName="Server URL"
+              model={this.serverUrls}
+              placeholder="Select the server URL"
+              filterType={this.enableCustomServer ? "caption" : "none"}
+              filterDebounce={100}
+              value={this.defaultConnectionData?.serverUrl}
+              // onFilterChange={handleFilterChange}
+              ref={el => (this.#serverURLRef = el as HTMLChComboBoxElement)}
+            ></ch-combo-box>
+          </div>
 
-        <ch-checkbox
-          class="checkbox continue-with-genexus-account"
-          accessibleName="Continue with GeneXus Account"
-          checkedValue="true"
-          caption="Continue with GeneXus Account"
-          disabled={!this.enableUserLogged}
-          value={this.enableUserLogged ? "true" : "false"}
-          onInput={this.#handleCheckedChange}
-          ref={el => (this.#gxAccountCheckboxRef = el as HTMLChCheckboxElement)}
-        ></ch-checkbox>
+          <ch-checkbox
+            class="checkbox continue-with-genexus-account"
+            accessibleName="Continue with GeneXus Account"
+            checkedValue="true"
+            caption="Continue with GeneXus Account"
+            disabled={!this.enableUserLogged}
+            value={this.enableUserLogged ? "true" : "false"}
+            onInput={this.#handleCheckedChange}
+            ref={el =>
+              (this.#gxAccountCheckboxRef = el as HTMLChCheckboxElement)
+            }
+          ></ch-checkbox>
 
-        {this.showUsernameAndPassword
-          ? [
-              <div class="fieldset-group username">
-                <label class="label label--above">Username</label>
-                <input
-                  type="text"
-                  class="form-input"
-                  value={this.defaultConnectionData?.userName}
-                  ref={el => (this.#usernameRef = el as HTMLInputElement)}
-                />
-              </div>,
-              <div class="fieldset-group password">
-                <label class="label label--above">Password</label>
-                <input
-                  type="password"
-                  class="form-input"
-                  value={this.defaultConnectionData?.password}
-                  ref={el => (this.#passwordRef = el as HTMLInputElement)}
-                />
-              </div>
-            ]
-          : null}
+          {this.showUsernameAndPassword && [
+            <div class="fieldset-group username">
+              <label class="label label--above">Username</label>
+              <input
+                type="text"
+                class="form-input"
+                value={this.defaultConnectionData?.userName}
+                ref={el => (this.#usernameRef = el as HTMLInputElement)}
+              />
+            </div>,
+            <div class="fieldset-group password">
+              <label class="label label--above">Password</label>
+              <input
+                type="password"
+                class="form-input"
+                value={this.defaultConnectionData?.password}
+                ref={el => (this.#passwordRef = el as HTMLInputElement)}
+              />
+            </div>
+          ]}
 
-        <footer class="dialog-footer">
-          <button class="button-primary" onClick={this.#connectClickHandler}>
-            Connect
-          </button>
-          <button class="button-secondary" onClick={this.cancelCallback}>
-            Cancel
-          </button>
-        </footer>
+          <div class="dialog-footer">
+            <button
+              class="button-secondary"
+              type="button"
+              onClick={this.cancelCallback}
+            >
+              Cancel
+            </button>
+            <button
+              class="button-primary"
+              type="button"
+              onClick={this.#connectClickHandler}
+            >
+              Connect
+            </button>
+          </div>
+        </form>
       </Host>
     );
   }
