@@ -30,7 +30,8 @@ import {
 import {
   getTreeViewImagePathCallback,
   getImagePathCallback,
-  registerAssets
+  registerAssets,
+  iconMetadataToPath
 } from "@genexus/mercury";
 
 import { Locale } from "../../common/locale";
@@ -66,6 +67,11 @@ registerAssets("K2BTools", "k2b", {
     }
   }
 });
+
+const FILE_SYSTEM_ICON = iconMetadataToPath(
+  { category: "objects", name: "custom", colorType: "on-primary" },
+  "k2b"
+);
 
 @Component({
   tag: "k2b-kb-manager-import",
@@ -506,7 +512,7 @@ export class Kb2KBManagerImport {
             {locals.header.selectFileButton}
 
             <ch-image
-              src="k2b/objects/custom/on-primary"
+              src={FILE_SYSTEM_ICON}
               getImagePathCallback={getImagePathCallback}
             ></ch-image>
           </button>
