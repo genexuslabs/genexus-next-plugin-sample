@@ -28,10 +28,9 @@ import {
 } from "@genexus/chameleon-controls-library";
 
 import {
-  getImagePathCallbackIde,
-  iconMetadataToPath
-  // @ts-expect-error asdasd
-} from "@genexus/mercury/dist/assets/assets-manager.js";
+  getTreeViewImagePathCallback,
+  getImagePathCallback
+} from "@genexus/mercury";
 
 import { Locale } from "../../common/locale";
 // import { config } from "../../common/config";
@@ -451,8 +450,6 @@ export class Kb2KBManagerImport {
     const disableSelectAllCheckbox =
       this.importingIsInProcess || this.objectsTreeState.length === 0;
 
-    console.log(iconMetadataToPath({ category: "objects", name: "stencil" }));
-
     return (
       <Host class="layout">
         <ch-theme name="mercury"></ch-theme>
@@ -483,6 +480,11 @@ export class Kb2KBManagerImport {
             }
           >
             {locals.header.selectFileButton}
+
+            <ch-image
+              src="mer/windowsTools/alphabeticalOrder/onPrimary"
+              getImagePathCallback={getImagePathCallback}
+            ></ch-image>
           </button>
         </div>
 
@@ -495,7 +497,7 @@ export class Kb2KBManagerImport {
                 class="tree-view"
                 checkbox={true}
                 checked={true}
-                getImagePathCallback={getImagePathCallbackIde}
+                getImagePathCallback={getTreeViewImagePathCallback}
                 model={this.objectsTreeState}
                 showLines="last"
                 toggleCheckboxes={true}

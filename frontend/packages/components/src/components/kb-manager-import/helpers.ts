@@ -18,7 +18,7 @@ const convertImportItemToTreeItem = (
     caption: importItem.name,
     expanded: true,
     leaf: true,
-    parts: importCatIcon, // TODO
+    startImgSrc: importCatIcon, // TODO
     metadata: KB_OBJECT
   }));
 
@@ -33,7 +33,7 @@ export const convertImportCategoryToTreeView = (
     caption: `${importCat.name} (${importCat.items.length})`,
     expanded: true,
     leaf: false,
-    startImgSrc: importCat.icon, // TODO
+    startImgSrc: importCat.icon,
     metadata: KB_CATEGORY,
     items: convertImportItemToTreeItem(importCat.icon, importCat.items)
   }));
