@@ -351,15 +351,13 @@
     resize-observer-polyfill "^1.5.1"
     stencil-click-outside "^1.8.0"
 
-"@genexus/mercury@>=0.3.0":
-  version "0.3.0"
+"@genexus/mercury@>=0.3.1":
+  version "0.3.1"
   resolved "file:../../design-systems/packages/mercury"
 
 "@genexusm-plugin-sample/components@file:D:\\GitHub\\genexusm-plugin-sample\\frontend\\packages\\components":
   version "0.0.1"
   resolved "file:packages/components"
-  dependencies:
-    "@stencil/core" "^4.19.1"
 
 "@humanwhocodes/config-array@^0.11.13":
   version "0.11.14"
