@@ -10,6 +10,22 @@
 
     <script type="module" src="/build/plugin-components-sample.esm.js"></script>
     <script nomodule src="/build/plugin-components-sample.js"></script>
+
+    <style>
+      :root.light {
+        --icon__k2b-objects_custom_on-primary--enabled: url("../assets/icons/objects/light/workflow.svg#enabled");
+        --icon__k2b-objects_custom_on-primary--hover: url("../assets/icons/objects/light/work-panel.svg#hover");
+        --icon__k2b-objects_custom_on-primary--active: url("../assets/icons/objects/light/web-panel.svg#active");
+        --icon__k2b-objects_custom_on-primary--disabled: url("../assets/icons/objects/light/transaction.svg#disabled");
+      }
+
+      :root.dark {
+        --icon__k2b-objects_custom_on-primary--enabled: url("../assets/icons/objects/dark/workflow.svg#enabled");
+        --icon__k2b-objects_custom_on-primary--hover: url("../assets/icons/objects/dark/work-panel.svg#hover");
+        --icon__k2b-objects_custom_on-primary--active: url("../assets/icons/objects/dark/web-panel.svg#active");
+        --icon__k2b-objects_custom_on-primary--disabled: url("../assets/icons/objects/dark/transaction.svg#disabled");
+      }
+    </style>
   </head>
   <body>
     <ch-theme name="mercury" href="./mercury.css"></ch-theme>
@@ -22,7 +38,7 @@
         {
           id: "api",
           name: "API 1",
-          icon: "mer/objects/api",
+          icon: "k2b/objects/custom/on-primary",
           items: [{ id: "plugin-articles-api", name: "Plugin.ArticlesApi" }]
         },
         {
@@ -38,7 +54,7 @@
         {
           id: "category",
           name: "Category",
-          icon: "objects/version",
+          icon: "objects/module",
           items: [
             { id: "category-item-1", name: "Category Item 1" },
             { id: "category-item-2", name: "Category Item 2" }

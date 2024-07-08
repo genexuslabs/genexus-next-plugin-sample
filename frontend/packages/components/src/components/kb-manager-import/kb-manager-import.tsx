@@ -29,7 +29,8 @@ import {
 
 import {
   getTreeViewImagePathCallback,
-  getImagePathCallback
+  getImagePathCallback,
+  registerAssets
 } from "@genexus/mercury";
 
 import { Locale } from "../../common/locale";
@@ -42,6 +43,29 @@ import {
 } from "./helpers";
 // import { countTreeItems } from "../../common/helpers";
 // import { CheckedItemsInfo } from "../_helpers/list-selector/list-selector";
+
+registerAssets("K2BTools", "k2b", {
+  icons: {
+    objects: {
+      custom: {
+        "on-primary": {
+          enabled: {
+            name: "objects_custom_on-primary--enabled"
+          },
+          hover: {
+            name: "objects_custom_on-primary--hover"
+          },
+          active: {
+            name: "objects_custom_on-primary--active"
+          },
+          disabled: {
+            name: "objects_custom_on-primary--disabled"
+          }
+        }
+      }
+    }
+  }
+});
 
 @Component({
   tag: "k2b-kb-manager-import",
@@ -482,7 +506,7 @@ export class Kb2KBManagerImport {
             {locals.header.selectFileButton}
 
             <ch-image
-              src="mer/windowsTools/alphabeticalOrder/onPrimary"
+              src="k2b/objects/custom/on-primary"
               getImagePathCallback={getImagePathCallback}
             ></ch-image>
           </button>
