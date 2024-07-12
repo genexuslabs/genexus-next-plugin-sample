@@ -20,8 +20,12 @@ export const config: Config = {
       serviceWorker: null, // disable service workers,
       copy: [
         {
-          src: "../../../node_modules/@genexus/mercury/dist/css",
-          dest: ""
+          src: "../../../node_modules/@genexus/mercury/dist/bundles/css",
+          dest: "css"
+        },
+        {
+          src: "../../../node_modules/@genexus/chameleon-controls-library",
+          dest: "chameleon"
         },
         {
           src: "../../../node_modules/@genexus/mercury/dist/assets",
