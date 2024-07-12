@@ -9,7 +9,10 @@
     <title>GeneXus IDE plugin</title>
 
     <script type="module" src="/build/plugin-components-sample.esm.js"></script>
-    <script nomodule src="/build/plugin-components-sample.js"></script>
+    <script type="module">
+      import { defineCustomElements } from "/chameleon/esm/loader.js";
+      defineCustomElements(window);
+    </script>
 
     <style>
       :root.light {
@@ -54,7 +57,7 @@
         {
           id: "category",
           name: "Category",
-          icon: "objects/module",
+          icon: "objects/module:objects/module-open",
           items: [
             { id: "category-item-1", name: "Category Item 1" },
             { id: "category-item-2", name: "Category Item 2" }
