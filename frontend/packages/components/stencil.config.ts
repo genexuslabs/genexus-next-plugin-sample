@@ -28,6 +28,10 @@ export const config: Config = {
           dest: "chameleon"
         },
         {
+          src: "../../../node_modules/@genexus/mercury",
+          dest: "mercury"
+        },
+        {
           src: "../../../node_modules/@genexus/mercury/dist/assets",
           dest: "assets"
         }

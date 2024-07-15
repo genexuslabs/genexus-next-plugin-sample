@@ -27,12 +27,7 @@ import {
   TreeViewItemModelExtended
 } from "@genexus/chameleon-controls-library";
 
-import {
-  getTreeViewImagePathCallback,
-  getImagePathCallback,
-  registerAssets,
-  iconMetadataToPath
-} from "@genexus/mercury";
+import { getIconPath, MercuryBundles } from "@genexus/mercury";
 
 import { Locale } from "../../common/locale";
 // import { config } from "../../common/config";
@@ -45,33 +40,32 @@ import {
 // import { countTreeItems } from "../../common/helpers";
 // import { CheckedItemsInfo } from "../_helpers/list-selector/list-selector";
 
-registerAssets("K2BTools", "k2b", {
-  icons: {
-    objects: {
-      custom: {
-        "on-primary": {
-          enabled: {
-            name: "objects_custom_on-primary--enabled"
-          },
-          hover: {
-            name: "objects_custom_on-primary--hover"
-          },
-          active: {
-            name: "objects_custom_on-primary--active"
-          },
-          disabled: {
-            name: "objects_custom_on-primary--disabled"
-          }
-        }
-      }
-    }
-  }
-});
-
-const FILE_SYSTEM_ICON = iconMetadataToPath(
+const FILE_SYSTEM_ICON = getIconPath(
   { category: "objects", name: "custom", colorType: "on-primary" },
   "k2b"
 );
+
+// Best performance bundle
+const CSS_BUNDLES: MercuryBundles = [
+  "resets/box-sizing",
+  "utils/form",
+  "utils/layout",
+  "utils/typography",
+  "components/button",
+  "components/checkbox",
+  "components/edit",
+  "components/tree-view"
+];
+
+// More practice bundle, but less performant
+// const CSS_BUNDLES: MercuryBundles = [
+//   "resets/box-sizing",
+//   "utils/form--full", // Difference
+//   "components/button",
+//   "utils/layout",
+//   "utils/typography",
+//   "components/tree-view"
+// ];
 
 @Component({
   tag: "k2b-kb-manager-import",
@@ -92,13 +86,12 @@ export class Kb2KBManagerImport {
    */
   // eslint-disable-next-line @stencil-community/own-props-must-be-private
   #importCategoryData: ImportCategoryData[] = [];
-  #objectsInFileTotalNodes = 0;
   #selectedObjectsInFileIds: string[] = [];
 
   // Refs
   #objectsTreeEl!: HTMLChTreeViewRenderElement;
   #fileInputEl!: any;
-  #objectsButtonsGroup!: any;
+  // #objectsButtonsGroup!: any;
   #topStateBarEl!: any;
 
   @Element() el!: HTMLK2bKbManagerImportElement;
@@ -276,17 +269,17 @@ export class Kb2KBManagerImport {
     this.selectedFile = (event.target as HTMLInputElement).files![0];
   };
 
-  #importObjectsHandler = async () => {
-    // First clear imported objects (this clears errors/warnings/success counts as well)
-    this.#clearStatusHandler();
+  // #importObjectsHandler = async () => {
+  //   // First clear imported objects (this clears errors/warnings/success counts as well)
+  //   this.#clearStatusHandler();
 
-    // Then do the import
-    this.importingIsInProcess = true;
-    this.#objectsButtonsGroup.selectedButtonId = "cancel-import-btn";
+  //   // Then do the import
+  //   this.importingIsInProcess = true;
+  //   this.#objectsButtonsGroup.selectedButtonId = "cancel-import-btn";
 
-    await this.importCallback(this.checkedObjectsIds);
-    this.importingIsInProcess = false;
-  };
+  //   await this.importCallback(this.checkedObjectsIds);
+  //   this.importingIsInProcess = false;
+  // };
 
   #objectsTreeCheckedItemsChangedHandler = (
     event: CustomEvent<Map<string, TreeViewItemModelExtended>>
@@ -384,14 +377,14 @@ export class Kb2KBManagerImport {
     }
   };
 
-  #cancelImportHandler = () => {
-    this.cancelCallback().then((result: any) => {
-      if (result) {
-        this.#topStateBarEl.active = false;
-      }
-    });
-    // returns boolean
-  };
+  // #cancelImportHandler = () => {
+  //   this.cancelCallback().then((result: any) => {
+  //     if (result) {
+  //       this.#topStateBarEl.active = false;
+  //     }
+  //   });
+  //   // returns boolean
+  // };
 
   #optionsHandler = () => this.optionsCallback();
 
@@ -441,20 +434,7 @@ export class Kb2KBManagerImport {
       // this.#evaluateImportStatusMessage();
     };
 
-  #evaluateCheckAllValue = (): "true" | "false" => {
-    const allAreChecked =
-      this.#objectsInFileTotalNodes === this.checkedObjectsIds.length;
-
-    const conditionToUncheck =
-      this.objectsTreeState.length === 0 || !allAreChecked;
-
-    if (conditionToUncheck) {
-      return "false";
-    }
-    return "true";
-  };
-
-  private fileClearedHandler = () => {
+  #fileClearedHandler = () => {
     this.selectedFile = undefined;
   };
 
@@ -482,7 +462,7 @@ export class Kb2KBManagerImport {
 
     return (
       <Host class="layout">
-        <ch-theme name="mercury"></ch-theme>
+        <ch-theme model={CSS_BUNDLES}></ch-theme>
 
         <div class="header">
           <div class="form-group">
@@ -513,7 +493,10 @@ export class Kb2KBManagerImport {
 
             <ch-image
               src={FILE_SYSTEM_ICON}
-              getImagePathCallback={getImagePathCallback}
+              getImagePathCallback={() => ({
+                base: "var(--icon__objects_stencil--enabled)",
+                hover: "var(--icon__objects_category--enabled)"
+              })}
             ></ch-image>
           </button>
         </div>
@@ -527,7 +510,6 @@ export class Kb2KBManagerImport {
                 class="tree-view"
                 checkbox={true}
                 checked={true}
-                getImagePathCallback={getTreeViewImagePathCallback}
                 model={this.objectsTreeState}
                 showLines="last"
                 toggleCheckboxes={true}
@@ -562,7 +544,7 @@ export class Kb2KBManagerImport {
               checkedValue="true"
               disabled={disableSelectAllCheckbox}
               indeterminate={this.selectAllIndeterminate}
-              value={this.#evaluateCheckAllValue()}
+              value={this.selectAllValue}
               onInput={
                 !disableSelectAllCheckbox
                   ? this.#toggleSelectionClickHandler
@@ -590,7 +572,7 @@ export class Kb2KBManagerImport {
               clearButton
               iconPosition="start"
               onFileSelected={this.#fileSelectedHandler}
-              onClearButtonClicked={this.fileClearedHandler}
+              onClearButtonClicked={this.#fileClearedHandler}
               // ref={el => (this.#fileInputEl = el as HTMLGxgFormTextElement)}
             ></gxg-form-text>
 

@@ -9,10 +9,48 @@
     <title>GeneXus IDE plugin</title>
 
     <script type="module" src="/build/plugin-components-sample.esm.js"></script>
+
     <script type="module">
+      // All definitions in this script are used for local testing purposes
+      // only. The IDE Web's SDK implements all this and more
       import { defineCustomElements } from "/chameleon/esm/loader.js";
+      import { registryProperty } from "/chameleon/esm/index.js";
+      import {
+        getImagePathCallbackDefinitions,
+        registerAssets
+      } from "/mercury/assets-manager.js";
+
+      // Register getImagePath callbacks
+      registryProperty("getImagePathCallback", getImagePathCallbackDefinitions);
+
+      // Register the assets of the plugin
+      registerAssets("K2BTools", "k2b", {
+        icons: {
+          objects: {
+            custom: {
+              "on-primary": {
+                enabled: {
+                  name: "objects_custom_on-primary--enabled"
+                },
+                hover: {
+                  name: "objects_custom_on-primary--hover"
+                },
+                active: {
+                  name: "objects_custom_on-primary--active"
+                },
+                disabled: {
+                  name: "objects_custom_on-primary--disabled"
+                }
+              }
+            }
+          }
+        }
+      });
+
       defineCustomElements(window);
     </script>
+
+    <link rel="stylesheet" href="css/base/base.css" />
 
     <style>
       :root.light {
@@ -31,7 +69,43 @@
     </style>
   </head>
   <body>
-    <ch-theme name="mercury" href="./mercury.css"></ch-theme>
+    <script>
+      const themeRef = document.createElement("ch-theme");
+      themeRef.model = [
+        // Components
+        { name: "components/button", url: "css/components/button.css" },
+        { name: "components/checkbox", url: "css/components/checkbox.css" },
+        { name: "components/code", url: "css/components/code.css" },
+        { name: "components/combo-box", url: "css/components/combo-box.css" },
+        { name: "components/dialog", url: "css/components/dialog.css" },
+        { name: "components/edit", url: "css/components/edit.css" },
+        {
+          name: "components/radio-group",
+          url: "css/components/radio-group.css"
+        },
+        { name: "components/tab", url: "css/components/tab.css" },
+        {
+          name: "components/tabular-grid",
+          url: "css/components/tabular-grid.css"
+        },
+        { name: "components/tree-view", url: "css/components/tree-view.css" },
+
+        // Resets
+        { name: "resets/box-sizing", url: "css/resets/box-sizing.css" },
+
+        // Utils
+        { name: "utils/form", url: "css/utils/form.css" },
+        // { name: "utils/form--full", url: "css/utils/form--full.css" },
+        { name: "utils/layout", url: "css/utils/layout.css" },
+        { name: "utils/typography", url: "css/utils/typography.css" }
+      ];
+      document.body.appendChild(themeRef);
+
+      const theme2Ref = document.createElement("ch-theme");
+      theme2Ref.avoidFlashOfUnstyledContent = false;
+      theme2Ref.model = [{ name: "base/icons", url: "css/base/icons.css" }];
+      document.body.appendChild(theme2Ref);
+    </script>
     <k2b-kb-manager-import enable-user-logged="true"></k2b-kb-manager-import>
 
     <script>
