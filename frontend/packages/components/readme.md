@@ -15,8 +15,9 @@ This is a starter project for building components that will be used as the UI of
 3.  Run:
 
     ```bash
-    npm i
-    npm start
+    npm i -g yarn # If not previously installed
+    yarn install
+    yarn start
     ```
 
 ## Building for production
@@ -24,7 +25,7 @@ This is a starter project for building components that will be used as the UI of
 To build the component for production, run:
 
 ```bash
-npm run build
+yarn build
 ```
 
 ## Testing
@@ -32,5 +33,5 @@ npm run build
 To run the unit tests for the components, run:
 
 ```bash
-npm test
+yarn test
 ```
