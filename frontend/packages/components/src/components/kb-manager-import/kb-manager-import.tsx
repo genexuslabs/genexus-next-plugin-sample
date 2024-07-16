@@ -61,7 +61,6 @@ const CSS_BUNDLES: MercuryBundles = [
 // const CSS_BUNDLES: MercuryBundles = [
 //   "resets/box-sizing",
 //   "utils/form--full", // Difference
-//   "components/button",
 //   "utils/layout",
 //   "utils/typography",
 //   "components/tree-view"
