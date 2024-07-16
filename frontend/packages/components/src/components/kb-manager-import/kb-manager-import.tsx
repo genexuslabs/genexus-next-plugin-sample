@@ -57,7 +57,7 @@ const CSS_BUNDLES: MercuryBundles = [
   "components/tree-view"
 ];
 
-// More practice bundle, but less performant
+// More practical, but less efficient bundle
 // const CSS_BUNDLES: MercuryBundles = [
 //   "resets/box-sizing",
 //   "utils/form--full", // Difference
