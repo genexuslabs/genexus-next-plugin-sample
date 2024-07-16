@@ -69,36 +69,11 @@
     </style>
   </head>
   <body>
-    <script>
+    <script type="module">
+      import { getThemeBundles } from "/mercury/assets-manager.js";
+
       const themeRef = document.createElement("ch-theme");
-      themeRef.model = [
-        // Components
-        { name: "components/button", url: "css/components/button.css" },
-        { name: "components/checkbox", url: "css/components/checkbox.css" },
-        { name: "components/code", url: "css/components/code.css" },
-        { name: "components/combo-box", url: "css/components/combo-box.css" },
-        { name: "components/dialog", url: "css/components/dialog.css" },
-        { name: "components/edit", url: "css/components/edit.css" },
-        {
-          name: "components/radio-group",
-          url: "css/components/radio-group.css"
-        },
-        { name: "components/tab", url: "css/components/tab.css" },
-        {
-          name: "components/tabular-grid",
-          url: "css/components/tabular-grid.css"
-        },
-        { name: "components/tree-view", url: "css/components/tree-view.css" },
-
-        // Resets
-        { name: "resets/box-sizing", url: "css/resets/box-sizing.css" },
-
-        // Utils
-        { name: "utils/form", url: "css/utils/form.css" },
-        // { name: "utils/form--full", url: "css/utils/form--full.css" },
-        { name: "utils/layout", url: "css/utils/layout.css" },
-        { name: "utils/typography", url: "css/utils/typography.css" }
-      ];
+      themeRef.model = getThemeBundles("");
       document.body.appendChild(themeRef);
 
       const theme2Ref = document.createElement("ch-theme");
