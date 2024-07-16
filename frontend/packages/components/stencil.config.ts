@@ -18,22 +18,37 @@ export const config: Config = {
     {
       type: "www",
       serviceWorker: null, // disable service workers,
+
+      // Only used for local testing purposes
       copy: [
+        // Chameleon
         {
           src: "../../../node_modules/@genexus/chameleon-controls-library/dist",
           dest: "chameleon"
         },
+
+        // JS
         {
           src: "../../../node_modules/@genexus/mercury/dist",
           dest: "mercury"
         },
+
+        // CSS bundles
         {
           src: "../../../node_modules/@genexus/mercury/dist/bundles/css",
           dest: "css"
         },
+
+        // Icons
         {
           src: "../../../node_modules/@genexus/mercury/dist/assets",
           dest: "assets"
+        },
+
+        // Fonts
+        {
+          src: "../../../node_modules/@genexus/mercury/dist/assets/fonts",
+          dest: "css/base/assets/fonts"
         }
       ]
     }
