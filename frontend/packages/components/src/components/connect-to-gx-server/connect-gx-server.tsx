@@ -14,9 +14,30 @@ import {
   GXServerConnectionData,
   GXServerConnectionDefault
 } from "./types";
+import { MercuryBundles } from "@genexus/mercury";
 
 // import { Locale } from "../../../common/locale";
 // import { FormElementValidation } from "../../../common/types";
+
+// Best performance bundle
+const CSS_BUNDLES: MercuryBundles = [
+  "resets/box-sizing",
+  "utils/form",
+  "utils/layout",
+  "components/button",
+  "components/checkbox",
+  "components/combo-box",
+  "components/edit"
+];
+
+// More practical, but less efficient bundle
+// const CSS_BUNDLES: MercuryBundles = [
+//   "resets/box-sizing",
+//   "utils/form--full", // Difference
+//   "components/button",
+//   "utils/layout",
+//   "utils/typography",
+// ];
 
 @Component({
   tag: "k2b-connect-gx-server",
@@ -28,9 +49,9 @@ export class K2BConnectGxServer {
   /**
    * The component hard-coded strings translations.
    */
-  // eslint-disable-next-line @stencil-community/own-props-must-be-private
-  #componentLocale: any;
+  // #componentLocale: any;
 
+  // eslint-disable-next-line @stencil-community/own-props-must-be-private
   #serverURLRef!: HTMLChComboBoxElement;
   #gxAccountCheckboxRef!: HTMLChCheckboxElement;
   #usernameRef!: HTMLInputElement;
@@ -105,7 +126,7 @@ export class K2BConnectGxServer {
   render() {
     return (
       <Host role="group" class="layout">
-        <ch-theme name="mercury"></ch-theme>
+        <ch-theme model={CSS_BUNDLES}></ch-theme>
 
         <form>
           <div class="fieldset-group server-url">
