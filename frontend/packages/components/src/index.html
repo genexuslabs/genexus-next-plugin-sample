@@ -73,7 +73,7 @@
       import { getThemeBundles } from "/mercury/assets-manager.js";
 
       const themeRef = document.createElement("ch-theme");
-      themeRef.model = getThemeBundles("");
+      themeRef.model = getThemeBundles("css/");
       document.body.appendChild(themeRef);
 
       const theme2Ref = document.createElement("ch-theme");
@@ -82,6 +82,8 @@
       document.body.appendChild(theme2Ref);
     </script>
     <k2b-kb-manager-import enable-user-logged="true"></k2b-kb-manager-import>
+
+    <!-- <k2b-connect-gx-server></k2b-connect-gx-server> -->
 
     <script>
       const kbManagerImport = document.querySelector("k2b-kb-manager-import");
