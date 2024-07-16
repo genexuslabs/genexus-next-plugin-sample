@@ -29,8 +29,8 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@genexus/chameleon-controls-library": ">=6.0.0-next.18",
-    "@genexus/mercury": ">=0.3.2",
+    "@genexus/chameleon-controls-library": ">=6.0.0-next.19",
+    "@genexus/mercury": ">=0.4.0",
     "@stencil-community/eslint-plugin": "~0.7.1",
     "@stencil/core": "^4.19.1",
     "@stencil/sass": "~3.0.12",
@@ -50,8 +50,8 @@
     "typescript": "~5.4.5"
   },
   "peerDependencies": {
-    "@genexus/chameleon-controls-library": ">=6.0.0-next.18",
-    "@genexus/mercury": ">=0.3.2"
+    "@genexus/chameleon-controls-library": ">=6.0.0-next.19",
+    "@genexus/mercury": ">=0.4.0"
   },
   "license": "MIT"
 }
