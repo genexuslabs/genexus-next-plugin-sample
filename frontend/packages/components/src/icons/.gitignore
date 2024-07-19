@@ -1,0 +1,9 @@
+# the following folders and files names are defined by parameters on the 'icons-svg' and 'icons-sass'
+# scripts. Please, do not change those names, and if you do, update the names here, so that those folders
+# and files keep being ignored. "/config" and "/svg-source" are the only source, the rest are generated.
+
+generated-sass/
+generated-svg/
+log/
+showcase/
+ICONS_ASSETS.ts
