@@ -19,18 +19,22 @@
     "loader/"
   ],
   "scripts": {
-    "build": "stencil build",
-    "watch": "stencil build --watch",
-    "start": "stencil build --dev --watch --serve",
+    "watch": "yarn build.icons && stencil build --watch",
+    "build": "yarn build.icons && stencil build",
+    "start-stencil": "yarn build.icons && stencil build --dev --watch --serve",
     "prettier": "prettier src/**/*.{tsx,ts,jsx,js,css,json,md} --write",
     "lint": "eslint src/**/*{.ts,.tsx} --fix",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "icons-svg": "ssg-svg --srcDir=src/icons/svg-source/ --outDir=src/icons/generated-svg/ --configFilePath=src/icons/config/color-states.json --showcaseDir=src/icons/showcase/ --showcaseBaseHref=../generated-svg/ --logDir=src/icons/log/ --objectFilePath=src/icons/ICONS_ASSETS.ts",
+    "icons-sass": "ssg-sass --srcDir=src/icons/generated-svg/ --outDir=src/icons/generated-sass/ --configFilePath=src/icons/config/color-states.json --vendorPrefix=abc",
+    "build.icons": "yarn run icons-svg && yarn run icons-sass"
   },
   "devDependencies": {
     "@genexus/chameleon-controls-library": ">=6.0.0-next.19",
     "@genexus/mercury": ">=0.4.1",
+    "@genexus/svg-sass-generator": ">=1.1.19",
     "@stencil-community/eslint-plugin": "~0.7.1",
     "@stencil/core": "^4.19.1",
     "@stencil/sass": "~3.0.12",
@@ -51,7 +55,8 @@
   },
   "peerDependencies": {
     "@genexus/chameleon-controls-library": ">=6.0.0-next.19",
-    "@genexus/mercury": ">=0.4.1"
+    "@genexus/mercury": ">=0.4.1",
+    "@genexus/svg-sass-generator": ">=1.1.19"
   },
   "license": "MIT"
 }
