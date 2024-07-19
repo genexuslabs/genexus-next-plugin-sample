@@ -1,7 +1,7 @@
 {
   "name": "@genexusm-plugin-sample/components",
   "version": "0.0.1",
-  "description": "Stencil Component Starter",  
+  "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "es2015": "dist/esm/index.js",
@@ -19,12 +19,15 @@
     "loader/"
   ],
   "scripts": {
-    "build": "stencil build",
-    "watch": "stencil build --watch",
-    "start-stencil": "stencil build --dev --watch --serve",
+    "watch": "yarn build.icons && stencil build --watch",
+    "build": "yarn build.icons && stencil build",
+    "start-stencil": "yarn build.icons && stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "icons-svg": "ssg-svg --srcDir=src/icons/svg-source/ --outDir=src/icons/generated-svg/ --configFilePath=src/icons/config/color-states.json --showcaseDir=src/icons/showcase/ --showcaseBaseHref=../generated-svg/ --logDir=src/icons/log/ --objectFilePath=src/icons/ICONS_ASSETS.ts",
+    "icons-sass": "ssg-sass --srcDir=src/icons/generated-svg/ --outDir=src/icons/generated-sass/ --configFilePath=src/icons/config/color-states.json --vendorPrefix=abc",
+    "build.icons": "yarn run icons-svg && yarn run icons-sass"
   },
   "dependencies": {
     "@stencil/core": "^4.7.0"
@@ -34,7 +37,8 @@
     "@types/node": "^16.18.11",
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
-    "puppeteer": "^21.9.0"
+    "puppeteer": "^21.9.0",
+    "@genexus/svg-sass-generator": "1.1.19"
   },
   "license": "MIT"
 }
