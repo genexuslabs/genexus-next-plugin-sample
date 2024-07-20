@@ -2,23 +2,23 @@
   "monochrome": {
     "colors": [
       {
-        "name": "red",
+        "name": "gray",
         "states": {
           "enabled": {
-            "dark": "#D32F2F",
-            "light": "#EF5350"
+            "dark": "#616161",
+            "light": "#BDBDBD"
           },
           "hover": {
-            "dark": "#C62828",
-            "light": "#E53935"
+            "dark": "#424242",
+            "light": "#9E9E9E"
           },
           "active": {
-            "dark": "#B71C1C",
-            "light": "#D32F2F"
+            "dark": "#212121",
+            "light": "#757575"
           },
           "disabled": {
-            "dark": "#F44336",
-            "light": "#FFCDD2"
+            "dark": "#E0E0E0",
+            "light": "#F5F5F5"
           }
         }
       },
