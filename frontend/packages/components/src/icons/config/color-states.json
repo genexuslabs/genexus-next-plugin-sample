@@ -48,14 +48,14 @@
       {
         "folder": "menus",
         "colors": {
-          "red": true,
+          "gray": true,
           "blue": false
         }
       },
       {
         "folder": "navigation",
         "colors": {
-          "red": false,
+          "gray": false,
           "blue": true
         }
       }
