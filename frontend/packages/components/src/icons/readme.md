@@ -253,7 +253,7 @@ This example contains some sample svg icons, and the required configuration JSON
 ### <span style="font-size: 22px;" id="install-ssg">2. Install the dependency using the package manager of your choice</span>
 
 ```
-ie.: yarn install
+yarn install
 ```
 
 ### <span style="font-size: 22px;" id="add-ssg-script">3. Add a script for the **svg's** generation `ssg-svg`</span>
@@ -463,13 +463,13 @@ ie.: /svg-source/objects/api.svg
 ### <span style="font-size: 22px;" id="process-svg-icons">8. Process the svg icons </span>
 
 ```
-ie.: yarn icons-svg
+yarn icons-svg
 ```
 
 ### <span style="font-size: 22px;" id="process-sass-files">9. Process the sass files </span>
 
 ```
-ie.: yarn icons-sass
+yarn icons-sass
 ```
 
 That's it!
