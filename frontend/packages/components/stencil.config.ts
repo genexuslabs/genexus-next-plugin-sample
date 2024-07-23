@@ -5,7 +5,20 @@ export const config: Config = {
   outputTargets: [
     {
       type: "dist",
-      esmLoaderPath: "../loader"
+      esmLoaderPath: "../loader",
+      copy: [
+        // Global CSS
+        {
+          src: "assets/generated/css",
+          dest: ""
+        },
+
+        // Icons
+        {
+          src: "assets/generated/icons",
+          dest: "assets/icons"
+        }
+      ]
     },
     {
       type: "dist-custom-elements",
@@ -35,14 +48,25 @@ export const config: Config = {
 
         // CSS bundles
         {
+          // Mercury bundles
           src: "../../../node_modules/@genexus/mercury/dist/bundles/css",
           dest: "css"
+        },
+        {
+          src: "assets/generated/css",
+          dest: ""
         },
 
         // Icons
         {
+          // Mercury icons
           src: "../../../node_modules/@genexus/mercury/dist/assets",
           dest: "assets"
+        },
+        {
+          // Own icons
+          src: "assets/generated/icons",
+          dest: "assets/icons"
         },
 
         // Fonts
