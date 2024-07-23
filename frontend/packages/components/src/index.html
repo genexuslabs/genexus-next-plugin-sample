@@ -19,54 +19,18 @@
         getImagePathCallbackDefinitions,
         registerAssets
       } from "/mercury/assets-manager.js";
+      import { ASSETS } from "/build/index.esm.js";
 
       // Register getImagePath callbacks
       registryProperty("getImagePathCallback", getImagePathCallbackDefinitions);
 
       // Register the assets of the plugin
-      registerAssets("K2BTools", "k2b", {
-        icons: {
-          objects: {
-            custom: {
-              "on-primary": {
-                enabled: {
-                  name: "objects_custom_on-primary--enabled"
-                },
-                hover: {
-                  name: "objects_custom_on-primary--hover"
-                },
-                active: {
-                  name: "objects_custom_on-primary--active"
-                },
-                disabled: {
-                  name: "objects_custom_on-primary--disabled"
-                }
-              }
-            }
-          }
-        }
-      });
+      registerAssets("K2BTools", "k2b", ASSETS);
 
       defineCustomElements(window);
     </script>
 
     <link rel="stylesheet" href="css/base/base.css" />
-
-    <style>
-      :root.light {
-        --icon__k2b-objects_custom_on-primary--enabled: url("../assets/icons/objects/light/workflow.svg#enabled");
-        --icon__k2b-objects_custom_on-primary--hover: url("../assets/icons/objects/light/work-panel.svg#hover");
-        --icon__k2b-objects_custom_on-primary--active: url("../assets/icons/objects/light/web-panel.svg#active");
-        --icon__k2b-objects_custom_on-primary--disabled: url("../assets/icons/objects/light/transaction.svg#disabled");
-      }
-
-      :root.dark {
-        --icon__k2b-objects_custom_on-primary--enabled: url("../assets/icons/objects/dark/workflow.svg#enabled");
-        --icon__k2b-objects_custom_on-primary--hover: url("../assets/icons/objects/dark/work-panel.svg#hover");
-        --icon__k2b-objects_custom_on-primary--active: url("../assets/icons/objects/dark/web-panel.svg#active");
-        --icon__k2b-objects_custom_on-primary--disabled: url("../assets/icons/objects/dark/transaction.svg#disabled");
-      }
-    </style>
   </head>
   <body>
     <script type="module">
@@ -80,6 +44,11 @@
       theme2Ref.avoidFlashOfUnstyledContent = false;
       theme2Ref.model = [{ name: "base/icons", url: "css/base/icons.css" }];
       document.body.appendChild(theme2Ref);
+
+      const theme3Ref = document.createElement("ch-theme");
+      theme3Ref.avoidFlashOfUnstyledContent = false;
+      theme3Ref.model = [{ name: "icons/k2b", url: "global.css" }];
+      document.body.appendChild(theme3Ref);
     </script>
     <k2b-kb-manager-import enable-user-logged="true"></k2b-kb-manager-import>
 
@@ -92,7 +61,7 @@
         {
           id: "api",
           name: "API 1",
-          icon: "k2b/objects/custom/on-primary",
+          icon: "k2b/menus/copy/gray",
           items: [{ id: "plugin-articles-api", name: "Plugin.ArticlesApi" }]
         },
         {
