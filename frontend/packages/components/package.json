@@ -30,8 +30,8 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "icons-svg": "ssg-svg --srcDir=src/icons/svg-source/ --outDir=src/icons/generated-svg/ --configFilePath=src/icons/config/color-states.json --showcaseDir=src/icons/showcase/ --showcaseBaseHref=../generated-svg/ --logDir=src/icons/log/ --objectFilePath=src/icons/ICONS_ASSETS.ts",
-    "icons-sass": "ssg-sass --srcDir=src/icons/generated-svg/ --outDir=src/icons/generated-sass/ --configFilePath=src/icons/config/color-states.json --vendorPrefix=k2b"
+    "icons-svg": "ssg-svg --srcDir=src/icons/svg-source/ --outDir=src/assets/generated/icons/ --configFilePath=src/icons/config/color-states.json --showcaseDir=src/icons/showcase/ --showcaseBaseHref=../generated-svg/ --logDir=src/icons/log/ --objectFilePath=src/assets/generated/ASSETS.ts",
+    "icons-sass": "ssg-sass --srcDir=src/assets/generated/icons/ --outDir=src/assets/generated/sass/ --configFilePath=src/icons/config/color-states.json --vendorPrefix=k2b"
   },
   "devDependencies": {
     "@genexus/chameleon-controls-library": ">=6.0.0-next.20",
@@ -54,6 +54,7 @@
     "jest-cli": "~29.7.0",
     "prettier": "~2.8.8",
     "puppeteer": "~22.12.1",
+    "sass": "~1.77.8",
     "typescript": "~5.4.5"
   },
   "peerDependencies": {
