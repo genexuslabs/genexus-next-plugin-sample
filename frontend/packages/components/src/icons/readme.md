@@ -288,14 +288,14 @@ ie.:
 --srcDir=src/icons/generated-svg/
 --outDir=src/icons/generated-sass/
 --configFilePath=src/icons/config/color-states.json
---vendorPrefix=-abc"
+--vendorAlias=-abc"
 ```
 
 **explanation:**
 `--srcDir=` This is the source directory, that is the output directory of the svg process (`src/icons/generated-svg/` in this example).
 `--outDir=` This is the output directory for your sass files.
 `--configFilePath` This is the same and single configuration file for the tool, that was defined for the `svg` script.
-`--vendorPrefix` This is a required prefix that helps prevent conflicts with other icons that were generated with this tool. The prefix will be used to prefix every icon custom property. ie.: `--icon-abc__navigation_arrow-up_gray--enabled`.
+`--vendorAlias` This is a required prefix that helps prevent conflicts with other icons that were generated with this tool. The prefix will be used to prefix every icon custom property. ie.: `--icon-abc__navigation_arrow-up_gray--enabled`.
 
 ### <span style="font-size: 22px;" id="add-json-config">5. Add a JSON configuration file</span>
 
