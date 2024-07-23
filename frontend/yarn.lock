@@ -520,10 +520,10 @@
   resolved "https://registry.yarnpkg.com/@genexus/mercury/-/mercury-0.4.3.tgz#90fb4e449b4da8c7b114bb738054e0a602931a7a"
   integrity sha512-OSvDjB+151G8EGOzMCLHrxRnqajZ/f+qGGbB2wcnEKWEKXvAfW5SyEOKqPC8rayWq0CvT3rgLomv7Qr4ZcKgiQ==
 
-"@genexus/svg-sass-generator@>=1.1.19":
-  version "1.1.19"
-  resolved "https://registry.yarnpkg.com/@genexus/svg-sass-generator/-/svg-sass-generator-1.1.19.tgz#13d7d35411a6070ff3411f61fafb18076b9ad0a2"
-  integrity sha512-P3aSQUJeaaNJAxiZ3BwbZVIm9s9JC32D5Q5Xm6J/mrKnd92yTy48N5TFgT0yvPmKzBnhSzFeg9RKHfz2cRooyQ==
+"@genexus/svg-sass-generator@>=1.1.20":
+  version "1.1.20"
+  resolved "https://registry.yarnpkg.com/@genexus/svg-sass-generator/-/svg-sass-generator-1.1.20.tgz#7c117ba389f2b9008b26d423130b7e6a9ef47425"
+  integrity sha512-rVNr4OfmwBwGvLWX6evBJqQFzSqZkomxDF8/tmuA4R2LIg/8Tm3C08BB3+CDPE7g5r20gsa8GMQQESbzvp6vwQ==
   dependencies:
     "@atao60/fse-cli" "^0.1.9"
     ajv "^8.12.0"
