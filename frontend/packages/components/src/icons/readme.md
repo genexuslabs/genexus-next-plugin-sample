@@ -52,9 +52,9 @@ These files contain for every icon of the category, a custom property (css varia
 **Placeholders**
 These files contain for every icon of the category, a sass virtual selector, that you can invoke in any sass file. The result will be a custom property named `--icon-path` which value will correspond to an icon specific state (`:enabled`, `:hover`, `:active`, or `:disabled`). ie.:
 
-- `monochrome/navigation__placeholders.css`
+- `monochrome/navigation__placeholders.scss`
 
-```
+```scss
 %icon__navigation_arrow-up_gray--enabled {
   --icon-path: var(--icon__navigation_arrow-up_gray--enabled);
 }
@@ -69,9 +69,9 @@ These files contain for every icon of the category, a sass virtual selector, tha
 }
 ```
 
-- `multicolor/objects__placeholders.css`
+- `multicolor/objects__placeholders.scss`
 
-```
+```scss
 %icon__objects_api--enabled {
   --icon-path: var(--icon__objects_api--enabled);
 }
@@ -105,7 +105,7 @@ This single file named `categories-lists.scss`contains:
 
 - A list of all the **monochrome** colors that you defined on the configuration JSON file, as well as which **states** each color implements (monochrome colors do not have to implement all the states, only the `:enabled` state is mandatory). ie.:
 
-```
+```scss
 $monochrome-colors: (
   gray: (
     enabled,
@@ -114,21 +114,20 @@ $monochrome-colors: (
     disabled
   ),
   blue: (
-    enabled,
+    enabled
   )
 );
 ```
 
 - A list of all the **monochrome** categories that you defined on the configuration JSON file, as well as which **colors** each category implements (monochrome categories do not have to implement all the colors). ie.:
 
-```
+```scss
 $monochrome-categories: (
   menus: (
-    gray,
+    gray
   ),
   navigation: (
-    gray
-    blue
+    gray blue
   )
 );
 ```
@@ -139,18 +138,19 @@ $monochrome-categories: (
 
 - A list of all the monochrome lists (a list of lists). ie.:
 
-```
+```scss
 $all-monochrome-lists: (
   navigation: $navigation,
-  menus: $menus,
+  menus: $menus
 );
 ```
 
 - A list of all the multicolor lists (a list of lists). ie.:
 
-```
+```scss
 $all-multicolor-lists: (
-  objects: $objects, // just one in this example
+  objects: $objects,
+  // just one in this example
 );
 ```
 
@@ -166,7 +166,7 @@ After running the `svg` script, the tool will generate a `/showcase/index.html` 
 
 An icons object with `.ts` extension will be generated, with information for every category icon. This information is required for a tool from [chameleon-controls-library](https://github.com/genexuslabs/chameleon-controls-library) to display the icons using the custom properties provided by the `svg-sass-generator`. ie.:
 
-```
+```ts
 export const ICONS_ASSETS = Object.freeze({
   icons: Object.freeze({
     objects: Object.freeze({
@@ -197,7 +197,7 @@ export const ICONS_ASSETS = Object.freeze({
         disabled: Object.freeze({
           name: "objects_dashboard--disabled"
         })
-      }),
+      })
       // ... and so on
     })
   })
@@ -253,12 +253,12 @@ This example contains some sample svg icons, and the required configuration JSON
 ### <span style="font-size: 22px;" id="install-ssg">2. Install the dependency using the package manager of your choice</span>
 
 ```
-ie.: npm install
+ie.: yarn install
 ```
 
 ### <span style="font-size: 22px;" id="add-ssg-script">3. Add a script for the **svg's** generation `ssg-svg`</span>
 
-```
+```bash
 ie.:
 "icons-svg": "ssg-svg
 --srcDir=src/icons/svg-source/
@@ -282,7 +282,7 @@ ie.:
 
 ### <span style="font-size: 22px;" id="add-sass-script">4. Add a script for the **sass's** files generation `ssg-sass`</span>
 
-```
+```bash
 ie.:
 "icons-sass": "ssg-sass
 --srcDir=src/icons/generated-svg/
@@ -301,7 +301,7 @@ ie.:
 
 This file should be created in the same path as the `--configFilePath` : `src/icons/config/color-states.json` in this example.
 
-```
+```json
 {
   "monochrome": {
     "colors": [
@@ -335,7 +335,7 @@ This file should be created in the same path as the `--configFilePath` : `src/ic
           },
           "hover": null,
           "active": null,
-          "active": null,
+          "active": null
         }
       }
     ],
@@ -432,7 +432,7 @@ This file should be created in the same path as the `--configFilePath` : `src/ic
 
 Include a folder for every category, in the path that you defined for the `--srcDir` in the `ssg-svg` script.
 
-```
+```svg
 ie.: /svg-source/navigation/arrow-up.svg
 
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
@@ -446,7 +446,7 @@ ie.: /svg-source/navigation/arrow-up.svg
 
 Include a folder for every category, in the path that you defined for the `--srcDir` in the `ssg-svg` script.
 
-```
+```svg
 ie.: /svg-source/objects/api.svg
 
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
@@ -463,13 +463,13 @@ ie.: /svg-source/objects/api.svg
 ### <span style="font-size: 22px;" id="process-svg-icons">8. Process the svg icons </span>
 
 ```
-ie.: npm run icons-svg
+ie.: yarn icons-svg
 ```
 
 ### <span style="font-size: 22px;" id="process-sass-files">9. Process the sass files </span>
 
 ```
-ie.: npm run icons-sass
+ie.: yarn icons-sass
 ```
 
 That's it!
@@ -497,7 +497,7 @@ That's it!
 
 `color-states.json` is a required configuration file that contains the colors values for monochrome and for multicolor icons. This is a starting template that we recommend you to use for you own icons. Here you can copy a blank state for the configuration file:
 
-```
+```json
 {
   "monochrome": {
     "colors": [
@@ -560,7 +560,6 @@ That's it!
     ]
   }
 }
-
 ```
 
 ---
