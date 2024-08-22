@@ -4,3 +4,4 @@ Obj
 node_modules
 lib
 *.log
+frontend/packages/main/dist

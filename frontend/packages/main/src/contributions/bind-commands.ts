@@ -11,7 +11,7 @@ export namespace Commands {
 
     export const SAMPLE_CMD = {
         id: 'plugin_sample.sample_cmd',
-        label: 'Plugin Sample Command  6',
+        label: 'Plugin Sample Command',
     };
 }
 
@@ -22,7 +22,7 @@ export class CommmandsContribution implements ICommandsContribution {
     registerCommands(registry: ICommandsRegistry): void {
 
         registry.registerCommand(Commands.SAMPLE_CMD, () => {
-            console.log('Sample Command 2');
+            console.log('Sample Command');
             this.echo();
 
             return true;
@@ -33,8 +33,8 @@ export class CommmandsContribution implements ICommandsContribution {
         let kb = UIServices.kb.currentKB;
         if (kb) {
             let connInfo = kb.connectionInfo;
-            //let data = await CommServices.get().sample.echo(connInfo.location, connInfo.id, "Hello Server");
-            let data = await CommServices.get().sample.getData(connInfo.location, connInfo.id);
+            let data = await CommServices.get().sample.echo(connInfo.location, connInfo.id, "Hello Server");
+            //let data = await CommServices.get().sample.getData(connInfo.location, connInfo.id);
             console.log('Data result', data);
         }
     }

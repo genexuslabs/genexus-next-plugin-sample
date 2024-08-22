@@ -97,6 +97,8 @@ export declare type SourceEditorCommandContext = {
     position: SourcePosition;
     model: ISourceModel;
     sourcePart: MultiRegionSourcePart;
+    node?: AstNode;
+    nodeHelper?: ISourceEditorAstNodeHelper;
 };
 export declare type SourceEditorCommandHandler = (context: SourceEditorCommandContext) => boolean;
 export interface ISourceEditorCommandsRegistry {
@@ -169,6 +171,10 @@ export declare class MultiRegionSourcePartEditor extends GXDocumentPartEditor im
     private _setCurrentPosition;
     private _createTextEditor;
     private _subscribeToEvents;
+    private _parseDroppedData;
+    private _getSourceRegionNode;
+    private _getSourceRegionPart;
+    private _addTextToCurrentPosition;
     private _onPartChanged;
     registerCommands(registry: ICommandsRegistry): void;
     private _createEditorCommandContext;
@@ -351,4 +357,16 @@ export declare function traverse(root: AstNode, visitFn: (node: AstNode) => void
 export declare namespace PartClasses {
     const SOURCE_PART: Guid;
     const MULTI_REGION_SOURCE_PART: Guid;
+}
+
+export declare type ResolveValueResult = {
+    success: boolean;
+    value?: string;
+    message?: string;
+};
+export declare type ResolveValueData = {
+    objectGuid: Guid;
+};
+export interface ISourceRegionPart {
+    resolveValue(data: ResolveValueData): MaybePromise<ResolveValueResult>;
 }

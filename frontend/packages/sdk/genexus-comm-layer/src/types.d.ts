@@ -1,4 +1,4 @@
-import { IGXCommLayer, KBObjectData, KBObjectInfoData, KBObjectInfoFiltersData } from '@genexusm-sdk/common-comm-layer' 
+import { IGXCommLayer, KeyValueData, KBObjectData, KBObjectInfoData, KBObjectInfoFiltersData } from '@genexusm-sdk/common-comm-layer' 
 import { MaybePromise } from '@genexusm-sdk/common' 
 
 export declare class Services {
@@ -14,7 +14,7 @@ export declare class Services {
     patterns: IPatternsCommService;
     tables: ITablesCommService;
     userControls: IUserControlsCommService;
-    static createInstante(commLayer: IGXCommLayer): Services;
+    static createInstance(commLayer: IGXCommLayer): Services;
     private constructor();
 }
 
@@ -52,7 +52,8 @@ export interface IInspectorsCommService {
 }
 
 export interface ILanguageCommService {
-    getGXDataTypes(servicesUrl: string, kbId: string, path: string, propertyName: string): MaybePromise<GXDataTypeCategoryData[]>;
+    getGXDataTypes(servicesUrl: string, kbId: string, path: string, propertyName: string, includeDomains: boolean): MaybePromise<GXDataTypeCategoryData[]>;
+    resolveGXDataTypeProperties(servicesUrl: string, kbId: string, path: string, propertyName: string, dataType: string, includeDomains: boolean): MaybePromise<KeyValueData[]>;
     searchGXDataTypes(servicesUrl: string, kbId: string, filter: GXDataTypesFilterData): MaybePromise<string[]>;
     getIntellisenseChoices(servicesUrl: string, kbId: string, contextData: IntellisenseContextData): MaybePromise<IntellisenseChoiceData[]>;
     getStructItemIntellisenseChoices(servicesUrl: string, kbId: string, modelGuid: string, type: string, baseName: string): MaybePromise<StructItemIntellisenseChoiceData[]>;
@@ -97,6 +98,10 @@ export declare type DataStoreData = {
     id: number;
     name: string;
     dbms: number;
+};
+export declare type DeploymentUnitData = {
+    id: string;
+    name: string;
 };
 export declare type AttributeVariableSelectorData = {
     path: string;
@@ -261,6 +266,7 @@ export declare type GXDataTypeCategoryData = {
     types: string[];
 };
 export declare type GXDataTypesFilterData = {
+    includeDomains: boolean;
     path: string;
     propertyName: string;
     prefix: string;

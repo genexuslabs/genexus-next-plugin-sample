@@ -1,0 +1,20 @@
+<Project>
+  <PropertyGroup>
+    <GXBLVersion>18.11.184387-beta</GXBLVersion>
+    <GXServicesVersion>1.0.0</GXServicesVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NugetCacheHome Condition="$([MSBuild]::IsOSPlatform('Windows'))">$(USERPROFILE)</NugetCacheHome>
+    <NugetCacheHome Condition="!$([MSBuild]::IsOSPlatform('Windows'))">$(HOME)</NugetCacheHome>
+    <NugetCache Condition="'$(NugetCache)'==''">$(NUGET_PACKAGES)</NugetCache>
+    <NugetCache Condition="'$(NugetCache)'==''">$([MSBuild]::EnsureTrailingSlash('$(NugetCacheHome)')).nuget/packages</NugetCache>
+  </PropertyGroup>
+
+  <PropertyGroup>
+<!--     <AssemblyOriginatorKeyFile Condition="'$(ARTECH_SNK_FILE)'!=''">$(ARTECH_SNK_FILE)</AssemblyOriginatorKeyFile>
+    <SignAssembly Condition="'$(AssemblyOriginatorKeyFile)'!=''">true</SignAssembly> -->
+  </PropertyGroup>
+</Project>
+
+

@@ -9,9 +9,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Artech.Architecture.Common" Version="19.0.181956-beta" />
-      <PackageReference Include="Artech.Genexus.Common" Version="19.0.181956-beta" />
-      <PackageReference Include="GeneXus.Services.Architecture" Version="1.0.0" />
+      <PackageReference Include="Artech.Architecture.Common" Version="$(GXBLVersion)" />
+      <PackageReference Include="Artech.Genexus.Common" Version="$(GXBLVersion)" />
+      <PackageReference Include="GeneXus.Services.Architecture" Version="$(GXServicesVersion)" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     </ItemGroup>
 

@@ -24,7 +24,8 @@
 		"@genexusm-sdk/common-properties": "0.0.28",
 		"@genexusm-sdk/patterns-common": "0.0.28",
 		"@genexusm-sdk/common-components": "0.0.28",
-		"@genexusm-sdk/language-common": "0.0.28"
+		"@genexusm-sdk/language-common": "0.0.28",
+		"@genexusm-sdk/architecture-ui-framework": "0.0.28"
 	},
 	"devDependencies": {
 		"rimraf": "3.0.2",

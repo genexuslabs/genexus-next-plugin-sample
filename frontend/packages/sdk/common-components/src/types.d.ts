@@ -1371,6 +1371,7 @@ export declare class StructEditor extends EtchComponent {
     private _commandManager;
     private _columns;
     private _grid;
+    isReloadingItem: boolean;
     constructor();
     get settings(): StructEditorSettings;
     protected get commandManager(): EditorCommandManager;
@@ -1582,4 +1583,7 @@ export declare type TreeItem = {
     startImgSrc: string;
     metadata?: string;
     order?: any;
+};
+export declare type TreeItemDraggableObject = {
+    objectGuid: string;
 };

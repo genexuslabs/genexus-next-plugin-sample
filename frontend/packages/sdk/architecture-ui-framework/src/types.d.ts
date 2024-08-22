@@ -1,6 +1,6 @@
 import { MaybeUndefined, ISelectionContainer, Disposable, MaybeArray, AnyObject, MaybePromise, EventHandler, CompositeDisposable, Guid, Mode, DisposableUrl, IComparable, IEquatable } from '@genexusm-sdk/common' 
 import { EtchComponent, StructColumns, StructEditorSettings, StructItem, StructItemCancelableEventArgs, StructItemCellEventArgs, StructItemEventArgs, StructItemKind, VirtualItem, StructEditor, StructItemCellDefault, StructColumn, StructItemCell, FileUploaderDialog, FileUploaderDialogBaseOptions, UploadFunction, DialogResult } from '@genexusm-sdk/common-components' 
-import { KBObject, KBModel, KBObjectInfo, KBEnvironment, KBObjectPart, KBObjectDescriptor, IGXService, IKBObject, KnowledgeBase, KBCategory } from '@genexusm-sdk/architecture-common' 
+import { KBObject, KBModel, KBObjectInfo, KBEnvironment, KBObjectPart, KBObjectDescriptor, RemotePropertiesObject, IGXService, IKBObject, EntityKey, EntityVersionInfo, KnowledgeBase, KBCategory } from '@genexusm-sdk/architecture-common' 
 import { PropertyValueChangedEventArgs, IPropertyDescriptor, StringConverter, TypeDescriptorContext, UITypeEditor, UITypeEditorEditOptions, UITypeEditorEditStyle } from '@genexusm-sdk/common-properties' 
 import { KBInfoData } from '@genexusm-sdk/common-comm-layer' 
 
@@ -232,6 +232,7 @@ export class ToolWindowNames {
     static get EXPORT(): string;
     static get IMPORT(): string;
     static get MANAGE_MODULE_REFERENCES(): string;
+    static get HISTORY(): string;
 }
 
 export declare enum ToolboxAction {
@@ -286,6 +287,7 @@ export interface IModelTreeNode extends ICommandTarget {
     readonly text: string;
     readonly iconName: string;
     getData(): MaybePromise<any>;
+    getDropData(): MaybePromise<string | undefined>;
     readonly dataToSave: MaybeUndefined<ISavableNodeData>;
     shouldReload: boolean;
     readonly isRoot: boolean;
@@ -403,6 +405,7 @@ export declare abstract class AbstractNode implements IModelTreeNode {
     get text(): string;
     get iconName(): string;
     abstract getData(): MaybePromise<any>;
+    getDropData(): Promise<string | undefined>;
     get dataToSave(): undefined;
     get shouldReload(): boolean;
     set shouldReload(value: boolean);
@@ -458,6 +461,7 @@ export declare class KBObjectNode extends AbstractNode {
     get hasChildren(): boolean;
     get isEditable(): boolean;
     getData(): Promise<MaybeUndefined<KBObject>>;
+    getDropData(): Promise<string | undefined>;
     getContextMenuPath(): string[];
     reloadNodes(): Promise<any[]>;
     /**
@@ -488,6 +492,7 @@ export declare class ModelRootNode extends AbstractNode {
     getData(): Promise<KBModel>;
     get isRoot(): boolean;
     reloadNodes(): Promise<any[]>;
+    getContextMenuPath(): string[];
 }
 
 export declare type CommandDescriptor = {
@@ -611,6 +616,26 @@ export declare namespace CommonCommands {
         id: string;
         label: string;
     };
+    const HISTORY: {
+        id: string;
+        label: string;
+    };
+    const OPEN_REVISION: {
+        id: string;
+        label: string;
+    };
+    const COMPARE_WITH_CURRENT_REVISION: {
+        id: string;
+        label: string;
+    };
+    const SET_AS_ACTIVE: {
+        id: string;
+        label: string;
+    };
+    const SELECT_LEFT_SIDE_TO_COMPARE: {
+        id: string;
+        label: string;
+    };
 }
 
 export declare const IGXDocumentPartEditorDescriptor: unique symbol;
@@ -653,12 +678,14 @@ export declare namespace CommonMenus {
     const KNOWLEDGE_MANAGER: string[];
     const CONTEXT: string[];
     const CONTEXT_MODEL_TREE: string[];
+    const CONTEXT_MODEL_TREE_ROOT: string[];
     const CONTEXT_TAB_BAR: string[];
     const CONTEXT_PROPERTY_GRID: string[];
     const SETTINGS_MENU: MenuPath;
     const SETTINGS_MENU_COLOR_SCHEME: MenuPath;
     const MANAGE_MODULE_REFERENCES_CONTEXT: MenuPath;
     const MANAGE_MODULE_REFERENCES_SERVERS: MenuPath;
+    const HISTORY_CONTEXT: string[];
 }
 
 export declare const IToolWindowDescriptor: unique symbol;
@@ -1133,6 +1160,19 @@ export interface ICommandsService {
     dispatch(commandId: string, data?: CommandData): void;
 }
 
+export declare type ComparableProperties = {
+    header: string;
+    properties: RemotePropertiesObject;
+};
+export interface IComparableModelPart {
+    getComparableProperties(): MaybePromise<ComparableProperties[]>;
+}
+export interface IComparerService {
+    canCompare(descriptor: KBObjectDescriptor): boolean;
+    compareKBObjects(left: KBObject, right: KBObject): MaybePromise<void>;
+    compareKBModels(left: KBModel, right: KBModel): MaybePromise<void>;
+}
+
 export declare const ICreateKBDialogService: unique symbol;
 export declare type CreateKBOptions = {
     gxserverKBName?: string;
@@ -1220,6 +1260,23 @@ export interface IEnvironmentService extends IGXService {
     readonly rootElement: HTMLElement;
     trackEvent(name: string, data: AnyObject): void;
     activeDocumentChanged(callback: (document: IGXDocument) => void): Disposable;
+}
+
+export declare type HistoryData = {
+    id: string;
+    name: string;
+    getValueCallback?: (version: EntityVersionInfo) => {};
+};
+export interface IHistoryController {
+    getRevisions(model: KBModel, entityKey: EntityKey): MaybePromise<EntityVersionInfo[] | undefined>;
+    openRevision(model: KBModel, entityKey: EntityKey, revision: number): MaybePromise<void>;
+    compare(model: KBModel, entityKey: EntityKey, leftVersion: number, rightVersion: number): MaybePromise<void>;
+    setAsActive(model: KBModel, entityKey: EntityKey, revision: number): MaybePromise<void>;
+    getDataItems(): HistoryData[];
+    isCommandAvailable(commandId: string): boolean;
+}
+export interface IHistoryService {
+    showHistory(entityKey: EntityKey, version: number, controller: IHistoryController): MaybePromise<void>;
 }
 
 export declare type KBEventCallback = (kb: MaybeUndefined<KnowledgeBase>) => MaybePromise<void>;
@@ -1485,11 +1542,13 @@ export declare class ServiceNames {
 
 export declare class UIServices {
     static createKBDialog: ICreateKBDialogService;
+    static comparerService: IComparerService;
     static commands: ICommandsService;
     static documentManager: IDocumentManagerService;
     static kb: IKBService;
     static keybinding: IKeybindingService;
     static environment: IEnvironmentService;
+    static history: IHistoryService;
     static menu: IMenuService;
     static modelTree: IModelTreeService;
     static navigator: INavigatorService;

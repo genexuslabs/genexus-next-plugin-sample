@@ -56,7 +56,7 @@ export declare type ExpressionIntellisenseContext = {
 
 export declare class Services {
     language: ILanguageCommService;
-    static createInstante(commLayer: IGXCommLayer): Services;
+    static createInstance(commLayer: IGXCommLayer): Services;
     private constructor();
 }
 

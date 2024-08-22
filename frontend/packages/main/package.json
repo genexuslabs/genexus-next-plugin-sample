@@ -24,6 +24,8 @@
     "@genexusm-sdk/common": "*",
     "@genexusm-sdk/architecture-common": "*",
     "@genexusm-sdk/architecture-ui-framework": "*",
+    "@genexusm-sdk/patterns-common": "*",
+    "@genexusm-sdk/genexus-common": "*",
     "@genexusm-plugin-sample/components": "*",
     "@genexusm-plugin-sample/comm-layer": "*"
   },

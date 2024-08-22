@@ -1,5 +1,4 @@
 import { GXCommLayer, PluginModule } from "@genexusm-sdk/architecture-common";
-import { ICommandsContribution, IMenuContribution } from "@genexusm-sdk/architecture-ui-framework";
 import { interfaces } from "inversify";
 
 import { defineCustomElements } from "@genexusm-plugin-sample/components/loader";
@@ -27,16 +26,3 @@ export default new PluginModule(
         CommServices.setCommLayer(GXCommLayer.get());
     }
 );
-
-
-
-
-
-// export type MyType = {
-//     id: number;
-//     name: string;
-// };
-
-// export const myFunction = (): MyType => {
-//     return { id: 1, name: "Example" };
-// };

@@ -1,5 +1,4 @@
 const root = (window as any).GeneXusM.PatternsCommon;
-const PatternCategory = root.PatternCategory;
 const PatternObjectTypes = root.PatternObjectTypes;
 const PatternPartTypes = root.PatternPartTypes;
 const Commands = root.Commands;
@@ -32,6 +31,7 @@ const RemoveElementCommand = root.RemoveElementCommand;
 const ReparentElementCommand = root.ReparentElementCommand;
 const SetPropertyValueCommand = root.SetPropertyValueCommand;
 const PatternInstanceElement = root.PatternInstanceElement;
+const PatternCategory = root.PatternCategory;
 const PatternChildrenType = root.PatternChildrenType;
 const PatternDefinition = root.PatternDefinition;
 const PatternSpecificationAttribute = root.PatternSpecificationAttribute;
@@ -43,7 +43,6 @@ const Services = root.Services;
 
 
 export {
-  PatternCategory,
   PatternObjectTypes,
   PatternPartTypes,
   Commands,
@@ -76,6 +75,7 @@ export {
   ReparentElementCommand,
   SetPropertyValueCommand,
   PatternInstanceElement,
+  PatternCategory,
   PatternChildrenType,
   PatternDefinition,
   PatternSpecificationAttribute,

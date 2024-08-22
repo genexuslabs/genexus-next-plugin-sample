@@ -15,6 +15,7 @@ export declare namespace BLEvents {
     const AFTER_CLOSE_KB = "event://KnowledgeBase/AfterCloseKB";
     const AFTER_SAVE_KB_OBJECT = "event://KnowledgeBase/AfterSaveKBObject";
     const AFTER_DELETE_KB_OBJECT = "event://KnowledgeBase/AfterDeleteKBObject";
+    const AFTER_RELOAD_KB_MODEL = "event://KnowledgeBase/AfterReloadKBModel";
     const AFTER_SAVE_KB_MODEL = "event://KnowledgeBase/AfterSaveKBModel";
     const KB_CONTEXT_CHANGED = "ContextChanged";
     const AFTER_KBOBJECT_IMPORT = "event://KnowledgeBase/AfterKBObjectImport";
@@ -325,6 +326,7 @@ export declare class KBObject extends RemotePropertiesObject implements IKBObjec
     private __model;
     private __key;
     private __guid;
+    private __isCurrentVersion;
     private __versionId;
     private __typeDescriptor;
     private __deserializing;
@@ -342,6 +344,7 @@ export declare class KBObject extends RemotePropertiesObject implements IKBObjec
     get kb(): KnowledgeBase;
     get sessionId(): Guid;
     get key(): EntityKey;
+    get isCurrentVersion(): boolean;
     get versionId(): number;
     get id(): number;
     get type(): Guid;
@@ -443,12 +446,15 @@ export class KBEnvironment {
 }
 
 export class KBModel extends RemotePropertiesObject {
+    private _key;
     private _kb;
     private _environment;
     private _objects;
     private _guid;
     private _name;
     private _parts;
+    private _isCurrentVersion;
+    private _versionId;
     constructor(kb: KnowledgeBase, data: KBModelData);
     get remotePath(): string;
     getTypeInfo(): {
@@ -456,6 +462,7 @@ export class KBModel extends RemotePropertiesObject {
         description: string;
         isReadOnly: boolean;
     };
+    get key(): EntityKey;
     get model(): this;
     get kb(): KnowledgeBase;
     get guid(): Guid;
@@ -463,6 +470,8 @@ export class KBModel extends RemotePropertiesObject {
     get objects(): IKBModelObjects;
     get environment(): KBEnvironment;
     get parts(): KBModelPart[];
+    get isCurrentVersion(): boolean;
+    get versionId(): number;
     getPart(type: Guid): KBModelPart | undefined;
     getRootModuleInfo(): MaybePromise<KBObjectInfo>;
     getRootInterfacesInfo(): MaybePromise<KBObjectInfo[]>;
@@ -482,6 +491,7 @@ export class KBModelObjects implements IKBModelObjects {
     getInfoByGuid(guid: Guid): Promise<KBObjectInfo | undefined>;
     getInfoByTypeQName(type: Guid | undefined, qname: QualifiedName): Promise<KBObjectInfo | undefined>;
     getReferencesInfoByKey(key: EntityKey, to: boolean): Promise<EntityReferenceInfo[] | undefined>;
+    getVersionsInfoByKey(key: EntityKey): Promise<EntityVersionInfo[] | undefined>;
     getExportReferencesInfo(options: ExportReferencesOptions): Promise<KBObjectInfo[] | undefined>;
     getChildrenInfoByKey(parentKey: EntityKey): Promise<KBObjectInfo[]>;
     getChildrenInfoByGuid(parentGuid: Guid): Promise<KBObjectInfo[]>;
@@ -503,6 +513,7 @@ export class KBModelObjects implements IKBModelObjects {
         objects: any;
         truncated: boolean;
     }>;
+    setAsActive(key: EntityKey, version: number): Promise<boolean>;
     getObjectModuleByKey(key: EntityKey): Promise<Module | undefined>;
     getQNameByKey(key: EntityKey): Promise<string>;
     getFullQNameByKey(key: EntityKey): Promise<string>;
@@ -764,6 +775,7 @@ export declare class KnowledgeBase {
     get targetModel(): KBModel;
     get models(): KBModel[];
     getModel(guid: Guid): KBModel | undefined;
+    reloadModel(model: KBModel): Promise<void>;
     saveObject(kbObject: KBObject, headerOnly?: boolean): Promise<boolean>;
     deleteObjects(objects: IKBObject[]): Promise<boolean>;
     /**
@@ -831,6 +843,14 @@ export declare type ExportReferencesOptions = {
     dependencyType: DependencyType;
     references: DependenciesTypes;
 };
+export declare type EntityVersionInfo = {
+    createdIn: string;
+    currentIn: string;
+    name: string;
+    revision: number;
+    revisionDate: string;
+    user: string;
+};
 export interface IKBModelObjects {
     getRootModuleInfo(): MaybePromise<KBObjectInfo>;
     getRootInterfacesInfo(): MaybePromise<KBObjectInfo[]>;
@@ -841,6 +861,7 @@ export interface IKBModelObjects {
     getChildrenInfoByGuid(parentGuid: Guid): MaybePromise<Iterable<KBObjectInfo> | undefined>;
     getObjectsInfoByType(type: Guid): MaybePromise<Iterable<KBObjectInfo>>;
     getReferencesInfoByKey(key: EntityKey, to: boolean): MaybePromise<EntityReferenceInfo[] | undefined>;
+    getVersionsInfoByKey(key: EntityKey): MaybePromise<EntityVersionInfo[] | undefined>;
     getExportReferencesInfo(options: ExportReferencesOptions): MaybePromise<KBObjectInfo[] | undefined>;
     resolveNameToInfos(fromModuleKey: EntityKey, types: Guid | Guid[], name: string): MaybePromise<ResolveResult | undefined>;
     resolveNameToKeys(fromModuleKey: EntityKey, types: Guid | Guid[], name: string): MaybePromise<ResolveKeyResult | undefined>;
@@ -853,6 +874,7 @@ export interface IKBModelObjects {
     getBySessionId(sessionId: Guid): MaybePromise<KBObject | undefined>;
     getByType(type: Guid): MaybePromise<KBObject[]>;
     search(filters: KBObjectFilters): MaybePromise<KBObjectFindResult>;
+    setAsActive(key: EntityKey, version: number): MaybePromise<boolean>;
     getObjectModuleByKey(key: EntityKey): MaybePromise<Module | undefined>;
     getQNameByKey(key: EntityKey): MaybePromise<string | undefined>;
     getFullQNameByKey(key: EntityKey): MaybePromise<string | undefined>;
@@ -954,8 +976,10 @@ export declare abstract class StructPart extends KBObjectPart {
     protected getAllElements(): KBObjectPartElement[];
     canInsertItem(item: StructPartItem, parent: StructPartItem): boolean;
     canRemoveItem(item: StructPartItem): boolean;
+    getItem(guid: Guid): StructPartItem | undefined;
     deserializeContent(data: string): Promise<void>;
     createItem(options: StructPartItemOptions): StructPartItem;
+    reloadItem(item: StructPartItem): Promise<boolean>;
 }
 
 export abstract class RemotePropertiesObject extends PropertiesObject {
@@ -1334,6 +1358,7 @@ export declare class GXPlugin {
     private _module;
     private _container;
     constructor(options: PluginOptions);
+    get descriptor(): PluginVersionDescriptor;
     get id(): string;
     get isLoaded(): boolean;
     get isEnabled(): boolean;
