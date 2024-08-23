@@ -29,8 +29,7 @@ export class SampleToolWindow extends AbstractToolWindow {
 
     render() {
         return (<div>
-            <my-component first="Stencil" last="'Don't call me a framework' JS ttttt"></my-component>
-            <my-component first="Stencil" last="'Don't call me a framework' JS AAAA"></my-component>
+            <my-component first="Stencil" last="'Don't call me a framework'"></my-component>
         </div>);
     }
 }
