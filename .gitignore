@@ -5,3 +5,4 @@ node_modules
 lib
 *.log
 frontend/packages/main/dist
+.DS_Store
