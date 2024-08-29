@@ -1,4 +1,3 @@
-/* STENCIL IMPORTS */
 import {
   Component,
   Host,
