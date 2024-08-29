@@ -1,0 +1,10 @@
+{
+  "componentName": "Component Title",
+  "header": {},
+  "main": {},
+  "footer": {},
+  "loader": {
+    "title": "Loading...",
+    "cancelLabel": "Cancel"
+  }
+}

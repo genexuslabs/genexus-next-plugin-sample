@@ -1,15 +1,5 @@
-export * from './components';
+// Add types from Chameleon, without importing any JS in the final bundle.
+// Don't use 'import "@genexus/chameleon-controls-library"'
+typeof import("@genexus/chameleon-controls-library/dist/types/index");
 
-
-interface IFoo {
-    bar(): string;
-}
-
-const foo : IFoo = {
-    bar() {
-        this.foo();
-        return 'sdfdsf';
-    },
-} as IFoo;
-
-export default foo;
+export { ASSETS } from "./assets/generated/ASSETS";

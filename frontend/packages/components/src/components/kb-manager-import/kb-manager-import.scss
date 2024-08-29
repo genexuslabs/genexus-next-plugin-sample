@@ -1,0 +1,129 @@
+:host {
+  display: block;
+  grid-template-rows: max-content 1fr max-content;
+}
+
+.header {
+  display: grid;
+  gap: var(--mer-spacing--md);
+  grid-template-columns: 1fr max-content;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+h2 {
+  border-block: 1px solid;
+  text-align: center;
+  padding-block: var(--mer-spacing--md);
+}
+
+section + section {
+  border-inline-start: 1px solid;
+}
+
+.objects-in-file {
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+}
+
+.empty-import {
+  display: grid;
+  grid-template-rows: max-content max-content;
+  align-self: center;
+  text-align: center;
+}
+
+// .header {
+//   display: flex;
+//   flex-direction: row;
+//   gap: var(--gx-ide-grid-column-gap);
+
+//   .select-file {
+//     flex: 1;
+//   }
+// }
+
+// .main {
+//   //min-height: 250px;
+//   height: 100%;
+//   overflow: auto;
+//   .container-wrapper {
+//     height: 100%;
+//     display: grid;
+//     grid-template-rows: auto 1fr;
+//     grid-template-columns: 1fr 1fr;
+//     grid-template-areas:
+//       "top-state-bar top-state-bar"
+//       "left-container right-container";
+
+//     .top-state-bar {
+//       grid-area: top-state-bar;
+//     }
+//     .left-container {
+//       grid-area: left-container;
+//       border-right: 1px solid var(--gx-ide-container-border-color);
+//     }
+//     .right-container {
+//       grid-area: right-container;
+//     }
+
+//     // @include gx-ide-message("short");
+
+//     .tree-container {
+//       &--empty {
+//         align-items: center;
+//         justify-content: center;
+//         display: flex;
+//       }
+//       /*import status display/hide status (warning, error, success)*/
+//       &--no-warnings {
+//         .tree-view-item--warning {
+//           display: none;
+//         }
+//       }
+//       &--no-errors {
+//         .tree-view-item--error {
+//           display: none;
+//         }
+//       }
+//       &--no-successes {
+//         .tree-view-item--success {
+//           display: none;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// // .tree-view
+// .tree-view::part(item__action tree-view-item--status) {
+//   grid-template: "first-img left-img text right-img" / max-content max-content 1fr max-content;
+//   &::before {
+//     grid-area: first-img;
+//     content: "";
+//     width: var(--mer-spacing--xs);
+//     height: var(--mer-spacing--xs);
+//     border-radius: 50%;
+//     background-color: var(--gray-03);
+//     margin-inline-end: var(--mer-spacing--xxs);
+//   }
+// }
+
+// .tree-view::part(item__action tree-view-item--success) {
+//   // @include tree-item-status("success");
+// }
+// .tree-view::part(item__action tree-view-item--warning) {
+//   // @include tree-item-status("warning");
+// }
+// .tree-view::part(item__action tree-view-item--error) {
+//   // @include tree-item-status("error");
+// }
+
+// .ghost-element {
+//   display: block;
+//   width: 0;
+//   height: 24px; /*this is the taller element on the "objects in file container footer (which is the button group, at the time of writing)"*/
+// }

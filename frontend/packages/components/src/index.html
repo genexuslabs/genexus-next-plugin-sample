@@ -1,14 +1,158 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="en" class="dark">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>GeneXus IDE plugin</title>
 
     <script type="module" src="/build/plugin-components-sample.esm.js"></script>
-    <script nomodule src="/build/plugin-components-sample.js"></script>
+
+    <script type="module">
+      // All definitions in this script are used for local testing purposes
+      // only. The IDE Web's SDK implements all this and more
+      import { defineCustomElements } from "/chameleon/esm/loader.js";
+      import { registryProperty } from "/chameleon/esm/index.js";
+      import {
+        getImagePathCallbackDefinitions,
+        registerAssets
+      } from "/mercury/assets-manager.js";
+      import { ASSETS } from "/build/index.esm.js";
+
+      // Register getImagePath callbacks
+      registryProperty("getImagePathCallback", getImagePathCallbackDefinitions);
+
+      // Register the assets of the plugin
+      registerAssets("K2BTools", "k2b", ASSETS);
+
+      defineCustomElements(window);
+    </script>
+
+    <link rel="stylesheet" href="css/base/base.css" />
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <script type="module">
+      import { getThemeBundles } from "/mercury/assets-manager.js";
+
+      // Mercury bundles
+      const themeRef = document.createElement("ch-theme");
+      themeRef.model = getThemeBundles("css/");
+      document.body.appendChild(themeRef);
+
+      // Mercury icons
+      const theme2Ref = document.createElement("ch-theme");
+      theme2Ref.avoidFlashOfUnstyledContent = false;
+      theme2Ref.model = [{ name: "base/icons", url: "css/base/icons.css" }];
+      document.body.appendChild(theme2Ref);
+
+      // Plugin icons
+      const theme3Ref = document.createElement("ch-theme");
+      theme3Ref.avoidFlashOfUnstyledContent = false;
+      theme3Ref.model = [{ name: "icons/k2b", url: "global.css" }];
+      document.body.appendChild(theme3Ref);
+    </script>
+    <k2b-kb-manager-import enable-user-logged="true"></k2b-kb-manager-import>
+
+    <!-- <k2b-connect-gx-server></k2b-connect-gx-server> -->
+
+    <script type="module">
+      import {
+        getIconPath,
+        getIconPathExpanded
+      } from "/mercury/assets-manager.js";
+
+      const kbManagerImport = document.querySelector("k2b-kb-manager-import");
+
+      const importCategoryData = [
+        {
+          id: "api",
+          name: "API 1",
+          // Plugin icon
+          icon: getIconPath({ category: "objects", name: "api" }, "k2b"),
+          items: [{ id: "plugin-articles-api", name: "Plugin.ArticlesApi" }]
+        },
+        {
+          id: "file",
+          name: "File",
+
+          // Icon from Mercury. It isn't necessary to add "mer" for the vendor,
+          // since it is the default vendor
+          icon: getIconPath({ category: "objects", name: "file" }),
+          items: [
+            { id: "file-item-1", name: "File Item 1" },
+            { id: "file-item-2", name: "File Item 2" },
+            { id: "file-item-3", name: "File Item 3" }
+          ]
+        },
+        {
+          id: "category",
+          name: "Category",
+
+          // Icon with expandable state. Only works in the Tree View
+          icon: getIconPathExpanded(
+            { category: "objects", name: "module" },
+            { category: "objects", name: "module-open" }
+          ),
+          items: [
+            { id: "category-item-1", name: "Category Item 1" },
+            { id: "category-item-2", name: "Category Item 2" }
+          ]
+        },
+        {
+          id: "copy",
+          name: "Copy",
+
+          // Icon with colorType
+          icon: getIconPath(
+            { category: "menus", name: "copy", colorType: "gray" },
+            "k2b"
+          ),
+          items: [
+            { id: "copy-1", name: "Copy 1" },
+            { id: "copy-2", name: "Copy 2" },
+            { id: "copy-3", name: "Copy 3" }
+          ]
+        },
+        {
+          id: "data-provider",
+          name: "Data Provider",
+          icon: getIconPath({ category: "objects", name: "data-provider" }),
+          items: [
+            { id: "data-provider-1", name: "Data Provider 1" },
+            { id: "data-provider-2", name: "Data Provider 2" },
+            { id: "data-provider-3", name: "Data Provider 3" }
+          ]
+        },
+        {
+          id: "data-store",
+          name: "Data Store",
+          icon: getIconPath({ category: "objects", name: "datastore" }),
+          items: [
+            { id: "data-store-1", name: "Data Store 1" },
+            { id: "data-store-2", name: "Data Store 2" },
+            { id: "data-store-3", name: "Data Store 3" }
+          ]
+        },
+        {
+          id: "design-system",
+          name: "Design System",
+          icon: getIconPath({ category: "objects", name: "design" }),
+          items: [
+            { id: "design-system-1", name: "Design System 1" },
+            { id: "design-system-2", name: "Design System 2" },
+            { id: "design-system-3", name: "Design System 3" }
+          ]
+        }
+      ];
+
+      if (kbManagerImport) {
+        kbManagerImport.loadCallback = () =>
+          new Promise(resolve => {
+            resolve(importCategoryData);
+          });
+      }
+    </script>
   </body>
 </html>

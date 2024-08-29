@@ -1,0 +1,132 @@
+{
+  "monochrome": {
+    "colors": [
+      {
+        "name": "gray",
+        "states": {
+          "enabled": {
+            "dark": "#616161",
+            "light": "#BDBDBD"
+          },
+          "hover": {
+            "dark": "#424242",
+            "light": "#9E9E9E"
+          },
+          "active": {
+            "dark": "#212121",
+            "light": "#757575"
+          },
+          "disabled": {
+            "dark": "#E0E0E0",
+            "light": "#F5F5F5"
+          }
+        }
+      },
+      {
+        "name": "blue",
+        "states": {
+          "enabled": {
+            "dark": "#1976D2",
+            "light": "#42A5F5"
+          },
+          "hover": {
+            "dark": "#1565C0",
+            "light": "#1E88E5"
+          },
+          "active": {
+            "dark": "#0D47A1",
+            "light": "#1976D2"
+          },
+          "disabled": {
+            "dark": "#2196F3",
+            "light": "#BBDEFB"
+          }
+        }
+      }
+    ],
+    "iconsCategories": [
+      {
+        "folder": "menus",
+        "colors": {
+          "gray": true,
+          "blue": false
+        }
+      },
+      {
+        "folder": "navigation",
+        "colors": {
+          "gray": false,
+          "blue": true
+        }
+      }
+    ]
+  },
+  "multicolor": {
+    "cssPrefix": "icon-",
+    "colors": [
+      {
+        "cssClass": "green",
+        "states": {
+          "enabled": {
+            "dark": "#388E3C",
+            "light": "#66BB6A"
+          },
+          "hover": {
+            "dark": "#2E7D32",
+            "light": "#43A047"
+          },
+          "active": {
+            "dark": "#1B5E20",
+            "light": "#388E3C"
+          },
+          "disabled": {
+            "dark": "#4CAF50",
+            "light": "#C8E6C9"
+          }
+        }
+      },
+      {
+        "cssClass": "yellow",
+        "states": {
+          "enabled": {
+            "dark": "#FBC02D",
+            "light": "#FFEB3B"
+          },
+          "hover": {
+            "dark": "#F9A825",
+            "light": "#FDD835"
+          },
+          "active": {
+            "dark": "#F57F17",
+            "light": "#FBC02D"
+          },
+          "disabled": {
+            "dark": "#FFEB3B",
+            "light": "#FFF9C4"
+          }
+        }
+      },
+      {
+        "cssClass": "purple",
+        "states": {
+          "enabled": {
+            "dark": "#7B1FA2",
+            "light": "#AB47BC"
+          },
+          "hover": {
+            "dark": "#6A1B9A",
+            "light": "#8E24AA"
+          },
+          "active": {
+            "dark": "#4A148C",
+            "light": "#7B1FA2"
+          },
+          "disabled": {
+            "dark": "#9C27B0",
+            "light": "#E1BEE7"
+          }
+        }
+      }
+    ]
+  }
+}
