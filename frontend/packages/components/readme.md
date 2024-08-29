@@ -6,7 +6,7 @@ This is a starter project for building components that will be used as the UI of
 
 ## Getting Started
 
-1.  Ensure you have installed all the recommended extensions for this package. Go to the [.vscode/extensions.json](.vscode/extensions.json) file, copy the name of each entry and install the extension from the marketplace (Ctrl + Shift + X shortcut on windows).
+1.  Ensure you have installed all the recommended extensions for this package. Go to the [.vscode/extensions.json](../../../.vscode/extensions.json) file, copy the name of each entry and install the extension from the marketplace (Ctrl + Shift + X shortcut on windows).
 
 2.  Replace the `"@stencil-community/required-prefix"` rule of the [.eslintrc.cjs](.eslintrc.cjs) file with the prefix that you are going to use for the components.
 
