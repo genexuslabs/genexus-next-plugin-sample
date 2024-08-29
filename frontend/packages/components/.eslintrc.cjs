@@ -81,6 +81,7 @@ module.exports = {
       }
     ],
     "@stencil-community/ban-exported-const-enums": "warn", // Exported const enums are not allowed
+    "@stencil-community/ban-prefix": ["error", ["gx-", "ch-", "st-"]], // Ensures that a Component's tag does not use any of the given prefixes.
     "@stencil-community/element-type": "error", // This rule catches Stencil Element decorator have the correct type
     "@stencil-community/methods-must-be-public": "error", // This rule catches Stencil Methods marked as private or protected
     "@stencil-community/no-unused-watch": "error", // This rule catches Stencil Watchs with non existing Props or States
