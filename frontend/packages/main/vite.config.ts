@@ -1,8 +1,22 @@
 import { defineConfig } from 'vite';
+import { viteStaticCopy } from "vite-plugin-static-copy";
 // import vitePluginRequire from "vite-plugin-require";
 
 export default defineConfig({
-    plugins: [],
+    plugins: [
+        viteStaticCopy({
+            targets: [
+              {
+                src: "../components/dist/plugin-components-sample/assets",
+                dest: "./",
+              },
+              {
+                src: "../components/dist/plugin-components-sample/global.css",
+                dest: "./",
+              }
+            ],
+          }),
+    ],
     server: {
         watch: {
             usePolling: true

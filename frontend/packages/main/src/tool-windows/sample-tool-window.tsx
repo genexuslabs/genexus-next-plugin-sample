@@ -27,6 +27,10 @@ export class SampleToolWindow extends AbstractToolWindow {
 
     }
 
+    get iconName() {
+        return 'k2b/objects/customization';
+    }
+
     render() {
         return (<div>
             <my-component first="Stencil" last="'Don't call me a framework'"></my-component>

@@ -9,8 +9,10 @@ import { bindPartEditors } from "./contributions/bind-part-editors";
 import { bindCommands } from "./contributions/bind-commands";
 import { bindMenus } from "./contributions/bind-menus";
 import { bindPatternHelpers } from "./contributions/bind-pattern-helpers";
+import { registerAssets } from "./contributions/register-assets";
 
 defineCustomElements(window);
+registerAssets();
 
 export default new PluginModule(
     (bind: interfaces.Bind) => {

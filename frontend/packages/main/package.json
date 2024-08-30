@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@genexusm-sdk/common": "*",
+    "@genexusm-sdk/common-components": "*",
     "@genexusm-sdk/architecture-common": "*",
     "@genexusm-sdk/architecture-ui-framework": "*",
     "@genexusm-sdk/patterns-common": "*",
