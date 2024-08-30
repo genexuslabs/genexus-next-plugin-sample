@@ -51,7 +51,7 @@ export class K2BConnectGxServer {
   // #componentLocale: any;
 
   // eslint-disable-next-line @stencil-community/own-props-must-be-private
-  #serverURLRef!: HTMLChComboBoxElement;
+  #serverURLRef!: HTMLChComboBoxRenderElement;
   #gxAccountCheckboxRef!: HTMLChCheckboxElement;
   #usernameRef!: HTMLInputElement;
   #passwordRef!: HTMLInputElement;
@@ -142,7 +142,7 @@ export class K2BConnectGxServer {
               filterDebounce={100}
               value={this.defaultConnectionData?.serverUrl}
               // onFilterChange={handleFilterChange}
-              ref={el => (this.#serverURLRef = el as HTMLChComboBoxElement)}
+              ref={(el:any) => (this.#serverURLRef = el as HTMLChComboBoxRenderElement)}
             ></ch-combo-box>
           </div>
 
