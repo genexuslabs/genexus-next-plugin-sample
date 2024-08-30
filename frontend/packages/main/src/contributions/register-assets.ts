@@ -6,5 +6,5 @@ export function registerAssets(){
     
     const baseUrl = AssetsManager.getBundleBaseUrl('PluginSample');
     const SAMPLE_BUNDLE = [{ name: 'sample/global', url: `${baseUrl}global.css`, themeBaseUrl: baseUrl }];
-    AssetsManager.registerBundle(SAMPLE_BUNDLE);
+    AssetsManager.registerStylesBundle(SAMPLE_BUNDLE);
 }

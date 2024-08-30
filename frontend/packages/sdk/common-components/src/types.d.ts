@@ -537,7 +537,7 @@ export declare namespace AssetsManager {
     const getTreeViewImagePathCallback: import("@genexus/chameleon-controls-library").TreeViewImagePathCallback;
     const registerBundleBaseUrl: (name: string, url: string) => void;
     const getBundleBaseUrl: (name: string) => string | undefined;
-    const registerBundle: (bundle: any) => void;
+    const registerStylesBundle: (bundle: any) => void;
 }
 
 export declare namespace Constants {
