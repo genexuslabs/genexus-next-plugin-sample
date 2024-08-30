@@ -531,6 +531,15 @@ export class ViewRegistry {
     performDocumentUpdate(): void;
 }
 
+export declare namespace AssetsManager {
+    const registerAssets: (vendorName: string, vendorAlias: string, assets: import("@genexus/mercury").Assets) => void;
+    const getIconPath: (iconMetadata: import("@genexus/mercury").AssetsMetadata, vendorAlias?: string | undefined) => `${string}/${string}/${string}${string}`;
+    const getTreeViewImagePathCallback: import("@genexus/chameleon-controls-library").TreeViewImagePathCallback;
+    const registerBundleBaseUrl: (name: string, url: string) => void;
+    const getBundleBaseUrl: (name: string) => string | undefined;
+    const registerBundle: (bundle: any) => void;
+}
+
 export declare namespace Constants {
     const INPUT_HEIGHT = 24;
     const LIST_ITEM_HEIGHT = 24;
@@ -1556,7 +1565,9 @@ export declare class TextInput extends EtchComponent {
     selectAll(): void;
     render(): JSX.Element;
     private _renderSuggest;
+    private _getModelItems;
     private _renderButton;
+    private _getIconWithColor;
     buttonClick(callback: EventHandler): void;
     suggestValueClick(callback: EventHandler): void;
     private _onSuggestKeyDown;
@@ -1571,7 +1582,6 @@ export declare type TreeItem = {
     caption: string;
     checkbox?: boolean;
     checked?: boolean;
-    class?: string;
     dragDisabled?: boolean;
     dropDisabled?: boolean;
     editable?: boolean;
