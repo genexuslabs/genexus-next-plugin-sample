@@ -28,7 +28,7 @@ export class SampleToolWindow extends AbstractToolWindow {
     }
 
     get iconName() {
-        return 'k2b/objects/customization';
+        return 'sv/objects/customization';
     }
 
     render() {

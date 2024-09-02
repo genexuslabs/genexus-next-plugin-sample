@@ -14,7 +14,7 @@ export { ComboBoxModel } from "@genexus/chameleon-controls-library";
 export { CancelCallback, ImportCallback, LoadCallback, ObjectContextMenuCallback, OptionsCallback } from "./components/kb-manager-import/types";
 export { ImportItemResultData } from "./common/types";
 export namespace Components {
-    interface K2bConnectGxServer {
+    interface SvConnectGxServer {
         /**
           * Callback that must be invoked when the 'Cancel' button is pressed.
          */
@@ -42,7 +42,7 @@ export namespace Components {
          */
         "serverUrls": ComboBoxModel;
     }
-    interface K2bKbManagerImport {
+    interface SvKbManagerImport {
         /**
           * Add the result of importing an item
          */
@@ -82,57 +82,57 @@ export namespace Components {
         "topStateBar": true;
     }
 }
-export interface K2bConnectGxServerCustomEvent<T> extends CustomEvent<T> {
+export interface SvConnectGxServerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLK2bConnectGxServerElement;
+    target: HTMLSvConnectGxServerElement;
 }
-export interface K2bKbManagerImportCustomEvent<T> extends CustomEvent<T> {
+export interface SvKbManagerImportCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLK2bKbManagerImportElement;
+    target: HTMLSvKbManagerImportElement;
 }
 declare global {
-    interface HTMLK2bConnectGxServerElementEventMap {
+    interface HTMLSvConnectGxServerElementEventMap {
         "componentDidRenderFirstTime": string;
     }
-    interface HTMLK2bConnectGxServerElement extends Components.K2bConnectGxServer, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLK2bConnectGxServerElementEventMap>(type: K, listener: (this: HTMLK2bConnectGxServerElement, ev: K2bConnectGxServerCustomEvent<HTMLK2bConnectGxServerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLSvConnectGxServerElement extends Components.SvConnectGxServer, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSvConnectGxServerElementEventMap>(type: K, listener: (this: HTMLSvConnectGxServerElement, ev: SvConnectGxServerCustomEvent<HTMLSvConnectGxServerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLK2bConnectGxServerElementEventMap>(type: K, listener: (this: HTMLK2bConnectGxServerElement, ev: K2bConnectGxServerCustomEvent<HTMLK2bConnectGxServerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSvConnectGxServerElementEventMap>(type: K, listener: (this: HTMLSvConnectGxServerElement, ev: SvConnectGxServerCustomEvent<HTMLSvConnectGxServerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLK2bConnectGxServerElement: {
-        prototype: HTMLK2bConnectGxServerElement;
-        new (): HTMLK2bConnectGxServerElement;
+    var HTMLSvConnectGxServerElement: {
+        prototype: HTMLSvConnectGxServerElement;
+        new (): HTMLSvConnectGxServerElement;
     };
-    interface HTMLK2bKbManagerImportElementEventMap {
+    interface HTMLSvKbManagerImportElementEventMap {
         "componentDidRenderFirstTime": boolean;
         "componentDidLoadEvent": boolean;
     }
-    interface HTMLK2bKbManagerImportElement extends Components.K2bKbManagerImport, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLK2bKbManagerImportElementEventMap>(type: K, listener: (this: HTMLK2bKbManagerImportElement, ev: K2bKbManagerImportCustomEvent<HTMLK2bKbManagerImportElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLSvKbManagerImportElement extends Components.SvKbManagerImport, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSvKbManagerImportElementEventMap>(type: K, listener: (this: HTMLSvKbManagerImportElement, ev: SvKbManagerImportCustomEvent<HTMLSvKbManagerImportElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLK2bKbManagerImportElementEventMap>(type: K, listener: (this: HTMLK2bKbManagerImportElement, ev: K2bKbManagerImportCustomEvent<HTMLK2bKbManagerImportElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSvKbManagerImportElementEventMap>(type: K, listener: (this: HTMLSvKbManagerImportElement, ev: SvKbManagerImportCustomEvent<HTMLSvKbManagerImportElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLK2bKbManagerImportElement: {
-        prototype: HTMLK2bKbManagerImportElement;
-        new (): HTMLK2bKbManagerImportElement;
+    var HTMLSvKbManagerImportElement: {
+        prototype: HTMLSvKbManagerImportElement;
+        new (): HTMLSvKbManagerImportElement;
     };
     interface HTMLElementTagNameMap {
-        "k2b-connect-gx-server": HTMLK2bConnectGxServerElement;
-        "k2b-kb-manager-import": HTMLK2bKbManagerImportElement;
+        "sv-connect-gx-server": HTMLSvConnectGxServerElement;
+        "sv-kb-manager-import": HTMLSvKbManagerImportElement;
     }
 }
 declare namespace LocalJSX {
-    interface K2bConnectGxServer {
+    interface SvConnectGxServer {
         /**
           * Callback that must be invoked when the 'Cancel' button is pressed.
          */
@@ -158,13 +158,13 @@ declare namespace LocalJSX {
         /**
           * Fired when the component has rendered for the first time.
          */
-        "onComponentDidRenderFirstTime"?: (event: K2bConnectGxServerCustomEvent<string>) => void;
+        "onComponentDidRenderFirstTime"?: (event: SvConnectGxServerCustomEvent<string>) => void;
         /**
           * Array of cataloged server URLs to be displayed in the combo.
          */
         "serverUrls": ComboBoxModel;
     }
-    interface K2bKbManagerImport {
+    interface SvKbManagerImport {
         /**
           * Callback invoked when the user wants to cancel the export process.
           * @returns It returns a boolean indicating whether the process could be canceled or not.
@@ -185,11 +185,11 @@ declare namespace LocalJSX {
         /**
           * This event is emitted once just after the component is fully loaded and the first render() occurs.
          */
-        "onComponentDidLoadEvent"?: (event: K2bKbManagerImportCustomEvent<boolean>) => void;
+        "onComponentDidLoadEvent"?: (event: SvKbManagerImportCustomEvent<boolean>) => void;
         /**
           * This event is emitted once just after the component is fully loaded and the first render() occurs
          */
-        "onComponentDidRenderFirstTime"?: (event: K2bKbManagerImportCustomEvent<boolean>) => void;
+        "onComponentDidRenderFirstTime"?: (event: SvKbManagerImportCustomEvent<boolean>) => void;
         /**
           * Callback invoked when the user wants to access the export options.
          */
@@ -208,16 +208,16 @@ declare namespace LocalJSX {
         "topStateBar"?: true;
     }
     interface IntrinsicElements {
-        "k2b-connect-gx-server": K2bConnectGxServer;
-        "k2b-kb-manager-import": K2bKbManagerImport;
+        "sv-connect-gx-server": SvConnectGxServer;
+        "sv-kb-manager-import": SvKbManagerImport;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "k2b-connect-gx-server": LocalJSX.K2bConnectGxServer & JSXBase.HTMLAttributes<HTMLK2bConnectGxServerElement>;
-            "k2b-kb-manager-import": LocalJSX.K2bKbManagerImport & JSXBase.HTMLAttributes<HTMLK2bKbManagerImportElement>;
+            "sv-connect-gx-server": LocalJSX.SvConnectGxServer & JSXBase.HTMLAttributes<HTMLSvConnectGxServerElement>;
+            "sv-kb-manager-import": LocalJSX.SvKbManagerImport & JSXBase.HTMLAttributes<HTMLSvKbManagerImportElement>;
         }
     }
 }

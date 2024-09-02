@@ -91,7 +91,7 @@ module.exports = {
     "@stencil-community/props-must-be-public": "warn", // This rule catches Stencil Props marked as private or protected
     "@stencil-community/props-must-be-readonly": "error", // This rule catches Stencil Props marked as non readonly, excluding mutable ones
     "@stencil-community/required-jsdoc": "error", // This rule catches Stencil Props, Methods and Events to define jsdoc
-    "@stencil-community/required-prefix": ["error", ["k2b-"]], // Ensures that a Component's tag use the "k2b" prefix.
+    "@stencil-community/required-prefix": ["error", ["sv-"]], // Ensures that a Component's tag use the "sv" prefix. Now is sv, which stands for sample-vendor..
     "@stencil-community/reserved-member-names": "warn", // Ensures that any of reserved global HTML attribute names are used as @Prop or @Method
     "@stencil-community/single-export": "error", // This rule catches modules that expose more than just the Stencil Component itself
     "@stencil-community/strict-boolean-conditions": "off",

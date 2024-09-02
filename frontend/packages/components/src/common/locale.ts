@@ -3,7 +3,7 @@ import { Build } from "@stencil/core";
 export class Locale {
   private static _defaultLanguage = "en";
   private static _assetsFolder = "assets/";
-  private static _componentPrefix = "k2b-";
+  private static _componentPrefix = "sv-";
   private static _langsFolder = "langs/";
   private static _langPrefix = ".lang.";
   private static _langExt = ".json";

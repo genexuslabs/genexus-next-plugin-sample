@@ -41,7 +41,7 @@ import {
 
 const FILE_SYSTEM_ICON = getIconPath(
   { category: "objects", name: "custom", colorType: "on-primary" },
-  "k2b"
+  "sv"
 );
 
 // Best performance bundle
@@ -66,12 +66,12 @@ const CSS_BUNDLES: MercuryBundles = [
 // ];
 
 @Component({
-  tag: "k2b-kb-manager-import",
+  tag: "sv-kb-manager-import",
   styleUrl: "kb-manager-import.scss",
   shadow: true,
   assetsDirs: ["assets"]
 })
-export class Kb2KBManagerImport {
+export class SVKBManagerImport {
   /**
    * The component hard-coded strings translations.
    */
@@ -92,7 +92,7 @@ export class Kb2KBManagerImport {
   // #objectsButtonsGroup!: any;
   #topStateBarEl!: any;
 
-  @Element() el!: HTMLK2bKbManagerImportElement;
+  @Element() el!: HTMLSvKbManagerImportElement;
 
   @State() selectAllIndeterminate = false;
   @State() selectAllValue: "true" | "false" = "false";

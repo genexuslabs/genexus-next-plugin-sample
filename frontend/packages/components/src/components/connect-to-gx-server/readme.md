@@ -1,4 +1,4 @@
-# k2b-connect-gx-server
+# sv-connect-gx-server
 
 
 

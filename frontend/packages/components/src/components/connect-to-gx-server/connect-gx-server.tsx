@@ -39,12 +39,12 @@ const CSS_BUNDLES: MercuryBundles = [
 // ];
 
 @Component({
-  tag: "k2b-connect-gx-server",
+  tag: "sv-connect-gx-server",
   styleUrl: "connect-gx-server.scss",
   shadow: true,
   assetsDirs: ["assets"]
 })
-export class K2BConnectGxServer {
+export class SVConnectGxServer {
   /**
    * The component hard-coded strings translations.
    */
@@ -56,7 +56,7 @@ export class K2BConnectGxServer {
   #usernameRef!: HTMLInputElement;
   #passwordRef!: HTMLInputElement;
 
-  @Element() el!: HTMLK2bConnectGxServerElement;
+  @Element() el!: HTMLSvConnectGxServerElement;
 
   @State() showUsernameAndPassword: boolean = false;
 

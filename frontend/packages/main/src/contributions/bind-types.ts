@@ -22,7 +22,7 @@ export function bindTypes(bind: interfaces.Bind) {
 
     bind<IKBObjectDescriptor>(IKBObjectDescriptor).toConstantValue({
         id: Consts.ObjectClasses.SAMPLE_OBJECT,
-        iconName: 'k2b/objects/business-process-diagram',
+        iconName: 'sv/objects/data-provider',
         factory: (model) => new SampleObject(model)
     });
 
