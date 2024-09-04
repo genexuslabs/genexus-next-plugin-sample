@@ -3,9 +3,9 @@ using GeneXus.Services.Language.Common.Model;
 
 namespace GXServicesSampleExtension.Controllers.Parts.SamplePartStructure;
 
-public class SamplePartItemNode : StructItemNode
+public class SampleStructPartItemNode : StructItemNode
 {
-    public SamplePartItemNode(IPropertiesProvider properties, string idProperty) : base(properties, idProperty)
+    public SampleStructPartItemNode(IPropertiesProvider properties, string idProperty) : base(properties, idProperty)
     {
     }
 }

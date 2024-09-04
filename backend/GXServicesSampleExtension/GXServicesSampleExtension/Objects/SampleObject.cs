@@ -9,7 +9,7 @@ namespace GXServicesSampleExtension.Objects;
 
 [Guid("2757390B-863D-456E-A3DF-8C451420BC50")]
 [KBObjectDescriptor(Consts.SAMPLE_CATEGORY, "SampleObject", "SampleObject", ModuleAssociation = ModuleAssociation.Standard, ModuleInterfaceType = ModuleInterfaceType.UserInterface)]
-[KBObjectComposition(true, typeof(SamplePart), typeof(VariablesPart), typeof(DocumentationPart))]
+[KBObjectComposition(true, typeof(SampleStructPart), typeof(VariablesPart), typeof(DocumentationPart))]
 public class SampleObject : KBObject
 {
     public SampleObject(KBModel model)

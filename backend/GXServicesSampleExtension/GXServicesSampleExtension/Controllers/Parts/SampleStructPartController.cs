@@ -15,18 +15,18 @@ using GXServicesSampleExtension.Parts.SampleObject;
 
 namespace GXServicesSampleExtension.Controllers.Parts;
 
-public class SamplePartController : StructPartController<StructItemData>, ISourceRegionProvider
+public class SampleStructPartController : StructPartController<StructItemData>, ISourceRegionProvider
 {
     private TwoWayMap<Guid, SamplePartItem> m_ItemMap;
     private Guid m_RootGuid = Guid.NewGuid();
     
-    public SamplePartController(KBObjectController owner, SamplePart part)
+    public SampleStructPartController(KBObjectController owner, SampleStructPart part)
         : base(owner, part)
     {
         m_ItemMap = new TwoWayMap<Guid, SamplePartItem>();
     }
 
-    public new SamplePart Part => (SamplePart)base.Part;
+    public new SampleStructPart Part => (SampleStructPart)base.Part;
 
     public override KBObjectPartData GetData()
     {
@@ -148,7 +148,7 @@ public class SamplePartController : StructPartController<StructItemData>, ISourc
         StructureParser parser = new StructureParser(tokenStream);
         parser.BuildParseTree = true;
         IParseTree tree = parser.structure();
-        SamplePartStructureListener listener = new SamplePartStructureListener(Part, updateModel);
+        SampleStructPartStructureListener listener = new SampleStructPartStructureListener(Part, updateModel);
         ParseTreeWalker walker = new ParseTreeWalker();
         walker.Walk(listener, tree);
 

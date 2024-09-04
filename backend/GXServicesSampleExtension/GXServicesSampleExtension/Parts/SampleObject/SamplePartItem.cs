@@ -7,12 +7,12 @@ public class SamplePartItem : PropertiesObject
 {
     private KBObject? m_KBObject;
 
-    public SamplePartItem(SamplePart part)
+    public SamplePartItem(SampleStructPart part)
     {
         SamplePart = part;
     }
 
-    public SamplePart SamplePart { get; }
+    public SampleStructPart SamplePart { get; }
 
     public string Name
     {

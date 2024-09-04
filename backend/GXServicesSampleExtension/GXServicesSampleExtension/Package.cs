@@ -49,7 +49,9 @@ public class Package : AbstractPackage, IGxPackageBL
         {
             AddCategory(new Guid(Consts.SAMPLE_CATEGORY), "Sample");
             AddObjectType<SampleObject>();
-            AddPart<SamplePart>();
+            AddObjectType<SampleSourceObject>();
+            AddPart<SampleSourcePart>();
+            AddPart<SampleStructPart>();
         }
         catch(Exception ex)
         {
@@ -84,11 +86,13 @@ public class Package : AbstractPackage, IGxPackageBL
     private void AddKBObjectControllers()
     {
         AddKBObjectController<SampleObject>((kbObject) => new SampleObjectController(kbObject));
+        AddKBObjectController<SampleSourceObject>((kbObject) => new SampleSourceObjectController(kbObject));
     }
 
     private void AddKBObjectPartControllers()
     {
-        AddKBObjectPartController<SamplePart>((owner, part) => new SamplePartController(owner, part));
+        AddKBObjectPartController<SampleSourcePart>((owner, part) => new SampleSourcePartController(owner, part));
+        AddKBObjectPartController<SampleStructPart>((owner, part) => new SampleStructPartController(owner, part));        
     }
 
     private static void AddKBObjectController<TKBObject>(KBObjectControllerFactory<TKBObject> factory) where TKBObject : KBObject

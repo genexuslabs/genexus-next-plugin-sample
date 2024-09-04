@@ -21,6 +21,14 @@ using GXServicesSampleExtension.Parts;
     typeof(SampleObject)
 )]
 
+[assembly: KBObjectsDeclaration(
+    typeof(SampleSourceObject)
+)]
+
 [assembly: KBObjectPartsDeclarationAttribute(
-    typeof(SamplePart)
+    typeof(SampleStructPart)
+)]
+
+[assembly: KBObjectPartsDeclarationAttribute(
+    typeof(SampleSourcePart)
 )]

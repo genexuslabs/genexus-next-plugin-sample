@@ -7,15 +7,15 @@ using GXServicesSampleExtension.Parts.SampleObject;
 
 namespace GXServicesSampleExtension.Controllers.Parts.SamplePartStructure;
 
-public class SamplePartStructureListener : StructureBaseListener
+public class SampleStructPartStructureListener : StructureBaseListener
 {
-    private SamplePart m_Part;
+    private SampleStructPart m_Part;
     private bool m_UpdateModel;
     private readonly Dictionary<string, SamplePartItem> m_Items = new Dictionary<string, SamplePartItem>(StringComparer.InvariantCultureIgnoreCase);
     private AstNode m_RootNode;
     public AstNode RootNode => m_RootNode;
 
-    public SamplePartStructureListener(SamplePart part, bool updateModel)
+    public SampleStructPartStructureListener(SampleStructPart part, bool updateModel)
     {
         m_Part = part;
         m_UpdateModel = updateModel;
@@ -55,7 +55,7 @@ public class SamplePartStructureListener : StructureBaseListener
         else
             item = m_Items[itemName];
 
-        SamplePartItemNode itemNode = new SamplePartItemNode(new PropertiesProvider(item), SamplePartItemProperties.NAME) { Range = AntlrHelper.GetRange(ctx) };
+        SampleStructPartItemNode itemNode = new SampleStructPartItemNode(new PropertiesProvider(item), SamplePartItemProperties.NAME) { Range = AntlrHelper.GetRange(ctx) };
         m_RootNode.Children.Add(itemNode);
         itemNode.Shortcuts = ctx.structure_item_header().structure_item_shortcuts()?.GetText();
         ProcessProperties(itemNode, ctx.structure_item_header().properties());
