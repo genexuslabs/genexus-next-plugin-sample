@@ -644,6 +644,13 @@ export interface IGXDocumentPartEditorDescriptor {
     factory: () => IGXDocumentPartEditor;
 }
 
+export declare const IGrammarsProvider: unique symbol;
+export interface IGrammarsProvider {
+    getGrammars(): MaybePromise<any>;
+    getLanguages(): MaybePromise<any>;
+    fetchGrammar(scopeName: string): MaybePromise<any>;
+}
+
 export declare type MenuPath = string[];
 export declare const MAIN_MENU_BAR: MenuPath;
 export interface IMenuAction {
