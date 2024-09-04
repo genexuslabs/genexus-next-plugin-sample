@@ -1,0 +1,23 @@
+{
+    "contributes": {
+        "languages": [
+            {
+                "id": "gx_sampleobject",
+                "aliases": [
+                  "Plugin Sample Object",
+                  "gx_sampleobject"
+                ],
+                "extensions": [
+                  "gx_sampleobject"
+                ]
+            }
+        ],
+        "grammars": [
+            {
+                "language": "gx_sampleobject",
+                "scopeName": "source.gx.object-sample-object",
+                "path": "./syntaxes/object-sample-object.tmLanguage.json"
+            }
+        ]
+    }
+}
