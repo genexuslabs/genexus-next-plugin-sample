@@ -1,0 +1,30 @@
+{
+	"scopeName": "source.gx.object-sample-source-object",
+	"name": "Plugin Sample Source Object",
+	"patterns": [
+		{
+			"include": "#sampleSourceObject"
+		},
+		{
+			"include": "source.gx.common#comments"
+		}
+	],
+	"repository": {
+		"sampleSourceObject": {
+			"patterns": [
+				{
+					"match": "\\b(?i:(sample|source|object))\\b",
+					"name": "entity.name.function.gx"
+				},
+				{
+					"match": "&\\w+\\b",
+					"name": "variable.gx"
+				},
+				{
+					"match": "Plugin",
+					"name": "string.quoted.double.literal.gx"
+				}
+			]
+		}
+	}
+}

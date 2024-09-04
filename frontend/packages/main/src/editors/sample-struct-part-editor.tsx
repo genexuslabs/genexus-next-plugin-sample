@@ -5,7 +5,7 @@ import { BLEvents, StructPart, StructPartItem } from "@genexusm-sdk/architecture
 import { StructPartEditor } from "@genexusm-sdk/architecture-ui-framework";
 import { EventBroker, Guid, MaybePromise } from "@genexusm-sdk/common";
 import { KBObjectPartChangedEventData } from "@genexusm-sdk/common-comm-layer";
-import { SamplePart } from "../parts/sample-part";
+import { SampleStructPart } from "../parts/sample-struct-part";
 import { StructColumn, StructColumns, StructEditorSettings, StructItem, StructItemKind, StructPosition } from "@genexusm-sdk/common-components";
 import { SamplePartColumns, SamplePartItemKinds } from "./sample-struct/sample-struct-definitions";
 import { SamplePartItemTypes } from "../parts/sample-part-structure/sample-part-item-types";
@@ -22,8 +22,8 @@ export class SampleStructPartEditor extends StructPartEditor {
         this._subscribeToEvents();
     }
 
-    get structurePart(): SamplePart {
-        return this.part as SamplePart;
+    get structurePart(): SampleStructPart {
+        return this.part as SampleStructPart;
     }    
 
     async activate(): Promise<void> {

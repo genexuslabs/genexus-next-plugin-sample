@@ -10,6 +10,16 @@
                 "extensions": [
                   "gx_sampleobject"
                 ]
+            },
+            {
+                "id": "gx_samplesourceobject",
+                "aliases": [
+                  "Plugin Sample Source Object",
+                  "gx_samplesourceobject"
+                ],
+                "extensions": [
+                  "gx_samplesourceobject"
+                ]
             }
         ],
         "grammars": [
@@ -17,6 +27,11 @@
                 "language": "gx_sampleobject",
                 "scopeName": "source.gx.object-sample-object",
                 "path": "./syntaxes/object-sample-object.tmLanguage.json"
+            },
+            {
+                "language": "gx_samplesourceobject",
+                "scopeName": "source.gx.object-sample-source-object",
+                "path": "./syntaxes/object-sample-source-object.tmLanguage.json"
             }
         ]
     }
