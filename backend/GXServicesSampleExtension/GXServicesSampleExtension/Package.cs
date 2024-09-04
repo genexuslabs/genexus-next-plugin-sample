@@ -1,14 +1,21 @@
 ﻿using System.Runtime.InteropServices;
+
 using Artech.Architecture.BL.Framework.Packages;
+using Artech.Architecture.Common.Descriptors;
+using Artech.Architecture.Common.Objects;
 using Artech.Architecture.Common.Packages;
 using Artech.Architecture.Common.Services;
 using Artech.Common.Exceptions;
-using Artech.Genexus.Common.Services;
+using GeneXus.Services.Architecture.Services;
+using GeneXus.Services.Language.Common.Parts;
 
-//using GeneXus.Services.Architecture.Packages;
 using GXServicesSampleExtension.Controllers.Api;
+using GXServicesSampleExtension.Controllers.Objects;
+using GXServicesSampleExtension.Controllers.Parts;
 using GXServicesSampleExtension.Objects;
 using GXServicesSampleExtension.Parts;
+
+using GxmServices = GeneXus.Services.Architecture.Services.CommonServices;
 
 namespace GXServicesSampleExtension;
 
@@ -30,6 +37,12 @@ public class Package : AbstractPackage, IGxPackageBL
         AddControllers();
     }
 
+    public override void PostInitialize()
+    {
+        base.PostInitialize();
+        UpdateDescriptors();
+    }
+
     private void AddTypes()
     {
         try
@@ -44,9 +57,47 @@ public class Package : AbstractPackage, IGxPackageBL
         }
     }
 
+    private void UpdateDescriptors()
+    {
+        AddKBObjectPart<SampleObject>(typeof(MultiRegionSourcePart).GUID);
+    }
+
+    private void AddKBObjectPart<TKBObject>(Guid partType) where TKBObject : KBObject
+    {
+        var descriptor = KBObjectDescriptor.Get<TKBObject>();
+        if (!descriptor.Parts.Contains(partType))
+            descriptor.AddPart(partType);
+    }
+
     private void AddControllers()
     {
-        //AddApiController<SampleApiController>();
-        GeneXus.Services.Architecture.Services.CommonServices.Communication.AddService(typeof(SampleApiController), true);
+        AddKBObjectControllers();
+        AddKBObjectPartControllers();
+        AddServiceControllers();
+    }
+
+    private void AddServiceControllers()
+    {
+        GxmServices.Communication.AddService(typeof(SampleApiController), true);
+    }
+
+    private void AddKBObjectControllers()
+    {
+        AddKBObjectController<SampleObject>((kbObject) => new SampleObjectController(kbObject));
+    }
+
+    private void AddKBObjectPartControllers()
+    {
+        AddKBObjectPartController<SamplePart>((owner, part) => new SamplePartController(owner, part));
+    }
+
+    private static void AddKBObjectController<TKBObject>(KBObjectControllerFactory<TKBObject> factory) where TKBObject : KBObject
+    {
+        GxmServices.ControllerManager.ReplaceKBObjectController<TKBObject>(factory);
+    }
+
+    private static void AddKBObjectPartController<TKBObjectPart>(KBObjectPartControllerFactory<TKBObjectPart> factory) where TKBObjectPart : KBObjectPart
+    {
+        GxmServices.ControllerManager.ReplaceKBObjectPartController(factory);
     }
 }
