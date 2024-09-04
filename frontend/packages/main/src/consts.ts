@@ -12,6 +12,6 @@ export namespace Consts {
     }
 
     export namespace PartClasses {
-        export const SAMPLE_SOURCE_PART = new Guid('A8C2F988-F848-4AE4-AA4D-59E30D358CED');
+        export const SAMPLE_PART = new Guid('A8C2F988-F848-4AE4-AA4D-59E30D358CED');
     }
 }
