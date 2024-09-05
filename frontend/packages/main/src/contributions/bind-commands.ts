@@ -1,6 +1,7 @@
 import { injectable, interfaces } from 'inversify';
-import { ICommandsContribution, ICommandsRegistry, UIServices } from "@genexusm-sdk/architecture-ui-framework";
-import { CommServices } from '../communication/comm-services';
+import { CommandData, CommandState, CommandStatus, ICommandsContribution, ICommandsRegistry, UIServices } from "@genexusm-sdk/architecture-ui-framework";
+import { SampleDialog } from '../dialogs/sample-dialog';
+import { DialogResult } from '@genexusm-sdk/common-components';
 
 export function bindCommands(bind: interfaces.Bind) {
     bind(CommmandsContribution).toSelf().inSingletonScope();
@@ -21,21 +22,30 @@ export class CommmandsContribution implements ICommandsContribution {
 
     registerCommands(registry: ICommandsRegistry): void {
 
-        registry.registerCommand(Commands.SAMPLE_CMD, () => {
-            console.log('Sample Command');
-            this.echo();
-
-            return true;
-        });
+        registry.registerCommand(Commands.SAMPLE_CMD, 
+            (_data: CommandData,) => {
+                this.echo();
+                return true;
+            },
+            (_data: CommandData, state: CommandState) => {
+                state.status = UIServices.kb.currentKB ? CommandStatus.Enabled : CommandStatus.Disabled;
+                return true;
+            }
+        );
     }
 
     private async echo() {
         let kb = UIServices.kb.currentKB;
         if (kb) {
-            let connInfo = kb.connectionInfo;
-            let data = await CommServices.get().sample.echo(connInfo.location, connInfo.id, "Hello Server");
-            //let data = await CommServices.get().sample.getData(connInfo.location, connInfo.id);
-            console.log('Data result', data);
+            const sampleDialog = new SampleDialog();
+            try {
+                const result = await sampleDialog.showModal();
+                if (result === DialogResult.OK)
+                    alert('Ok');
+            }
+            finally {
+                sampleDialog.destroy();
+            }
         }
     }
 }
