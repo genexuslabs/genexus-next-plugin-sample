@@ -28,14 +28,6 @@ export class Locale {
 
     return new Promise((resolve, reject): void => {
       fetch(Build.isDev ? "build/" + path : path)
-        // Locale.commonAssetsPath +
-        // Locale._assetsFolder +
-        // folder +
-        // Locale._assetsFolderSuffix +
-        // component +
-        // Locale._langPrefix +
-        // lang +
-        // Locale._langExt
         .then(
           langFile => {
             if (langFile.ok) {

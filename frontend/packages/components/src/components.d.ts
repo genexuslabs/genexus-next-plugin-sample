@@ -8,11 +8,13 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ConnectionResultData, GXServerConnectionData, GXServerConnectionDefault } from "./components/connect-to-gx-server/types";
 import { ComboBoxModel } from "@genexus/chameleon-controls-library";
 import { CancelCallback, ImportCallback, LoadCallback, ObjectContextMenuCallback, OptionsCallback } from "./components/kb-manager-import/types";
-import { ImportItemResultData } from "./common/types";
+import { ImportItemResultData, ObjectType } from "./common/types";
+import { LoadObjectsCallback, OpenObjectCallback } from "./components/objects-grid/types";
 export { ConnectionResultData, GXServerConnectionData, GXServerConnectionDefault } from "./components/connect-to-gx-server/types";
 export { ComboBoxModel } from "@genexus/chameleon-controls-library";
 export { CancelCallback, ImportCallback, LoadCallback, ObjectContextMenuCallback, OptionsCallback } from "./components/kb-manager-import/types";
-export { ImportItemResultData } from "./common/types";
+export { ImportItemResultData, ObjectType } from "./common/types";
+export { LoadObjectsCallback, OpenObjectCallback } from "./components/objects-grid/types";
 export namespace Components {
     interface SvConnectGxServer {
         /**
@@ -81,6 +83,20 @@ export namespace Components {
          */
         "topStateBar": true;
     }
+    interface SvObjectsGrid {
+        /**
+          * Callback invoked to load objects (filtered by selected type)
+         */
+        "loadObjectsCallback": LoadObjectsCallback;
+        /**
+          * The available object types.
+         */
+        "objectTypes": ObjectType[];
+        /**
+          * Callback invoked to open the selected objects
+         */
+        "openObjectCallback": OpenObjectCallback;
+    }
 }
 export interface SvConnectGxServerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -126,9 +142,16 @@ declare global {
         prototype: HTMLSvKbManagerImportElement;
         new (): HTMLSvKbManagerImportElement;
     };
+    interface HTMLSvObjectsGridElement extends Components.SvObjectsGrid, HTMLStencilElement {
+    }
+    var HTMLSvObjectsGridElement: {
+        prototype: HTMLSvObjectsGridElement;
+        new (): HTMLSvObjectsGridElement;
+    };
     interface HTMLElementTagNameMap {
         "sv-connect-gx-server": HTMLSvConnectGxServerElement;
         "sv-kb-manager-import": HTMLSvKbManagerImportElement;
+        "sv-objects-grid": HTMLSvObjectsGridElement;
     }
 }
 declare namespace LocalJSX {
@@ -207,9 +230,24 @@ declare namespace LocalJSX {
          */
         "topStateBar"?: true;
     }
+    interface SvObjectsGrid {
+        /**
+          * Callback invoked to load objects (filtered by selected type)
+         */
+        "loadObjectsCallback": LoadObjectsCallback;
+        /**
+          * The available object types.
+         */
+        "objectTypes"?: ObjectType[];
+        /**
+          * Callback invoked to open the selected objects
+         */
+        "openObjectCallback": OpenObjectCallback;
+    }
     interface IntrinsicElements {
         "sv-connect-gx-server": SvConnectGxServer;
         "sv-kb-manager-import": SvKbManagerImport;
+        "sv-objects-grid": SvObjectsGrid;
     }
 }
 export { LocalJSX as JSX };
@@ -218,6 +256,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "sv-connect-gx-server": LocalJSX.SvConnectGxServer & JSXBase.HTMLAttributes<HTMLSvConnectGxServerElement>;
             "sv-kb-manager-import": LocalJSX.SvKbManagerImport & JSXBase.HTMLAttributes<HTMLSvKbManagerImportElement>;
+            "sv-objects-grid": LocalJSX.SvObjectsGrid & JSXBase.HTMLAttributes<HTMLSvObjectsGridElement>;
         }
     }
 }

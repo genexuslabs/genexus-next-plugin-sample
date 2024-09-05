@@ -132,18 +132,18 @@ export class SVConnectGxServer {
             <label htmlFor="server-url" class="label label--above">
               Server URL
             </label>
-            <ch-combo-box
+            <ch-combo-box-render
               id="server-url"
               class="combo-box"
               accessibleName="Server URL"
               model={this.serverUrls}
               placeholder="Select the server URL"
-              filterType={this.enableCustomServer ? "caption" : "none"}
-              filterDebounce={100}
+              suggest={this.enableCustomServer}
+              suggestDebounce={100}
               value={this.defaultConnectionData?.serverUrl}
               // onFilterChange={handleFilterChange}
               ref={(el:any) => (this.#serverURLRef = el as HTMLChComboBoxRenderElement)}
-            ></ch-combo-box>
+            ></ch-combo-box-render>
           </div>
 
           <ch-checkbox

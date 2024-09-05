@@ -1,0 +1,25 @@
+:host {
+    display: grid;
+    overflow-y: hidden;
+    grid-template:
+        "header" max-content
+        "type-selector" max-content
+        "objects-grid" 100%
+}
+
+.header {
+    grid-area: header;
+    text-align: center;
+    color: var(--mer-color__primary-blue--200);
+    font-size: var(--mer-font__size--md);
+    font-weight: var(--mer-font__weight--semi-bold);
+}
+
+.type-selector{
+    grid-area: type-selector;
+}
+
+.objects-grid {
+    grid-area: objects-grid;
+}
+  

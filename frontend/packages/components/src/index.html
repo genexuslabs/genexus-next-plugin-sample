@@ -55,7 +55,9 @@
     </script>
     <!--sv-kb-manager-import enable-user-logged="true"></sv-kb-manager-import-->
 
-    <sv-connect-gx-server></sv-connect-gx-server>
+    <!--sv-connect-gx-server></sv-connect-gx-server!-->
+
+    <sv-objects-grid/>
 
     <script type="module">
       import {
@@ -153,6 +155,66 @@
             resolve(importCategoryData);
           });
       }
+    </script>
+
+    <script type="module">
+        const objectsGrid = document.querySelector("sv-objects-grid");
+        const typeAllId = '*';
+        const typeId = '1';
+        const typePluginId = '2';
+
+        objectsGrid.objectTypes = [
+        {
+          id: typeAllId,
+          name: '*All',
+          fromPlugin: false
+        },
+        {
+          id: typeId,
+          name: 'Type 1',
+          fromPlugin: false
+        },
+        {
+          id: typePluginId,
+          name: 'Plugin Type 1',
+          fromPlugin: true
+        }
+        ];
+
+        objectsGrid.loadObjectsCallback = (type) => {
+          const objects = [];
+
+          const obj1 = {
+            id: '1',
+            name: 'Object (type 1)',
+            icon: 'objects/procedure',
+            description: 'Sample procedure object'
+          }
+          const objPlugin1 = {
+            id: '2',
+            name: 'Object (Plugin type 1)',
+            icon: 'sv/objects/calendars',
+            description: 'Sample plugin object'
+          }          
+
+          switch (type){
+            case typeId:
+              objects.push(obj1);
+              break;
+            case typePluginId:
+              objects.push(objPlugin1);
+              break;
+            default:
+              objects.push(obj1);
+              objects.push(objPlugin1);
+          }
+
+          return objects;
+        };
+
+        objectsGrid.openObjectCallback = (id) => {
+          alert(id);
+        }
     </script>
   </body>
 </html>
