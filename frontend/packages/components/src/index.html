@@ -167,17 +167,19 @@
         {
           id: typeAllId,
           name: '*All',
-          fromPlugin: false
+          fromPlugin: false,
         },
         {
           id: typeId,
           name: 'Type 1',
-          fromPlugin: false
+          fromPlugin: false,
+          icon: 'objects/procedure',
         },
         {
           id: typePluginId,
           name: 'Plugin Type 1',
-          fromPlugin: true
+          fromPlugin: true,
+          icon: 'sv/objects/calendars',
         }
         ];
 
@@ -188,13 +190,15 @@
             id: '1',
             name: 'Object (type 1)',
             icon: 'objects/procedure',
-            description: 'Sample procedure object'
+            description: 'Sample procedure object',
+            typeId: typeId
           }
           const objPlugin1 = {
             id: '2',
             name: 'Object (Plugin type 1)',
             icon: 'sv/objects/calendars',
-            description: 'Sample plugin object'
+            description: 'Sample plugin object',
+            typeId: typePluginId
           }          
 
           switch (type){

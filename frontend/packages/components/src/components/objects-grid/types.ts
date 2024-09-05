@@ -1,7 +1,8 @@
-import { ObjectType } from "../../components";
-
-export type ObjectDescription = ObjectType & {
+export type ObjectDescription = {
+    id: string;
+    name: string;
     description: string;
+    typeId: string;
 }
 
 export type LoadObjectsCallback = (type:string) => Promise<ObjectDescription[]>;

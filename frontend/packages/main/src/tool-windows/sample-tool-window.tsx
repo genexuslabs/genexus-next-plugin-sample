@@ -47,12 +47,17 @@ export class SampleToolWindow extends AbstractToolWindow {
             (descriptor.flags & ObjectTypeFlags.NO_OPENABLE) === 0 && (descriptor.flags & ObjectTypeFlags.NO_SHOW) === 0);
     }
 
+    private _getDescriptorId(descriptor:KBObjectDescriptor):string{
+        return descriptor.id.toString();
+    }
+
     private _getTypes():ObjectType[]{
         const types:ObjectType[] = [ SampleToolWindow.ALL_TYPE ];
         const descriptors = this._getAllTypes();
         descriptors.map(descriptor => types.push({
-            id: descriptor.id.toString(),
-            name: descriptor.name
+            id: this._getDescriptorId(descriptor),
+            name: descriptor.name,
+            icon: descriptor.iconName
         }));
 
         return types;
@@ -91,7 +96,7 @@ export class SampleToolWindow extends AbstractToolWindow {
                 id: obj.guid.toString(),
                 name: obj.name,
                 description: obj.description,
-                icon: obj.typeDescriptor.iconName
+                typeId: this._getDescriptorId(obj.typeDescriptor)
             })
         }
         return objects;

@@ -1,5 +1,6 @@
 :host {
     display: grid;
+    padding: var(--mer-spacing--md);
     overflow-y: hidden;
     grid-template:
         "header" max-content
@@ -21,5 +22,9 @@
 
 .objects-grid {
     grid-area: objects-grid;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100%;
+    gap: var(--mer-spacing--md);
 }
   
