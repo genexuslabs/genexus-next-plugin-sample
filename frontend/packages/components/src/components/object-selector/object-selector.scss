@@ -5,7 +5,7 @@
     grid-template:
         "header" max-content
         "type-selector" max-content
-        "objects-grid" 100%
+        "objects" 100%
 }
 
 .header {
@@ -20,8 +20,8 @@
     grid-area: type-selector;
 }
 
-.objects-grid {
-    grid-area: objects-grid;
+.objects {
+    grid-area: objects;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 100%;

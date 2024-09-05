@@ -16,12 +16,12 @@ const CSS_BUNDLES = [
 const OBJECT_ID_METADATA = 'object';
 
 @Component({
-    tag: "sv-objects-grid",
-    styleUrl: "objects-grid.scss",
+    tag: "sv-object-selector",
+    styleUrl: "object-selector.scss",
     shadow: true,
     assetsDirs: ["assets"]
 })
-export class SVObjectsGrid {
+export class SVObjectSelector {
     /**
      * The component strings translations.
      */
@@ -30,7 +30,7 @@ export class SVObjectsGrid {
     #objectTypesModel!: ComboBoxModel;
     #typesSelectorRef!: HTMLChComboBoxRenderElement;
 
-    @Element() el!: HTMLSvKbManagerImportElement;
+    @Element() el!: HTMLSvObjectSelectorElement;
 
     @State() objects: ObjectDescription[] = [];
 
@@ -54,7 +54,6 @@ export class SVObjectsGrid {
             this.#objectTypesModel = this.objectTypes.map(objectType => {
                 return {
                     caption: objectType.name,
-                    startImgSrc: objectType.icon,
                     value: objectType.id
                 }
             });
@@ -210,7 +209,7 @@ export class SVObjectsGrid {
                     }
                     onInput={this.#loadObjectsHandler}
                 />
-                <div class="objects-grid">
+                <div class="objects">
                     { this.#renderGrid() }
                     { this.#renderTree() }
                 </div>

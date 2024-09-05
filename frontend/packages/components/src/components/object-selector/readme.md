@@ -1,4 +1,4 @@
-# sv-objects-grid
+# sv-object-selector
 
 
 

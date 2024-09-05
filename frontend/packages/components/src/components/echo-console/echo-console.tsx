@@ -21,7 +21,7 @@ export class SVEchoConsole {
     #componentLocale!: { [key in string]: any };
     #inputRef: HTMLChEditElement|undefined;
 
-    @Element() el!: HTMLSvKbManagerImportElement;
+    @Element() el!: HTMLSvEchoConsoleElement;
     
     @State() consoleText:string[] = [];
 

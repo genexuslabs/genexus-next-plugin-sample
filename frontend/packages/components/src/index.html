@@ -57,7 +57,7 @@
 
     <!--sv-connect-gx-server></sv-connect-gx-server!-->
 
-    <sv-objects-grid/>
+    <sv-object-selector/>
 
     <script type="module">
       import {
@@ -158,12 +158,12 @@
     </script>
 
     <script type="module">
-        const objectsGrid = document.querySelector("sv-objects-grid");
+        const objectSelector = document.querySelector("sv-object-selector");
         const typeAllId = '*';
         const typeId = '1';
         const typePluginId = '2';
 
-        objectsGrid.objectTypes = [
+        objectSelector.objectTypes = [
         {
           id: typeAllId,
           name: '*All',
@@ -183,7 +183,7 @@
         }
         ];
 
-        objectsGrid.loadObjectsCallback = (type) => {
+        objectSelector.loadObjectsCallback = (type) => {
           const objects = [];
 
           const obj1 = {
@@ -216,7 +216,7 @@
           return objects;
         };
 
-        objectsGrid.openObjectCallback = (id) => {
+        objectSelector.openObjectCallback = (id) => {
           alert(id);
         }
     </script>

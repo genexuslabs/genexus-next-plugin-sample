@@ -1,6 +1,6 @@
 /** @jsx SampleToolWindow.dom */
 
-import { ObjectDescription } from "@genexusm-plugin-sample/components/dist/types/components/objects-grid/types";
+import { ObjectDescription } from "@genexusm-plugin-sample/components/dist/types/components/object-selector/types";
 import { ObjectType } from "@genexusm-plugin-sample/components/loader";
 import { KBObjectDescriptor, KBObjectInfo, ObjectTypeFlags } from "@genexusm-sdk/architecture-common";
 import { AbstractToolWindow, UIServices } from "@genexusm-sdk/architecture-ui-framework";
@@ -116,7 +116,7 @@ export class SampleToolWindow extends AbstractToolWindow {
         if (!UIServices.kb.currentKB)
             return (<div />);
 
-        return (<sv-objects-grid 
+        return (<sv-object-selector 
             style={{height:"100%"}}
             objectTypes={this._getTypes()}
             loadObjectsCallback={this._loadObjectsCallback}
