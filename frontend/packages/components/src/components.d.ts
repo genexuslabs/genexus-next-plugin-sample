@@ -7,11 +7,13 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ConnectionResultData, GXServerConnectionData, GXServerConnectionDefault } from "./components/connect-to-gx-server/types";
 import { ComboBoxModel } from "@genexus/chameleon-controls-library";
+import { CallToServerCallback } from "./components/echo-console/types";
 import { CancelCallback, ImportCallback, LoadCallback, ObjectContextMenuCallback, OptionsCallback } from "./components/kb-manager-import/types";
 import { ImportItemResultData, ObjectType } from "./common/types";
 import { LoadObjectsCallback, OpenObjectCallback } from "./components/objects-grid/types";
 export { ConnectionResultData, GXServerConnectionData, GXServerConnectionDefault } from "./components/connect-to-gx-server/types";
 export { ComboBoxModel } from "@genexus/chameleon-controls-library";
+export { CallToServerCallback } from "./components/echo-console/types";
 export { CancelCallback, ImportCallback, LoadCallback, ObjectContextMenuCallback, OptionsCallback } from "./components/kb-manager-import/types";
 export { ImportItemResultData, ObjectType } from "./common/types";
 export { LoadObjectsCallback, OpenObjectCallback } from "./components/objects-grid/types";
@@ -43,6 +45,9 @@ export namespace Components {
           * Array of cataloged server URLs to be displayed in the combo.
          */
         "serverUrls": ComboBoxModel;
+    }
+    interface SvEchoConsole {
+        "callToServerCallback": CallToServerCallback;
     }
     interface SvKbManagerImport {
         /**
@@ -124,6 +129,12 @@ declare global {
         prototype: HTMLSvConnectGxServerElement;
         new (): HTMLSvConnectGxServerElement;
     };
+    interface HTMLSvEchoConsoleElement extends Components.SvEchoConsole, HTMLStencilElement {
+    }
+    var HTMLSvEchoConsoleElement: {
+        prototype: HTMLSvEchoConsoleElement;
+        new (): HTMLSvEchoConsoleElement;
+    };
     interface HTMLSvKbManagerImportElementEventMap {
         "componentDidRenderFirstTime": boolean;
         "componentDidLoadEvent": boolean;
@@ -150,6 +161,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "sv-connect-gx-server": HTMLSvConnectGxServerElement;
+        "sv-echo-console": HTMLSvEchoConsoleElement;
         "sv-kb-manager-import": HTMLSvKbManagerImportElement;
         "sv-objects-grid": HTMLSvObjectsGridElement;
     }
@@ -186,6 +198,9 @@ declare namespace LocalJSX {
           * Array of cataloged server URLs to be displayed in the combo.
          */
         "serverUrls": ComboBoxModel;
+    }
+    interface SvEchoConsole {
+        "callToServerCallback": CallToServerCallback;
     }
     interface SvKbManagerImport {
         /**
@@ -246,6 +261,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "sv-connect-gx-server": SvConnectGxServer;
+        "sv-echo-console": SvEchoConsole;
         "sv-kb-manager-import": SvKbManagerImport;
         "sv-objects-grid": SvObjectsGrid;
     }
@@ -255,6 +271,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "sv-connect-gx-server": LocalJSX.SvConnectGxServer & JSXBase.HTMLAttributes<HTMLSvConnectGxServerElement>;
+            "sv-echo-console": LocalJSX.SvEchoConsole & JSXBase.HTMLAttributes<HTMLSvEchoConsoleElement>;
             "sv-kb-manager-import": LocalJSX.SvKbManagerImport & JSXBase.HTMLAttributes<HTMLSvKbManagerImportElement>;
             "sv-objects-grid": LocalJSX.SvObjectsGrid & JSXBase.HTMLAttributes<HTMLSvObjectsGridElement>;
         }

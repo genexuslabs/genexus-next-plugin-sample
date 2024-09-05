@@ -1,0 +1,1 @@
+export type CallToServerCallback = (text:string) => Promise<string>;

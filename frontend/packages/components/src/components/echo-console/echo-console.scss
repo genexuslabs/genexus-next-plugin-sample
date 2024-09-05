@@ -1,0 +1,11 @@
+:host {
+    display: grid;
+    grid-template-rows: max-content max-content 1fr;
+    height: 100%;
+}
+
+.console {
+    background-color: var(--mer-elevation__background-color--01);
+    color: var(--mer-color__message-green--100);
+    padding: var(--mer-spacing--xs);
+}
