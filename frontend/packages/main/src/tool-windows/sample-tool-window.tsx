@@ -1,6 +1,10 @@
 /** @jsx SampleToolWindow.dom */
 
-import { AbstractToolWindow } from "@genexusm-sdk/architecture-ui-framework";
+import { ObjectDescription } from "@genexusm-plugin-sample/components/dist/types/components/objects-grid/types";
+import { ObjectType } from "@genexusm-plugin-sample/components/loader";
+import { KBObjectDescriptor, KBObjectInfo, ObjectTypeFlags } from "@genexusm-sdk/architecture-common";
+import { AbstractToolWindow, UIServices } from "@genexusm-sdk/architecture-ui-framework";
+import { Guid } from "@genexusm-sdk/common";
 
 declare global {
     namespace JSX {
@@ -8,15 +12,18 @@ declare global {
             [tagName: string]: any; // Any tag element is valid (could be defined by extension)
         }
     }
-
-    // namespace React {
-    //     interface HTMLAttributes<T>  {
-    //         [tagName: string]: any;
-    //     }
-    // }  
 }
 
 export class SampleToolWindow extends AbstractToolWindow {
+    private static readonly ALL_TYPE: ObjectType = {
+        id: '*',
+        name: '*All'
+    }
+
+    constructor() {
+        super();
+        this._subscribeToEvents();
+    }
 
     get name() {
         return 'gx.plugin_sample.sampleToolWindow'
@@ -31,9 +38,84 @@ export class SampleToolWindow extends AbstractToolWindow {
         return 'sv/objects/customization';
     }
 
+    private _subscribeToEvents() {
+        UIServices.kb.currentKBChanged(() => this.update());
+    }
+
+    private _getAllTypes():KBObjectDescriptor[]{
+        return KBObjectDescriptor.getAll().filter(descriptor => 
+            (descriptor.flags & ObjectTypeFlags.NO_OPENABLE) === 0 && (descriptor.flags & ObjectTypeFlags.NO_SHOW) === 0);
+    }
+
+    private _getTypes():ObjectType[]{
+        const types:ObjectType[] = [ SampleToolWindow.ALL_TYPE ];
+        const descriptors = this._getAllTypes();
+        descriptors.map(descriptor => types.push({
+            id: descriptor.id.toString(),
+            name: descriptor.name
+        }));
+
+        return types;
+    }
+
+    private async _getObjects(type:string) {
+        if (!type)
+            return [];
+
+        const model = UIServices.kb.currentModel;
+        if (!model)
+            return [];
+        
+        let objectsInfo:KBObjectInfo[] = [];
+        if (type === SampleToolWindow.ALL_TYPE.id) {
+            const result = await model.objects.searchInfos({
+                typeIds: this._getAllTypes().map(type => type.id)
+            });
+            objectsInfo = result.objects;
+        }
+        else {
+            const typeGuid = new Guid(type);
+            const resultObjects:Iterable<KBObjectInfo> = await model.objects.getObjectsInfoByType(typeGuid);
+            for(let obj of resultObjects)
+                objectsInfo.push(obj);
+        }
+
+        return objectsInfo;
+    }
+
+    private _loadObjectsCallback = async (type:string) => {                
+        const objects:ObjectDescription[] = [];
+        const objectsInfo:KBObjectInfo[] = await this._getObjects(type);
+        for(let obj of objectsInfo){
+            objects.push({
+                id: obj.guid.toString(),
+                name: obj.name,
+                description: obj.description,
+                icon: obj.typeDescriptor.iconName
+            })
+        }
+        return objects;
+    }  
+    
+    private _openObjectCallback = async (id:string) => {
+        const model = UIServices.kb.currentModel;
+        if (model) {
+            const guid = new Guid(id);
+            const obj = await model.objects.getByGuid(guid);
+            if (obj)
+                UIServices.documentManager.open(obj);
+        }
+    }
+
     render() {
-        return (<div>
-            <my-component first="Stencil" last="'Don't call me a framework'"></my-component>
-        </div>);
+        if (!UIServices.kb.currentKB)
+            return (<div />);
+
+        return (<sv-objects-grid 
+            style={{height:"100%"}}
+            objectTypes={this._getTypes()}
+            loadObjectsCallback={this._loadObjectsCallback}
+            openObjectCallback={this._openObjectCallback}
+        />);
     }
 }
