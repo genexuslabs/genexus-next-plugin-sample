@@ -514,10 +514,10 @@
     mdast-util-gfm "^3.0.0"
     micromark-extension-gfm "^3.0.0"
 
-"@genexus/mercury@>=0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@genexus/mercury/-/mercury-0.4.3.tgz#90fb4e449b4da8c7b114bb738054e0a602931a7a"
-  integrity sha512-OSvDjB+151G8EGOzMCLHrxRnqajZ/f+qGGbB2wcnEKWEKXvAfW5SyEOKqPC8rayWq0CvT3rgLomv7Qr4ZcKgiQ==
+"@genexus/mercury@>=0.6.0":
+  version "0.6.7"
+  resolved "https://registry.yarnpkg.com/@genexus/mercury/-/mercury-0.6.7.tgz#8ce821e8df8671495d5ce183d2a13a8f49cc78e6"
+  integrity sha512-VTzAtQrG94mADoQnVvf99vB/UNm/G7GupuiFrVCRZruVEEnSc4dP/NQ48+yLAHLQMQoaEqA4tC+67z7grNPe2g==
 
 "@genexus/svg-sass-generator@>=1.1.20":
   version "1.1.20"
