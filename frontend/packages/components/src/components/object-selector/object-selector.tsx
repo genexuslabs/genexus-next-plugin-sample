@@ -1,7 +1,6 @@
 import { Component, Element, h, Host, Prop, State } from "@stencil/core";
-import { LoadObjectsCallback, ObjectDescription, OpenObjectCallback } from "./types";
+import { LoadObjectsCallback, ObjectDescription, ObjectType, OpenObjectCallback } from "./types";
 import { Locale } from "../../common/locale";
-import { ObjectType } from "../../common/types";
 import { ChTabularGridCustomEvent, ChTreeViewRenderCustomEvent, ComboBoxModel, TabularGridRowClickedEvent, TreeViewItemModel, TreeViewItemOpenReferenceInfo, TreeViewModel } from "@genexus/chameleon-controls-library";
 
 const CSS_BUNDLES = [
@@ -106,7 +105,10 @@ export class SVObjectSelector {
     }
 
     #loadObjectsHandler = async () => {
-        this.objects = await this.loadObjectsCallback(this.#typesSelectorRef?.value ?? '')
+        const selectorValue = this.#typesSelectorRef?.value;
+        this.objects = await this.loadObjectsCallback(
+            selectorValue ? selectorValue : this.objectTypes.length > 0 ? this.objectTypes[0].id : ''
+        );
     }
 
     #rowDoubleClickedHandler = (event:ChTabularGridCustomEvent<TabularGridRowClickedEvent>) => {
@@ -185,9 +187,6 @@ export class SVObjectSelector {
 
     async componentWillLoad() {
         this.#componentLocale = await Locale.getComponentStrings(this.el);
-    }
-
-    async componentDidLoad() {
         this.#loadObjectsHandler();
     }
 
