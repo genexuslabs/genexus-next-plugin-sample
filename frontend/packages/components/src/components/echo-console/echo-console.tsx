@@ -1,6 +1,6 @@
 import { Component, Element, h, Host, Prop, State } from "@stencil/core";
 import { Locale } from "../../common/locale";
-import { CallToServerCallback } from "./types";
+import { CallToServerCallback, CancelCallback, ConfirmCallback } from "./types";
 
 const CSS_BUNDLES = [
     "resets/box-sizing",
@@ -27,6 +27,10 @@ export class SVEchoConsole {
 
     @Prop() readonly callToServerCallback!: CallToServerCallback;
 
+    @Prop() readonly cancelCallback!: CancelCallback;
+
+    @Prop() readonly confirmCallback!: ConfirmCallback;
+
     #callToServerHandler = async () => {
         const value = this.#inputRef?.value;
         if (value) {
@@ -35,6 +39,10 @@ export class SVEchoConsole {
             this.consoleText = [ ...this.consoleText ];
         }        
     }
+
+    #cancelHandler = () => this.cancelCallback();
+
+    #confirmHandler = () => this.confirmCallback();
 
     async componentWillLoad() {
         this.#componentLocale = await Locale.getComponentStrings(this.el);
@@ -62,6 +70,14 @@ export class SVEchoConsole {
                             <p>{text}</p>
                         )
                     }
+                </div>
+                <div class="footer">
+                    <button class="button-secondary" onClick={this.#cancelHandler}>
+                        { this.#componentLocale.cancel }
+                    </button>
+                    <button class="button-primary" onClick={this.#confirmHandler}>
+                        { this.#componentLocale.confirm }
+                    </button>
                 </div>
             </Host>
         );

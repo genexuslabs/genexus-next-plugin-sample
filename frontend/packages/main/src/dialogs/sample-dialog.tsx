@@ -21,10 +21,20 @@ export class SampleDialog extends WindowForm {
         return data ? `${data.id.toString()}: ${data.value}` : text;  
     }
 
+    private _cancelCallback = async () => {
+        this.onCancel();
+    }
+
+    private _confirmCallback = async () => {
+        this.onConfirm();
+    }
+
     render() {
         return (
             <sv-echo-console 
                 callToServerCallback={this._callToServerCallback}
+                cancelCallback={this._cancelCallback}
+                confirmCallback={this._confirmCallback}
             />
         )
     }

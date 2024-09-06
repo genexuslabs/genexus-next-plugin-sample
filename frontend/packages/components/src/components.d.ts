@@ -7,14 +7,14 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ConnectionResultData, GXServerConnectionData, GXServerConnectionDefault } from "./components/connect-to-gx-server/types";
 import { ComboBoxModel } from "@genexus/chameleon-controls-library";
-import { CallToServerCallback } from "./components/echo-console/types";
-import { CancelCallback, ImportCallback, LoadCallback, ObjectContextMenuCallback, OptionsCallback } from "./components/kb-manager-import/types";
+import { CallToServerCallback, CancelCallback, ConfirmCallback } from "./components/echo-console/types";
+import { CancelCallback as CancelCallback1, ImportCallback, LoadCallback, ObjectContextMenuCallback, OptionsCallback } from "./components/kb-manager-import/types";
 import { ImportItemResultData, ObjectType } from "./common/types";
 import { LoadObjectsCallback, OpenObjectCallback } from "./components/object-selector/types";
 export { ConnectionResultData, GXServerConnectionData, GXServerConnectionDefault } from "./components/connect-to-gx-server/types";
 export { ComboBoxModel } from "@genexus/chameleon-controls-library";
-export { CallToServerCallback } from "./components/echo-console/types";
-export { CancelCallback, ImportCallback, LoadCallback, ObjectContextMenuCallback, OptionsCallback } from "./components/kb-manager-import/types";
+export { CallToServerCallback, CancelCallback, ConfirmCallback } from "./components/echo-console/types";
+export { CancelCallback as CancelCallback1, ImportCallback, LoadCallback, ObjectContextMenuCallback, OptionsCallback } from "./components/kb-manager-import/types";
 export { ImportItemResultData, ObjectType } from "./common/types";
 export { LoadObjectsCallback, OpenObjectCallback } from "./components/object-selector/types";
 export namespace Components {
@@ -48,6 +48,8 @@ export namespace Components {
     }
     interface SvEchoConsole {
         "callToServerCallback": CallToServerCallback;
+        "cancelCallback": CancelCallback;
+        "confirmCallback": ConfirmCallback;
     }
     interface SvKbManagerImport {
         /**
@@ -58,7 +60,7 @@ export namespace Components {
           * Callback invoked when the user wants to cancel the export process.
           * @returns It returns a boolean indicating whether the process could be canceled or not.
          */
-        "cancelCallback": CancelCallback;
+        "cancelCallback": CancelCallback1;
         /**
           * Callback invoked when the user wants to initiate the import process.
          */
@@ -201,13 +203,15 @@ declare namespace LocalJSX {
     }
     interface SvEchoConsole {
         "callToServerCallback": CallToServerCallback;
+        "cancelCallback": CancelCallback;
+        "confirmCallback": ConfirmCallback;
     }
     interface SvKbManagerImport {
         /**
           * Callback invoked when the user wants to cancel the export process.
           * @returns It returns a boolean indicating whether the process could be canceled or not.
          */
-        "cancelCallback": CancelCallback;
+        "cancelCallback": CancelCallback1;
         /**
           * Callback invoked when the user wants to initiate the import process.
          */

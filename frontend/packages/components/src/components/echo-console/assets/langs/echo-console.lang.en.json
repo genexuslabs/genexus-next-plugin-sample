@@ -1,3 +1,5 @@
 {
-  "callServer": "Call Server"
+  "callServer": "Call Server",
+  "cancel": "Cancel",
+  "confirm": "Confirm"
 }
