@@ -158,6 +158,10 @@
     </script>
 
     <script type="module">
+        import {
+          getIconPath,
+        } from "/mercury/assets-manager.js";
+
         const objectSelector = document.querySelector("sv-object-selector");
         const typeAllId = '*';
         const typeId = '1';
@@ -173,13 +177,13 @@
           id: typeId,
           name: 'Type 1',
           fromPlugin: false,
-          icon: 'objects/procedure',
+          icon: getIconPath({ category: 'objects', name: 'procedure'}),
         },
         {
           id: typePluginId,
           name: 'Plugin Type 1',
           fromPlugin: true,
-          icon: 'sv/objects/calendars',
+          icon: getIconPath({ category: 'objects', name: 'calendars'}, 'sv'),
         }
         ];
 
@@ -189,14 +193,12 @@
           const obj1 = {
             id: '1',
             name: 'Object (type 1)',
-            icon: 'objects/procedure',
             description: 'Sample procedure object',
             typeId: typeId
           }
           const objPlugin1 = {
             id: '2',
             name: 'Object (Plugin type 1)',
-            icon: 'sv/objects/calendars',
             description: 'Sample plugin object',
             typeId: typePluginId
           }          

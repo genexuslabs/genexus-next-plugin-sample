@@ -12,6 +12,7 @@ import { SampleStructPart } from '../parts/sample-struct-part';
 import { PartClasses, SourcePart } from '@genexusm-sdk/language-common';
 import { Guid } from '@genexusm-sdk/common';
 import { SampleSourceObject } from '../objects/sample-source-object';
+import { AssetsManager } from '@genexusm-sdk/common-components';
 
 export function bindTypes(bind: interfaces.Bind) {
 
@@ -25,14 +26,20 @@ export function bindTypes(bind: interfaces.Bind) {
 
     bind<IKBObjectDescriptor>(IKBObjectDescriptor).toConstantValue({
         id: Consts.ObjectClasses.SAMPLE_OBJECT,
-        iconName: 'sv/objects/data-provider',
+        iconName: AssetsManager.getIconPath({
+            category: 'objects',
+            name: 'data-provider'
+        }, Consts.Assets.VENDOR_ALIAS),
         factory: (model) => new SampleObject(model),
         sortParts: (parts) => moveToFirstPosition(parts, PartClasses.MULTI_REGION_SOURCE_PART)
     });
 
     bind<IKBObjectDescriptor>(IKBObjectDescriptor).toConstantValue({
         id: Consts.ObjectClasses.SAMPLE_SOURCE_OBJECT,
-        iconName: 'sv/objects/category',
+        iconName: AssetsManager.getIconPath({
+            category: 'objects',
+            name: 'category'
+        }, Consts.Assets.VENDOR_ALIAS),
         factory: (model) => new SampleSourceObject(model)
     });
 

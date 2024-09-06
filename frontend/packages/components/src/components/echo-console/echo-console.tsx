@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, Prop, State } from "@stencil/core";
 import { Locale } from "../../common/locale";
 import { CallToServerCallback, CancelCallback, ConfirmCallback } from "./types";
+import { AssetsManager } from "@genexusm-sdk/common-components";
 
 const CSS_BUNDLES = [
     "resets/box-sizing",
@@ -20,6 +21,7 @@ export class SVEchoConsole {
     // eslint-disable-next-line @stencil-community/own-props-must-be-private
     #componentLocale!: { [key in string]: any };
     #inputRef: HTMLChEditElement|undefined;
+    #callServerIcon!: string;
 
     @Element() el!: HTMLSvEchoConsoleElement;
     
@@ -44,6 +46,16 @@ export class SVEchoConsole {
 
     #confirmHandler = () => this.confirmCallback();
 
+    #getCallServerIcon = () => {
+        if (!this.#callServerIcon)
+            this.#callServerIcon = AssetsManager.getIconPath({
+                category: 'navigation',
+                name: 'chevron-right',
+                colorType: 'blue'
+            }, 'sv');
+        return this.#callServerIcon;
+    }
+
     async componentWillLoad() {
         this.#componentLocale = await Locale.getComponentStrings(this.el);
     }
@@ -61,7 +73,7 @@ export class SVEchoConsole {
                     ref={ (el) => this.#inputRef = el }
                 />
                 <button class="button-secondary button-icon-and-text" onClick={this.#callToServerHandler}>
-                    <ch-image src="sv/navigation/chevron-right/blue" class="icon-sm"></ch-image>   
+                    <ch-image src={this.#getCallServerIcon()} class="icon-sm"></ch-image>   
                     { this.#componentLocale.callServer }
                 </button>
                 <div class="console">

@@ -16,4 +16,8 @@ export namespace Consts {
         export const SAMPLE_SOURCE_PART = new Guid('D74BEEDF-76C7-4617-8EC3-EFBE0A9572BB');
         export const SAMPLE_STRUCT_PART = new Guid('A8C2F988-F848-4AE4-AA4D-59E30D358CED');
     }
+
+    export namespace Assets {
+        export const VENDOR_ALIAS = 'sv';
+    }
 }

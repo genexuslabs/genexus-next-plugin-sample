@@ -1,4 +1,5 @@
-import { StructItemKind } from "@genexusm-sdk/common-components";
+import { AssetsManager, StructItemKind } from "@genexusm-sdk/common-components";
+import { Consts } from "../../consts";
 
 export namespace SampleObjectProperties {
     export const NAME = 'Name';
@@ -13,8 +14,14 @@ export namespace SamplePartColumns {
 }
 
 export namespace SamplePartIcons {
-    export const ROOT = 'sv/objects/data-provider';
-    export const ITEM = 'sv/objects/attribute';
+    export const ROOT = AssetsManager.getIconPath({
+        category: 'objects',
+        name: 'data-provider'
+    }, Consts.Assets.VENDOR_ALIAS);
+    export const ITEM = AssetsManager.getIconPath({
+        category: 'objects',
+        name: 'attribute'
+    }, Consts.Assets.VENDOR_ALIAS);
 }
 
 export namespace SamplePartItemKinds {

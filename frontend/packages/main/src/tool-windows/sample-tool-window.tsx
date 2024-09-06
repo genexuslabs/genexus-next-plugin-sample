@@ -5,6 +5,8 @@ import { ObjectType } from "@genexusm-plugin-sample/components/loader";
 import { KBObjectDescriptor, KBObjectInfo, ObjectTypeFlags } from "@genexusm-sdk/architecture-common";
 import { AbstractToolWindow, UIServices } from "@genexusm-sdk/architecture-ui-framework";
 import { Guid } from "@genexusm-sdk/common";
+import { AssetsManager } from "@genexusm-sdk/common-components";
+import { Consts } from "../consts";
 
 declare global {
     namespace JSX {
@@ -35,7 +37,10 @@ export class SampleToolWindow extends AbstractToolWindow {
     }
 
     get iconName() {
-        return 'sv/objects/customization';
+        return AssetsManager.getIconPath({
+            category: 'objects',
+            name: 'customization'
+        }, Consts.Assets.VENDOR_ALIAS);
     }
 
     private _subscribeToEvents() {
