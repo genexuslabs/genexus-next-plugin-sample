@@ -4,7 +4,7 @@ import { ISourceEditorAstNodeHelpersContribution, ISourceEditorAstNodeHelpersReg
 @injectable()
 export class SourceEditorAstNodeHelpersContribution implements ISourceEditorAstNodeHelpersContribution {
     registerNodeHelpers(registry: ISourceEditorAstNodeHelpersRegistry): void {
-        registry.registerNodeHelper('SamplePartItemNode', {
+        registry.registerNodeHelper('SampleStructPartItemNode', {
             getData: (node) => undefined,
             getOutlinerInfo: (node) => ({
                 text: node.id,
