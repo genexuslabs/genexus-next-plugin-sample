@@ -1,15 +1,21 @@
 :host {
     display: grid;
-    grid-template-rows: max-content max-content 1fr max-content;
+    grid-template-rows: max-content 1fr max-content;
     height: 100%;
     padding: var(--mer-spacing--xs);
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    gap: var(--mer-spacing--sm);
 }
 
 .console {
     background-color: var(--mer-elevation__background-color--01);
     color: var(--mer-color__message-green--100);
     padding: var(--mer-spacing--xs);
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .footer {

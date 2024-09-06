@@ -50,7 +50,7 @@ export class SVEchoConsole {
         if (!this.#callServerIcon)
             this.#callServerIcon = AssetsManager.getIconPath({
                 category: 'navigation',
-                name: 'chevron-right',
+                name: 'bullet',
                 colorType: 'blue'
             }, 'sv');
         return this.#callServerIcon;
@@ -64,18 +64,20 @@ export class SVEchoConsole {
         return (
             <Host class="layout">
                 <ch-theme model={CSS_BUNDLES} />
-                <ch-edit 
-                    id="input"
-                    class="form-input"
-                    type="text"
-                    placeholder="Message to send..."
-                    value="Test value"
-                    ref={ (el) => this.#inputRef = el }
-                />
-                <button class="button-secondary button-icon-and-text" onClick={this.#callToServerHandler}>
-                    <ch-image src={this.#getCallServerIcon()} class="icon-sm"></ch-image>   
-                    { this.#componentLocale.callServer }
-                </button>
+                <div class="header">
+                    <ch-edit 
+                        id="input"
+                        class="form-input"
+                        type="text"
+                        placeholder="Message to send..."
+                        value="Test value"
+                        ref={ (el) => this.#inputRef = el }
+                    />
+                    <button class="button-secondary button-icon-and-text" onClick={this.#callToServerHandler}>
+                        <ch-image src={this.#getCallServerIcon()} class="icon-sm"></ch-image>   
+                        { this.#componentLocale.callServer }
+                    </button>
+                </div>                
                 <div class="console">
                     {
                         this.consoleText.map(text => 
