@@ -6,16 +6,29 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { CallToServerCallback, CancelCallback, ConfirmCallback } from "./components/echo-console/types";
-import { LoadObjectsCallback, ObjectType, OpenObjectCallback } from "./components/object-selector/types";
+import { ContextMenuCallback, LoadObjectsCallback, ObjectType, OpenObjectCallback } from "./components/object-selector/types";
 export { CallToServerCallback, CancelCallback, ConfirmCallback } from "./components/echo-console/types";
-export { LoadObjectsCallback, ObjectType, OpenObjectCallback } from "./components/object-selector/types";
+export { ContextMenuCallback, LoadObjectsCallback, ObjectType, OpenObjectCallback } from "./components/object-selector/types";
 export namespace Components {
     interface SvEchoConsole {
+        /**
+          * Callback invoked to call server.
+         */
         "callToServerCallback": CallToServerCallback;
+        /**
+          * Callback invoked to cancel.
+         */
         "cancelCallback": CancelCallback;
+        /**
+          * Callback invoked to confirm.
+         */
         "confirmCallback": ConfirmCallback;
     }
     interface SvObjectSelector {
+        /**
+          * Callback invoked to open the context menu
+         */
+        "contextMenuCallback": ContextMenuCallback;
         /**
           * Callback invoked to load objects (filtered by selected type)
          */
@@ -50,11 +63,24 @@ declare global {
 }
 declare namespace LocalJSX {
     interface SvEchoConsole {
+        /**
+          * Callback invoked to call server.
+         */
         "callToServerCallback": CallToServerCallback;
+        /**
+          * Callback invoked to cancel.
+         */
         "cancelCallback": CancelCallback;
+        /**
+          * Callback invoked to confirm.
+         */
         "confirmCallback": ConfirmCallback;
     }
     interface SvObjectSelector {
+        /**
+          * Callback invoked to open the context menu
+         */
+        "contextMenuCallback": ContextMenuCallback;
         /**
           * Callback invoked to load objects (filtered by selected type)
          */

@@ -14,9 +14,14 @@ export class MenuContribution implements IMenuContribution {
         menus.registerMenuAction(CommonMenus.FILE_SAVE, {
             commandId: Commands.SAMPLE_CMD.id
         });
+
+        menus.registerMenuAction(Menus.SAMPLE_TOOLWINDOW_MENU, {
+            commandId: Commands.SAMPLE_OPEN_OBJECT.id
+        });
     }
 }
 
 export namespace Menus {
     export const PLUGIN_SAMPLE_MENU = [...CommonMenus.FILE_SAVE];
+    export const SAMPLE_TOOLWINDOW_MENU = [ 'sv_sample_toolwindow' ];
 }

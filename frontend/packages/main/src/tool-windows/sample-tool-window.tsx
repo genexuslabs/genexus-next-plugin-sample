@@ -1,12 +1,13 @@
 /** @jsx SampleToolWindow.dom */
 
-import { ObjectDescription } from "@genexusm-plugin-sample/components/dist/types/components/object-selector/types";
+import { ContextMenuInfo, ObjectDescription } from "@genexusm-plugin-sample/components/dist/types/components/object-selector/types";
 import { ObjectType } from "@genexusm-plugin-sample/components/loader";
 import { KBObjectDescriptor, KBObjectInfo, ObjectTypeFlags } from "@genexusm-sdk/architecture-common";
 import { AbstractToolWindow, UIServices } from "@genexusm-sdk/architecture-ui-framework";
 import { Guid } from "@genexusm-sdk/common";
 import { AssetsManager } from "@genexusm-sdk/common-components";
 import { Consts } from "../consts";
+import { Menus } from "../contributions/bind-menus";
 
 declare global {
     namespace JSX {
@@ -93,6 +94,21 @@ export class SampleToolWindow extends AbstractToolWindow {
         return objectsInfo;
     }
 
+    private _contextMenuCallback = async (contextMenuInfo:ContextMenuInfo) => {
+        UIServices.menu.showContextMenu({ 
+            menuPath: Menus.SAMPLE_TOOLWINDOW_MENU, 
+            anchor: {
+                x: contextMenuInfo.clientX,
+                y: contextMenuInfo.clientY
+            }, 
+            data: {
+                context: {
+                    objectGuid: new Guid(contextMenuInfo.id)
+                }
+            } 
+        });
+    }
+
     private _loadObjectsCallback = async (type:string) => {                
         const objects:ObjectDescription[] = [];
         const objectsInfo:KBObjectInfo[] = await this._getObjects(type);
@@ -124,6 +140,7 @@ export class SampleToolWindow extends AbstractToolWindow {
         return (<sv-object-selector 
             style={{height:"100%"}}
             objectTypes={this._getTypes()}
+            contextMenuCallback={this._contextMenuCallback}
             loadObjectsCallback={this._loadObjectsCallback}
             openObjectCallback={this._openObjectCallback}
         />);

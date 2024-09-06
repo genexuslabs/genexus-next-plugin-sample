@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, Prop, State } from "@stencil/core";
-import { LoadObjectsCallback, ObjectDescription, ObjectType, OpenObjectCallback } from "./types";
+import { ContextMenuCallback, LoadObjectsCallback, ObjectDescription, ObjectType, OpenObjectCallback } from "./types";
 import { Locale } from "../../common/locale";
-import { ChTabularGridCustomEvent, ChTreeViewRenderCustomEvent, ComboBoxModel, TabularGridRowClickedEvent, TreeViewItemModel, TreeViewItemOpenReferenceInfo, TreeViewModel } from "@genexus/chameleon-controls-library";
+import { ChTabularGridCustomEvent, ChTreeViewRenderCustomEvent, ComboBoxModel, TabularGridRowClickedEvent, TabularGridRowContextMenuEvent, TreeViewItemContextMenu, TreeViewItemModel, TreeViewItemOpenReferenceInfo, TreeViewModel } from "@genexus/chameleon-controls-library";
 
 const CSS_BUNDLES = [
     "resets/box-sizing",
@@ -47,6 +47,11 @@ export class SVObjectSelector {
      * Callback invoked to open the selected objects
      */
     @Prop() readonly openObjectCallback!: OpenObjectCallback;
+
+    /**
+     * Callback invoked to open the context menu
+     */
+    @Prop() readonly contextMenuCallback!: ContextMenuCallback;
 
     #getTypesModel = () => {
         if (!this.#objectTypesModel) {
@@ -111,20 +116,40 @@ export class SVObjectSelector {
         );
     }
 
-    #rowDoubleClickedHandler = (event:ChTabularGridCustomEvent<TabularGridRowClickedEvent>) => {
+    #gridRowDoubleClickedHandler = (event:ChTabularGridCustomEvent<TabularGridRowClickedEvent>) => {
         this.openObjectCallback(event.detail.rowId)
     }
 
-    #itemOpenReferenceHandler = (event: ChTreeViewRenderCustomEvent<TreeViewItemOpenReferenceInfo>) => {
+    #gridRowContextMenuHandler = (event: ChTabularGridCustomEvent<TabularGridRowContextMenuEvent>) => {
+        event.preventDefault();
+        this.contextMenuCallback({
+            id: event.detail.rowId,
+            clientX: event.detail.clientX,
+            clientY: event.detail.clientY
+        })
+    }
+
+    #treeItemOpenReferenceHandler = (event: ChTreeViewRenderCustomEvent<TreeViewItemOpenReferenceInfo>) => {
         if (event.detail.metadata === OBJECT_ID_METADATA)
             this.openObjectCallback(event.detail.id)
+    }
+
+    #treeItemContextMenuHandler = (event: ChTreeViewRenderCustomEvent<TreeViewItemContextMenu>) => {
+        event.preventDefault();
+        if (event.detail.metadata === OBJECT_ID_METADATA)
+            this.contextMenuCallback({
+                id: event.detail.id,
+                clientX: event.detail.contextmenuEvent.clientX,
+                clientY: event.detail.contextmenuEvent.clientY
+            });
     }
 
     #renderGrid = () => {
         return (
             <ch-tabular-grid
                 class="tabular-grid"
-                onRowDoubleClicked={this.#rowDoubleClickedHandler}
+                onRowContextMenu={this.#gridRowContextMenuHandler}
+                onRowDoubleClicked={this.#gridRowDoubleClickedHandler}
                 >
                 <ch-tabular-grid-columnset class="tabular-grid-column-set">
                     <ch-tabular-grid-column
@@ -180,7 +205,8 @@ export class SVObjectSelector {
                 class="tree-view"
                 model={this.#getTreeModel()}
                 showLines="last"
-                onItemOpenReference={this.#itemOpenReferenceHandler}
+                onItemOpenReference={this.#treeItemOpenReferenceHandler}
+                onItemContextmenu={this.#treeItemContextMenuHandler}
             />
         );
     }

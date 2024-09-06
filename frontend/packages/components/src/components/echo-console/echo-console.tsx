@@ -27,10 +27,19 @@ export class SVEchoConsole {
     
     @State() consoleText:string[] = [];
 
+    /**
+     * Callback invoked to call server.
+     */
     @Prop() readonly callToServerCallback!: CallToServerCallback;
 
+    /**
+     * Callback invoked to cancel.
+     */
     @Prop() readonly cancelCallback!: CancelCallback;
 
+    /**
+     * Callback invoked to confirm.
+     */
     @Prop() readonly confirmCallback!: ConfirmCallback;
 
     #callToServerHandler = async () => {

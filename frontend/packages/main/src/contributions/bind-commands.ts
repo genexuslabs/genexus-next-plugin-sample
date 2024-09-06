@@ -2,6 +2,7 @@ import { injectable, interfaces } from 'inversify';
 import { CommandData, CommandState, CommandStatus, ICommandsContribution, ICommandsRegistry, UIServices } from "@genexusm-sdk/architecture-ui-framework";
 import { SampleDialog } from '../dialogs/sample-dialog';
 import { DialogResult } from '@genexusm-sdk/common-components';
+import { Guid } from '@genexusm-sdk/common';
 
 export function bindCommands(bind: interfaces.Bind) {
     bind(CommmandsContribution).toSelf().inSingletonScope();
@@ -14,6 +15,11 @@ export namespace Commands {
         id: 'plugin_sample.sample_cmd',
         label: 'Plugin Sample Command',
     };
+
+    export const SAMPLE_OPEN_OBJECT = {
+        id: 'plugin_sample.open_object',
+        label: 'Open Object',
+    }
 }
 
 
@@ -24,7 +30,7 @@ export class CommmandsContribution implements ICommandsContribution {
 
         registry.registerCommand(Commands.SAMPLE_CMD, 
             (_data: CommandData,) => {
-                this.echo();
+                this._echo();
                 return true;
             },
             (_data: CommandData, state: CommandState) => {
@@ -32,9 +38,17 @@ export class CommmandsContribution implements ICommandsContribution {
                 return true;
             }
         );
+
+        registry.registerCommand(Commands.SAMPLE_OPEN_OBJECT, 
+            (data: CommandData,) => {
+                if (data.context?.objectGuid)
+                    this._openObject(data.context.objectGuid);
+                return true;
+            }
+        );
     }
 
-    private async echo() {
+    private async _echo() {
         let kb = UIServices.kb.currentKB;
         if (kb) {
             const sampleDialog = new SampleDialog();
@@ -46,6 +60,13 @@ export class CommmandsContribution implements ICommandsContribution {
             finally {
                 sampleDialog.destroy();
             }
+        }
+    }
+
+    private async _openObject(guid:Guid){
+        if (UIServices.kb.currentModel){
+            const obj = await UIServices.kb.currentModel.objects.getByGuid(guid);
+            UIServices.documentManager.open(obj);
         }
     }
 }
