@@ -53,7 +53,7 @@ Note that these dependencies are peerDependencies because they are managed by th
 3. Run main project
 
     ```bash
-    co packages/main
+    cd packages/main
     yarn preview
     ```
 
