@@ -39,7 +39,7 @@ export class SampleToolWindow extends AbstractToolWindow {
     get iconName() {
         return AssetsManager.getIconPath({
             category: 'objects',
-            name: 'customization'
+            name: 'data-selector'
         }, Consts.Assets.VENDOR_ALIAS);
     }
 
