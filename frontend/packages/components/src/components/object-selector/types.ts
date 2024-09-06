@@ -18,8 +18,10 @@ export type ContextMenuInfo = {
     clientY: number;
 }
 
+export type ContextMenuCallback = (contextMenuInfo:ContextMenuInfo) => Promise<void>;
+
 export type LoadObjectsCallback = (type:string) => Promise<ObjectDescription[]>;
 
 export type OpenObjectCallback = (id:string) => Promise<void>;
 
-export type ContextMenuCallback = (contextMenuInfo:ContextMenuInfo) => Promise<void>;
+export type SelectObjectCallback = (id:string) => Promise<void>;

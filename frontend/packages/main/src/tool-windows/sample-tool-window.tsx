@@ -133,6 +133,16 @@ export class SampleToolWindow extends AbstractToolWindow {
         }
     }
 
+    private _selectObjectCallback = async (id:string) => {
+        const model = UIServices.kb.currentModel;
+        if (model) {
+            const guid = new Guid(id);
+            const obj = await model.objects.getByGuid(guid);
+            if (obj)
+                this.setSelection([ obj ]);
+        }
+    }
+
     render() {
         if (!UIServices.kb.currentKB)
             return (<div />);
@@ -143,6 +153,7 @@ export class SampleToolWindow extends AbstractToolWindow {
             contextMenuCallback={this._contextMenuCallback}
             loadObjectsCallback={this._loadObjectsCallback}
             openObjectCallback={this._openObjectCallback}
+            selectObjectCallback={this._selectObjectCallback}
         />);
     }
 }

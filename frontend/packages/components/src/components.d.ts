@@ -6,9 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { CallToServerCallback, CancelCallback, ConfirmCallback } from "./components/echo-console/types";
-import { ContextMenuCallback, LoadObjectsCallback, ObjectType, OpenObjectCallback } from "./components/object-selector/types";
+import { ContextMenuCallback, LoadObjectsCallback, ObjectType, OpenObjectCallback, SelectObjectCallback } from "./components/object-selector/types";
 export { CallToServerCallback, CancelCallback, ConfirmCallback } from "./components/echo-console/types";
-export { ContextMenuCallback, LoadObjectsCallback, ObjectType, OpenObjectCallback } from "./components/object-selector/types";
+export { ContextMenuCallback, LoadObjectsCallback, ObjectType, OpenObjectCallback, SelectObjectCallback } from "./components/object-selector/types";
 export namespace Components {
     interface SvEchoConsole {
         /**
@@ -41,6 +41,10 @@ export namespace Components {
           * Callback invoked to open the selected objects
          */
         "openObjectCallback": OpenObjectCallback;
+        /**
+          * Callback invoked when selection is changed
+         */
+        "selectObjectCallback": SelectObjectCallback;
     }
 }
 declare global {
@@ -93,6 +97,10 @@ declare namespace LocalJSX {
           * Callback invoked to open the selected objects
          */
         "openObjectCallback": OpenObjectCallback;
+        /**
+          * Callback invoked when selection is changed
+         */
+        "selectObjectCallback": SelectObjectCallback;
     }
     interface IntrinsicElements {
         "sv-echo-console": SvEchoConsole;

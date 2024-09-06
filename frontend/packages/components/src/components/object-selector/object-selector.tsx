@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, Prop, State } from "@stencil/core";
-import { ContextMenuCallback, LoadObjectsCallback, ObjectDescription, ObjectType, OpenObjectCallback } from "./types";
+import { ContextMenuCallback, LoadObjectsCallback, ObjectDescription, ObjectType, OpenObjectCallback, SelectObjectCallback } from "./types";
 import { Locale } from "../../common/locale";
-import { ChTabularGridCustomEvent, ChTreeViewRenderCustomEvent, ComboBoxModel, TabularGridRowClickedEvent, TabularGridRowContextMenuEvent, TreeViewItemContextMenu, TreeViewItemModel, TreeViewItemOpenReferenceInfo, TreeViewModel } from "@genexus/chameleon-controls-library";
+import { ChTabularGridCustomEvent, ChTreeViewRenderCustomEvent, ComboBoxModel, TabularGridRowClickedEvent, TabularGridRowContextMenuEvent, TreeViewItemContextMenu, TreeViewItemModel, TreeViewItemModelExtended, TreeViewItemOpenReferenceInfo, TreeViewModel } from "@genexus/chameleon-controls-library";
 
 const CSS_BUNDLES = [
     "resets/box-sizing",
@@ -52,6 +52,11 @@ export class SVObjectSelector {
      * Callback invoked to open the context menu
      */
     @Prop() readonly contextMenuCallback!: ContextMenuCallback;
+
+    /**
+     * Callback invoked when selection is changed
+     */
+    @Prop() readonly selectObjectCallback!: SelectObjectCallback;
 
     #getTypesModel = () => {
         if (!this.#objectTypesModel) {
@@ -129,6 +134,10 @@ export class SVObjectSelector {
         })
     }
 
+    #gridRowClickedHandler = (event: ChTabularGridCustomEvent<TabularGridRowClickedEvent>) => {
+        this.selectObjectCallback(event.detail.rowId)
+    }
+
     #treeItemOpenReferenceHandler = (event: ChTreeViewRenderCustomEvent<TreeViewItemOpenReferenceInfo>) => {
         if (event.detail.metadata === OBJECT_ID_METADATA)
             this.openObjectCallback(event.detail.id)
@@ -144,10 +153,19 @@ export class SVObjectSelector {
             });
     }
 
+    #treeItemsSelectedHandler = (event: ChTreeViewRenderCustomEvent<TreeViewItemModelExtended[]>) => {
+        if (event.detail.length > 0) {
+            const obj = event.detail[event.detail.length - 1];
+            if (obj.item.metadata === OBJECT_ID_METADATA)
+                this.selectObjectCallback(obj.item.id);
+        }
+    }
+
     #renderGrid = () => {
         return (
             <ch-tabular-grid
                 class="tabular-grid"
+                onRowClicked={this.#gridRowClickedHandler}
                 onRowContextMenu={this.#gridRowContextMenuHandler}
                 onRowDoubleClicked={this.#gridRowDoubleClickedHandler}
                 >
@@ -207,6 +225,7 @@ export class SVObjectSelector {
                 showLines="last"
                 onItemOpenReference={this.#treeItemOpenReferenceHandler}
                 onItemContextmenu={this.#treeItemContextMenuHandler}
+                onSelectedItemsChange={this.#treeItemsSelectedHandler}
             />
         );
     }
