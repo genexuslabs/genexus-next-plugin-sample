@@ -209,7 +209,9 @@ In the following image, you can see how it looks:
 
 You can also see that we have an outliner, whose selection is updated according to the text editor selection (and vice versa). Note that the text belonging to the `SampleStructPart` has its corresponding nodes, with icon and text. This is defined as a contribution, which you can check [here](./packages/main/src/contributions/source-editor-contribution.ts).
 
-Finally, you can also see that the default region has syntax coloring, which is another contribution that you can check [here](./packages/main/src/contributions/grammars-provider.ts).
+Finally, you can also see that the default region has syntax coloring, which is another contribution that you can check [here](./packages/main/src/contributions/grammars-provider.ts). 
+
+The [Syntaxes folder](./packages/main/src/language/syntaxes) contains two examples for syntax coloring. In these JSON files, we have defined patterns based on regex matches that are bound to a 'name'. This name represents a scope (essentially, a token for our purposes). You can check [here (and its includes)](https://github.com/eclipse-theia/theia/blob/master/packages/monaco/data/monaco-themes/vscode/dark_plus.json) for a reference of available scopes. Available languages for syntax coloring are declared in [grammars.json](./packages/main/src/language/grammars.json). Note that in this file, the language id is always defined as gx_{objectname}, source editors expect for that pattern to fetch the language configuration.
 
 When it comes to editing as a structure, we also have an implementation of `StructEditor`, which can be easily extended to work with any object part (or other kinds of elements). To enable this editing mode, the [`SampleStructPart`](./packages/main/src/parts/sample-struct-part.ts) extends the `StructPart` class, which provides the basic logic and helpers to allow editors to edit it as a structure. 
 
