@@ -9,7 +9,7 @@ using GXServicesSampleExtension.Parts.SampleObject;
 namespace GXServicesSampleExtension.Parts;
 
 [Guid("A8C2F988-F848-4AE4-AA4D-59E30D358CED")]
-[KBObjectPartDescriptor("SamplePart", HasInterface = true)]
+[KBObjectPartDescriptor("SampleStructPart", HasInterface = true)]
 public class SampleStructPart: KBObjectPart
 {
     public SampleStructPart(KBObject kbObject) 
