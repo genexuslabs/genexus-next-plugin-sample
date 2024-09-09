@@ -52,7 +52,6 @@ export class SampleStructPartEditor extends StructPartEditor {
     }
 
     private _subscribeToEvents() {
-        // TODO: improve this in a cleaner way
         this.disposables.add(EventBroker.on(BLEvents.KB_OBJECT_PART_CHANGED, (e: KBObjectPartChangedEventData) => this._onPartChanged(e)));
     }
 
