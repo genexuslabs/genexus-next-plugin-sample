@@ -100,6 +100,10 @@ You’ll notice that we’ve defined a `render` method. This method returns an '
 
 Another thing to note about this tool window is that if you open it without an active knowledge base, the tool window will be empty. You can see in the render method that we don’t render anything except an empty div if there is no current knowledge base. This tool window is subscribed to currentKBChanged and only renders its content when a knowledge base is open.
 
+#### Preview
+
+![Sample Tool Window](./doc_assets/SampleToolWindow.png)
+
 ### Sample Dialog
 
 Just like we created the `object-selector` component, we also developed the [`echo-console`](./packages/components/src/components/echo-console/echo-console.tsx) component. In this component, the user can type text and click the 'Call Server' button. This action triggers a callback implemented by the `Sample Dialog`. This callback returns a string, which is the result of concatenating a GUID with the user’s text input. 
@@ -116,3 +120,6 @@ From the IDE contribution side, we have the [`Sample Dialog`](./packages/main/sr
 - **confirmCallback**: Calls the `onConfirm` method provided by the `WindowForm` class. Closes the dialog with an 'ok' result.
 - **callToServerCallback**: Calls the echo service defined in the communication layer, which communicates with the server. The server implements this service and returns a new GUID instance concatenated with the given text input.
 
+#### Preview
+
+![Sample Dialog](./doc_assets/SampleDialog.png)
