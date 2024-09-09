@@ -13,6 +13,10 @@ The frontend consists of several packages, each with a specific responsibility:
 - **main**: Defines the contributions made by the plugin. This includes the declaration of new objects and parts, tool windows, dialogs, commands, and other elements that enhance the IDE.
 - **sdk**: Provides the IDE SDK, enabling integration and development of plugin functionalities.
 
+To understand the relationship between these packages before introducing new concepts, refer to the following diagram:
+
+![Packages Diagram](./doc_assets/PackagesFront.png)
+
 ## Dependencies
 
 This project relies on a range of dependencies to support its functionality. Among these, two notable dependencies are:
