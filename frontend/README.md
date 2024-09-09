@@ -156,10 +156,10 @@ From the IDE contribution side, the sample tool window is defined [here](./packa
 You’ll notice that we’ve defined a `render` method. This method returns an 'instance' of the `object-selector` component, assigning the corresponding property values for the properties we mentioned earlier. Here we can highlight the following:
 
 - **objectTypes**: Loaded from the `KBObjectDescriptor` class, which provides all the available KB object descriptors.
-- **loadObjectsCallback**: Depending on the filter value, we use different methods available in `KBModel.objects`. `KBModel` represents a model and provides access to various properties and methods that help define our interaction and modeling contributions.
+- **loadObjectsCallback**: Depending on the filter value, we use different methods available in `KBModel.objects`. `KBModel` represents a model and provides access to several properties and methods that help define our interaction and modeling contributions.
 - **openObjectCallback**: Fetches the `KBObject` instance by its identifier and uses the documentation manager (available through our `UIServices`) to open the `KBObject`.
 - **contextMenuCallback**: Opens the host (IDE) context menu at the given coordinates and contextualizes it for the selected object. The context menu needs a menu path to determine which commands to show. To support this function, we need to define both the context menu path and the available commands. In this case, we define the [SAMPLE_TOOLWINDOW_MENU](./packages/main/src/contributions/bind-menus.ts) and the [SAMPLE_OPEN_OBJECT](./packages/main/src/contributions/bind-commands.ts) command.
-- **selectObjectsCallback**: Updates the selected objects in the tool window context. Various IDE elements, such as the Property Grid, track these selection changes.
+- **selectObjectsCallback**: Updates the selected objects in the tool window context. Multiple IDE elements, such as the Property Grid, track these selection changes.
 
 Another thing to note about this tool window is that if you open it without an active knowledge base, the tool window will be empty. You can see in the render method that we don’t render anything except an empty div if there is no current knowledge base. This tool window is subscribed to currentKBChanged and only renders its content when a knowledge base is open.
 
