@@ -1,4 +1,24 @@
-## Frontend
+# Sample Plugin - Frontend
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Packages](#packages)
+- [Dependencies](#dependencies)
+- [Setup](#setup)
+    - [Requirements](#requirements)
+    - [Build and run](#build-and-run)
+    - [Watch Mode](#watch-mode)
+- [Assets](#assets)
+- [Contributions](#contributions)
+    - [Sample Tool Window](#sample-tool-window)
+    - [Sample Dialog](#sample-dialog)
+    - [Sample Object](#sample-object)
+    - [Sample Source Object](#sample-source-object)
+    - [Customize Pattern Editor](#customize-pattern-editor)
+- [Related documentation](#related-documentation)
+
+## Introduction
 
 The frontend is responsible for implementing the user interface and interactions of the plugin. This includes defining new UI components, custom objects, parts, tool windows, dialogs, commands, and more. These contributions extend the IDE, enabling the functionality required by the plugin on the frontend side.
 
@@ -213,3 +233,11 @@ For this case, we only want to edit the `SampleSourcePart` using a simple text e
 ### Customize Pattern Editor
 
 To customize how we edit or display pattern instances, we can [bind a custom `PatternHelperDescriptor`](./packages/main/src/contributions/bind-pattern-helpers.ts). In that file, you will see how we assign new [WorkWithWebEditorHelper](./packages/main/src/editors/ww-web-pattern/work-with-web-editor-helper.ts) and [WorkWithWebSettingsEditorHelper](./packages/main/src/editors/ww-web-pattern/work-with-web-settings-editor-helper.ts). These helpers enable us to customize pattern instance elements and create custom editors. In this example, we return an instance of our common `PatternTreeEditor`, but you can use your own custom editor. Note that you can even replace the base editor with your custom implementation.
+
+## Related documentation
+
+In this section, we've listed some documents and links that may interest you if you're looking to gain a deeper understanding of the entire solution.
+
+- [Chameleon documentation](https://github.com/genexuslabs/chameleon-controls-library)
+- [Mercury documentation](https://github.com/genexuslabs/design-systems/tree/main/packages/mercury)
+- [SVG SASS Generator documentation](https://github.com/genexuslabs/design-systems/tree/main/packages/svg-sass-generator)
