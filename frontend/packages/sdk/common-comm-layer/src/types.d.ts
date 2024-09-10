@@ -98,6 +98,7 @@ export declare type EntityBaseInfoData = {
 };
 export declare type EntityInfoData = EntityBaseInfoData & {
     guid?: string;
+    isCurrentVersion?: boolean;
     versionId?: number;
     parentKey?: EntityKeyData;
     name?: string;
@@ -105,6 +106,14 @@ export declare type EntityInfoData = EntityBaseInfoData & {
 export declare type EntityReferenceInfoData = EntityBaseInfoData & {
     hasMoreReferences?: boolean;
     typeId?: string;
+};
+export declare type EntityVersionInfoData = {
+    createdIn: string;
+    currentIn: string;
+    name: string;
+    revision: number;
+    revisionDate: string;
+    user: string;
 };
 export declare type KBObjectInfoData = EntityInfoData & {
     qualifiedName: string;
@@ -156,10 +165,13 @@ export declare type KBModelPartData = {
     content: any;
 };
 export declare type KBModelData = {
+    key: EntityKeyData;
     guid: string;
+    isCurrentVersion: boolean;
     name: string;
     isTargetEnvironment: boolean;
     parts: KBModelPartData[];
+    versionId: number;
 };
 export declare type KBData = {
     connectionInfo: KBConnectionInfoData;

@@ -32,11 +32,11 @@
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "icons-svg": "ssg-svg --srcDir=src/icons/svg-source/ --outDir=src/assets/generated/icons/ --configFilePath=src/icons/config/color-states.json --showcaseDir=src/icons/showcase/ --showcaseBaseHref=../generated-svg/ --logDir=src/icons/log/ --objectFilePath=src/assets/generated/ASSETS.ts",
-    "icons-sass": "ssg-sass --srcDir=src/assets/generated/icons/ --outDir=src/assets/generated/sass/ --configFilePath=src/icons/config/color-states.json --vendorAlias=k2b"
+    "icons-sass": "ssg-sass --srcDir=src/assets/generated/icons/ --outDir=src/assets/generated/sass/ --configFilePath=src/icons/config/color-states.json --vendorAlias=sv"
   },
   "devDependencies": {
     "@genexus/chameleon-controls-library": ">=6.0.0-next.28",
-    "@genexus/mercury": ">=0.4.3",
+    "@genexus/mercury": ">=0.6.0",
     "@genexus/svg-sass-generator": ">=1.1.20",
     "@genexus/web-standard-functions": ">= 0.65.0",
     "@stencil-community/eslint-plugin": "~0.7.1",
@@ -60,9 +60,12 @@
   },
   "peerDependencies": {
     "@genexus/chameleon-controls-library": ">=6.0.0-next.28",
-    "@genexus/mercury": ">=0.4.3",
+    "@genexus/mercury": ">=0.6.0",
     "@genexus/svg-sass-generator": ">=1.1.20",
     "@genexus/web-standard-functions": ">= 0.65.0"
+  },
+  "dependencies": {
+    "@genexusm-sdk/common-components": "*"
   },
   "license": "MIT"
 }

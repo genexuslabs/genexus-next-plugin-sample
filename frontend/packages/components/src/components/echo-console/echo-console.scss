@@ -1,0 +1,26 @@
+:host {
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+    height: 100%;
+    padding: var(--mer-spacing--xs);
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    gap: var(--mer-spacing--sm);
+}
+
+.console {
+    background-color: var(--mer-elevation__background-color--01);
+    color: var(--mer-color__message-green--100);
+    padding: var(--mer-spacing--xs);
+    overflow-y: auto;
+}
+
+.footer {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    gap: var(--mer-spacing--sm);
+    justify-content: flex-end;
+}

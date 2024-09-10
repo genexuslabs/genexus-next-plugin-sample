@@ -506,6 +506,7 @@ export declare class Locale {
     static get language(): string;
     static changeLanguage(lang: string): void;
     static languageChanged(callback: () => void): Disposable;
+    private static _getLangFromURL;
     private constructor();
     get language(): string;
     get languages(): string[];

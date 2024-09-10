@@ -6,13 +6,6 @@ import { KBObjectData, CommandListResultData, CommandResultData, KBObjectPartDat
 import { PropertiesObjectData, PropertyValueChangedEventArgs } from '@genexusm-sdk/common-properties' 
 import { PatternDefinitionData, PatternSpecificationAttributeData, PatternSpecificationChildData, PatternSpecificationRootData, PatternSpecificationTypeData, SpecificationTypeInitializationData } from '@genexusm-sdk/genexus-comm-layer' 
 
-export declare namespace PatternCategory {
-    const ID: Guid;
-    const NAME = "Patterns";
-    const ICON_NAME = "icon icon-square";
-    const NAMESPACE = "Patterns";
-}
-
 export declare namespace PatternObjectTypes {
     const SETTINGS: Guid;
 }
@@ -520,6 +513,13 @@ export declare type PatternInstanceElementData = {
     properties?: PropertiesObjectData;
     children?: PatternInstanceElementData[];
 };
+
+export declare namespace PatternCategory {
+    const ID: Guid;
+    const NAME = "Patterns";
+    const ICON_NAME = "icon icon-square";
+    const NAMESPACE = "Patterns";
+}
 
 export declare enum PatternChildrenType {
     DEFAULT = 0,

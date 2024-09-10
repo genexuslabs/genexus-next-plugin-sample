@@ -1,0 +1,46 @@
+{
+	"scopeName": "source.gx.object-sample-object",
+	"name": "Plugin Sample Object",
+	"patterns": [
+		{
+			"include": "#sample"
+		},
+		{
+			"include": "source.gx.common#comments"
+		}
+	],
+	"repository": {
+		"sample": {
+			"begin": "(?=\\b(?i:sampleobject)\\b\\s*[\\w$]+)",
+			"end": "\\}",
+			"name": "meta.object.gx",
+			"patterns": [
+				{
+					"captures": {
+						"1": {
+							"name": "storage.modifier.gx"
+						},
+						"2": {
+							"name": "entity.name.type.object.gx"
+						}
+					},
+					"match": "\\b(?i:(sampleobject))\\b\\s*([\\w$]+)",
+					"name": "meta.object.identifier.gx"
+				},
+				{
+					"begin": "\\{",
+					"end": "(?=})",
+					"name": "meta.object.body.gx",
+					"patterns": [
+						{
+							"include": "source.gx.common#properties_body"
+						},
+						{
+							"include": "source.gx.section-variables"
+						}
+					]
+				}
+			]
+		}
+	}
+}

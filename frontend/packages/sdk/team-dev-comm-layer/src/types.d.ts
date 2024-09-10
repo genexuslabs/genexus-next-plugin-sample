@@ -36,7 +36,7 @@ export interface ITeamDevClientService {
 
 export declare class Services {
     private _services;
-    static createInstante(commLayer: IGXCommLayer): Services;
+    static createInstance(commLayer: IGXCommLayer): Services;
     private constructor();
     get teamDevClient(): ITeamDevClientService;
 }

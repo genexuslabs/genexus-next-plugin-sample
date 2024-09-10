@@ -490,17 +490,16 @@
   resolved "https://registry.npmjs.org/@gar/promisify/-/promisify-1.1.3.tgz"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@genexus/chameleon-controls-library@>=6.0.0-next.20":
-  version "6.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@genexus/chameleon-controls-library/-/chameleon-controls-library-6.0.0-next.20.tgz#5d473f56551f2e2f5cacbac72f5de1c319995111"
-  integrity sha512-edczCrEz5Vn1sdLluWPzJlrdgGodQD6ZN9VYl6qwQDARMUbfB/Y3ru3+dEbmZ8wDvP9BwMky/LzsxMrtRye4DA==
+"@genexus/chameleon-controls-library@>=6.0.0-next.28":
+  version "6.0.0-next.28"
+  resolved "https://registry.yarnpkg.com/@genexus/chameleon-controls-library/-/chameleon-controls-library-6.0.0-next.28.tgz#c2bec2a251ca525a83027391c529f4ada57664a4"
+  integrity sha512-GXiKLjyZWwDtem3noPhiaQpjXne/ZAgU21QsY8FQDHkv8gko06Yhn/XgdzGqByJDmjDnHj7DajiPQgJaA7WqsA==
   dependencies:
     "@genexus/markdown-parser" "~0.1.1"
     html5-qrcode "^2.3.8"
     monaco-editor "^0.48.0"
     monaco-yaml "^5.1.1"
     qr-creator "^1.0.0"
-    resize-observer-polyfill "^1.5.1"
     stencil-click-outside "^1.8.0"
 
 "@genexus/markdown-parser@~0.1.1":
@@ -515,10 +514,10 @@
     mdast-util-gfm "^3.0.0"
     micromark-extension-gfm "^3.0.0"
 
-"@genexus/mercury@>=0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@genexus/mercury/-/mercury-0.4.3.tgz#90fb4e449b4da8c7b114bb738054e0a602931a7a"
-  integrity sha512-OSvDjB+151G8EGOzMCLHrxRnqajZ/f+qGGbB2wcnEKWEKXvAfW5SyEOKqPC8rayWq0CvT3rgLomv7Qr4ZcKgiQ==
+"@genexus/mercury@>=0.6.0":
+  version "0.6.7"
+  resolved "https://registry.yarnpkg.com/@genexus/mercury/-/mercury-0.6.7.tgz#8ce821e8df8671495d5ce183d2a13a8f49cc78e6"
+  integrity sha512-VTzAtQrG94mADoQnVvf99vB/UNm/G7GupuiFrVCRZruVEEnSc4dP/NQ48+yLAHLQMQoaEqA4tC+67z7grNPe2g==
 
 "@genexus/svg-sass-generator@>=1.1.20":
   version "1.1.20"
@@ -8744,11 +8743,6 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/requires-port/-/requires-port-1.0.0.tgz"
   integrity sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==
-
-resize-observer-polyfill@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.npmjs.org/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz"
-  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-cwd@^3.0.0:
   version "3.0.0"

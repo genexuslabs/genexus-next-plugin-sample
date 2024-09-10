@@ -1,4 +1,4 @@
-import { IGXCommLayer, CreateKBModelOptionsData, CreateKBOptionsData, CreateKBResultData, ExportData, ExportInfoData, ImportExportPropertiesData, InstallModuleRequestData, KBConnectionInfoData, KBContextData, KBContextPropertyValueData, KBData, KBInfoData, ModulePackageData, ModuleServerData, PropertiesObjectData, ServerBLInfoData, TeamData, EntityReferenceInfoData, ExportReferencesOptionsData, KBObjectData, KBObjectFiltersData, KBObjectFindResultData, KBObjectHeaderData, KBObjectInfoData, KBObjectInfoFiltersData, KBObjectInfoFindResultData, ResolveKeyResultData, ResolveParametersData, ResolveResultData, CommandData, CommandListResultData, CommandResultData, CreateKBObjectData, CreateKBObjectResultData, KBObjectPartData, ObjectsPropertiesFilterData, PropertiesObjectDefinitionData, PropertyValueData, ValidationResultData } from '@genexusm-sdk/common-comm-layer' 
+import { IGXCommLayer, CreateKBModelOptionsData, CreateKBOptionsData, CreateKBResultData, EntityVersionInfoData, ExportData, ExportInfoData, ImportExportPropertiesData, InstallModuleRequestData, KBConnectionInfoData, KBContextData, KBContextPropertyValueData, KBData, KBInfoData, KBModelData, ModulePackageData, ModuleServerData, PropertiesObjectData, ServerBLInfoData, TeamData, EntityReferenceInfoData, ExportReferencesOptionsData, KBObjectData, KBObjectFiltersData, KBObjectFindResultData, KBObjectHeaderData, KBObjectInfoData, KBObjectInfoFiltersData, KBObjectInfoFindResultData, ResolveKeyResultData, ResolveParametersData, ResolveResultData, CommandData, CommandListResultData, CommandResultData, CreateKBObjectData, CreateKBObjectResultData, KBObjectPartData, ObjectsPropertiesFilterData, PropertiesObjectDefinitionData, PropertyValueData, ValidationResultData } from '@genexusm-sdk/common-comm-layer' 
 import { AnyObject, Disposable, DisposableUrl, Guid, MaybePromise } from '@genexusm-sdk/common' 
 
 export declare enum ServerMessageType {
@@ -19,7 +19,7 @@ export declare class Services {
     kbModelObjects: IKBModelObjectsCommService;
     modeling: IModelingCommService;
     news: INewsCommService;
-    static createInstante(commLayer: IGXCommLayer): Services;
+    static createInstance(commLayer: IGXCommLayer): Services;
     private constructor();
 }
 
@@ -36,6 +36,9 @@ export interface IKBCommService {
     getTeams(): MaybePromise<TeamData[]>;
     setTargetModel(connInfo: KBConnectionInfoData, modelGuid: string): MaybePromise<void>;
     createModel(connInfo: KBConnectionInfoData, data: CreateKBModelOptionsData): MaybePromise<void>;
+    getModel(connInfo: KBConnectionInfoData, path: string): MaybePromise<KBModelData>;
+    getModelVersions(connInfo: KBConnectionInfoData, key: string): MaybePromise<EntityVersionInfoData[]>;
+    getModelVersion(connInfo: KBConnectionInfoData, key: string, versionId: number): MaybePromise<KBModelData>;
     import(connInfo: KBConnectionInfoData, data: ImportOptionsData): MaybePromise<void>;
     exploreImportFile(connInfo: KBConnectionInfoData, remoteId: string): MaybePromise<ExportInfoData[] | undefined>;
     cancelImport(connInfo: KBConnectionInfoData): MaybePromise<void>;
@@ -67,6 +70,7 @@ export interface IKBModelObjectsCommService {
     getChildrenInfoByKey(servicesUrl: string, kbId: string, modelGuid: string, parentType: string, parentId: number): MaybePromise<KBObjectInfoData[]>;
     getInfosByType(servicesUrl: string, kbId: string, modelGuid: string, type: string): MaybePromise<KBObjectInfoData[]>;
     getReferencesInfoByKey(servicesUrl: string, kbId: string, modelGuid: string, key: string, to: boolean): MaybePromise<EntityReferenceInfoData[]>;
+    getVersionsInfoByKey(servicesUrl: string, kbId: string, modelGuid: string, key: string): MaybePromise<EntityVersionInfoData[]>;
     getExportReferencesInfo(servicesUrl: string, kbId: string, modelGuid: string, data: ExportReferencesOptionsData): MaybePromise<KBObjectInfoData[]>;
     resolveNameToInfo(servicesUrl: string, kbId: string, modelGuid: string, parameters: ResolveParametersData): MaybePromise<ResolveResultData>;
     resolveNameToKey(servicesUrl: string, kbId: string, modelGuid: string, parameters: ResolveParametersData): MaybePromise<ResolveKeyResultData>;
@@ -85,6 +89,7 @@ export interface IKBModelObjectsCommService {
     getModuleByKey(servicesUrl: string, kbId: string, modelGuid: string, type: string, id: number): MaybePromise<KBObjectData>;
     getQNameByKey(servicesUrl: string, kbId: string, modelGuid: string, type: string, id: number): MaybePromise<string>;
     getFullQNameByKey(servicesUrl: string, kbId: string, modelGuid: string, type: string, id: number): MaybePromise<string>;
+    setAsActive(servicesUrl: string, kbId: string, modelGuid: string, key: string, version: number): MaybePromise<boolean>;
 }
 
 export interface IModelingCommService {

@@ -3,7 +3,7 @@ import { Build } from "@stencil/core";
 export class Locale {
   private static _defaultLanguage = "en";
   private static _assetsFolder = "assets/";
-  private static _componentPrefix = "k2b-";
+  private static _componentPrefix = "sv-";
   private static _langsFolder = "langs/";
   private static _langPrefix = ".lang.";
   private static _langExt = ".json";
@@ -28,14 +28,6 @@ export class Locale {
 
     return new Promise((resolve, reject): void => {
       fetch(Build.isDev ? "build/" + path : path)
-        // Locale.commonAssetsPath +
-        // Locale._assetsFolder +
-        // folder +
-        // Locale._assetsFolderSuffix +
-        // component +
-        // Locale._langPrefix +
-        // lang +
-        // Locale._langExt
         .then(
           langFile => {
             if (langFile.ok) {

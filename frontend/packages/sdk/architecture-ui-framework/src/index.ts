@@ -19,6 +19,7 @@ const ModelRootNode = root.ModelRootNode;
 const ICommandsContribution = root.ICommandsContribution;
 const CommonCommands = root.CommonCommands;
 const IGXDocumentPartEditorDescriptor = root.IGXDocumentPartEditorDescriptor;
+const IGrammarsProvider = root.IGrammarsProvider;
 const MAIN_MENU_BAR = root.MAIN_MENU_BAR;
 const IMenuContribution = root.IMenuContribution;
 const CommonMenus = root.CommonMenus;
@@ -101,6 +102,7 @@ export {
   ICommandsContribution,
   CommonCommands,
   IGXDocumentPartEditorDescriptor,
+  IGrammarsProvider,
   MAIN_MENU_BAR,
   IMenuContribution,
   CommonMenus,

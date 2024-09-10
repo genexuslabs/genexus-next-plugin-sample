@@ -10,6 +10,7 @@ const PreferenceCommands = root.PreferenceCommands;
 const TransactionStructPartEditorCommands = root.TransactionStructPartEditorCommands;
 const GAMCommands = root.GAMCommands;
 const TableObjectCommands = root.TableObjectCommands;
+const SDTObjectCommands = root.SDTObjectCommands;
 const Menus = root.Menus;
 const LayoutEditorMenus = root.LayoutEditorMenus;
 const ActionGroupsMenus = root.ActionGroupsMenus;
@@ -20,10 +21,13 @@ const PreferenceMenus = root.PreferenceMenus;
 const WorkWithDevicesMenus = root.WorkWithDevicesMenus;
 const GAMMenus = root.GAMMenus;
 const TableObjectMenus = root.TableObjectMenus;
+const SDTObjectMenus = root.SDTObjectMenus;
 const GXBLEvents = root.GXBLEvents;
 const GAMHelper = root.GAMHelper;
 const DataStoresPart = root.DataStoresPart;
 const DataStore = root.DataStore;
+const DeploymentUnitsPart = root.DeploymentUnitsPart;
+const DeploymentUnitCategory = root.DeploymentUnitCategory;
 const GeneratorsPart = root.GeneratorsPart;
 const Generator = root.Generator;
 const GXModelPartClasses = root.GXModelPartClasses;
@@ -32,6 +36,7 @@ const Attribute = root.Attribute;
 const DataProvider = root.DataProvider;
 const DataSelector = root.DataSelector;
 const DataStoreCategory = root.DataStoreCategory;
+const DeploymentUnit = root.DeploymentUnit;
 const DesignSystem = root.DesignSystem;
 const Domain = root.Domain;
 const ExternalObject = root.ExternalObject;
@@ -51,6 +56,7 @@ const URLRewrite = root.URLRewrite;
 const UserControl = root.UserControl;
 const WebPanel = root.WebPanel;
 const WikiFileKBObject = root.WikiFileKBObject;
+const DeploymentUnitDefinitionPart = root.DeploymentUnitDefinitionPart;
 const DesignSystemElementsPart = root.DesignSystemElementsPart;
 const DesignSystemGxPropertyReference = root.DesignSystemGxPropertyReference;
 const DesignSystemPart = root.DesignSystemPart;
@@ -77,6 +83,8 @@ const LocalizableImagePart = root.LocalizableImagePart;
 const ReportLayoutPart = root.ReportLayoutPart;
 const SDLayoutPart = root.SDLayoutPart;
 const SDPanelSourcePart = root.SDPanelSourcePart;
+const SDTItemTypes = root.SDTItemTypes;
+const SDTStructurePart = root.SDTStructurePart;
 const StencilLayoutPart = root.StencilLayoutPart;
 const TableIndexesIndex = root.TableIndexesIndex;
 const TableIndexesUserIndex = root.TableIndexesUserIndex;
@@ -103,6 +111,7 @@ const WikiBlobPart = root.WikiBlobPart;
 const GXBasicTypes = root.GXBasicTypes;
 const GXProperties = root.GXProperties;
 const GXPropertyValues = root.GXPropertyValues;
+const DataTypeCategories = root.DataTypeCategories;
 const GXPropertiesHelper = root.GXPropertiesHelper;
 const GXUIValidResolvers = root.GXUIValidResolvers;
 
@@ -119,6 +128,7 @@ export {
   TransactionStructPartEditorCommands,
   GAMCommands,
   TableObjectCommands,
+  SDTObjectCommands,
   Menus,
   LayoutEditorMenus,
   ActionGroupsMenus,
@@ -129,10 +139,13 @@ export {
   WorkWithDevicesMenus,
   GAMMenus,
   TableObjectMenus,
+  SDTObjectMenus,
   GXBLEvents,
   GAMHelper,
   DataStoresPart,
   DataStore,
+  DeploymentUnitsPart,
+  DeploymentUnitCategory,
   GeneratorsPart,
   Generator,
   GXModelPartClasses,
@@ -141,6 +154,7 @@ export {
   DataProvider,
   DataSelector,
   DataStoreCategory,
+  DeploymentUnit,
   DesignSystem,
   Domain,
   ExternalObject,
@@ -160,6 +174,7 @@ export {
   UserControl,
   WebPanel,
   WikiFileKBObject,
+  DeploymentUnitDefinitionPart,
   DesignSystemElementsPart,
   DesignSystemGxPropertyReference,
   DesignSystemPart,
@@ -186,6 +201,8 @@ export {
   ReportLayoutPart,
   SDLayoutPart,
   SDPanelSourcePart,
+  SDTItemTypes,
+  SDTStructurePart,
   StencilLayoutPart,
   TableIndexesIndex,
   TableIndexesUserIndex,
@@ -212,6 +229,7 @@ export {
   GXBasicTypes,
   GXProperties,
   GXPropertyValues,
+  DataTypeCategories,
   GXPropertiesHelper,
   GXUIValidResolvers,
 }

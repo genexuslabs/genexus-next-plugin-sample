@@ -3,3 +3,4 @@
 typeof import("@genexus/chameleon-controls-library/dist/types/index");
 
 export { ASSETS } from "./assets/generated/ASSETS";
+export * from './common';

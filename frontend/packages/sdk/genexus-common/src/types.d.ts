@@ -1,11 +1,12 @@
 import { KBModel, KBModelPart, RemotePropertiesObject, KBObject, KBObjectInfo, KBObjectPart, RemoteCommandData, KBObjectPartCommand, KBObjectPartElement, StructPartItem, StructPart, RemotePropertyManager, StructPartItemOptions } from '@genexusm-sdk/architecture-common' 
-import { DataStoreData, GeneratorData, DesignSystemReferences } from '@genexusm-sdk/genexus-comm-layer' 
+import { DataStoreData, DeploymentUnitData, GeneratorData, DesignSystemReferences } from '@genexusm-sdk/genexus-comm-layer' 
+import { ComparableProperties, IComparableModelPart } from '@genexusm-sdk/architecture-ui-framework' 
 import { Guid, MaybePromise } from '@genexusm-sdk/common' 
 import { KBObjectData, KBObjectPartData, CommandResultData } from '@genexusm-sdk/common-comm-layer' 
+import { ResolveValueResult, ISourceRegionPart, ResolveValueData, MultiRegionSourcePart, SourcePart } from '@genexusm-sdk/language-common' 
 import { PropertiesObjectData, CustomTypeDescriptorInfo, PropertyManager, IPropertyDescriptor, PropertiesObject } from '@genexusm-sdk/common-properties' 
 import { PatternInstance, PatternInstanceElement, PatternInstancePart } from '@genexusm-sdk/patterns-common' 
 import { UploadedFile } from '@genexusm-sdk/common-components' 
-import { MultiRegionSourcePart, SourcePart } from '@genexusm-sdk/language-common' 
 
 export declare namespace Commands {
     const SHOW_LAST_NAVIGATION: {
@@ -335,6 +336,22 @@ export declare namespace TableObjectCommands {
         };
     }
 }
+export declare namespace SDTObjectCommands {
+    const INSERT_MEMBER: {
+        id: string;
+        label: string;
+    };
+    const INSERT_SUBSTRUCTURE: {
+        id: string;
+        label: string;
+        keybinding: string;
+    };
+    const INSERT_SIBLING_SUBSTRUCTURE: {
+        id: string;
+        label: string;
+        keybinding: string;
+    };
+}
 
 export declare namespace Menus {
     const VIEW_REPORTS: string[];
@@ -383,6 +400,9 @@ export declare namespace TableObjectMenus {
     const STRUCTURE: string[];
     const INDEXES: string[];
 }
+export declare namespace SDTObjectMenus {
+    const STRUCTURE: string[];
+}
 
 export declare type IarResultEventArgs = {
     result: number;
@@ -420,11 +440,12 @@ export declare class GAMHelper {
     private static _checkIsEnabled;
 }
 
-export declare class DataStoresPart extends KBModelPart {
+export declare class DataStoresPart extends KBModelPart implements IComparableModelPart {
     private _dataStores;
     constructor(model: KBModel);
     protected deserializeContent(value: string): void;
     get dataStores(): DataStore[];
+    getComparableProperties(): Promise<ComparableProperties[]>;
 }
 export declare class DataStore extends RemotePropertiesObject {
     private _part;
@@ -445,11 +466,32 @@ export declare class DataStore extends RemotePropertiesObject {
     };
 }
 
-export declare class GeneratorsPart extends KBModelPart {
+export declare class DeploymentUnitsPart extends KBModelPart {
+    private _deploymentUnits;
+    constructor(model: KBModel);
+    protected deserializeContent(value: string): void;
+    get deploymentUnits(): DeploymentUnitCategory[];
+    private _subscribeEvents;
+    private _afterSaveKBObject;
+    private _existsDU;
+}
+export declare class DeploymentUnitCategory extends RemotePropertiesObject {
+    private _part;
+    private _id;
+    private _name;
+    constructor(part: DeploymentUnitsPart, data: DeploymentUnitData);
+    get model(): KBModel;
+    get remotePath(): string;
+    get id(): string;
+    get name(): string;
+}
+
+export declare class GeneratorsPart extends KBModelPart implements IComparableModelPart {
     private _generators;
     constructor(model: KBModel);
     protected deserializeContent(value: string): void;
     get generators(): Generator[];
+    getComparableProperties(): Promise<ComparableProperties[]>;
 }
 export declare class Generator extends RemotePropertiesObject {
     private _part;
@@ -478,6 +520,7 @@ export declare class Generator extends RemotePropertiesObject {
 
 export declare class GXModelPartClasses {
     static get DATA_STORES(): Guid;
+    static get DEPLOYMENT_UNITS(): Guid;
     static get GENERATORS(): Guid;
 }
 
@@ -501,6 +544,10 @@ export declare class DataSelector extends KBObject {
 }
 
 export declare class DataStoreCategory extends KBObject {
+    constructor(model: KBModel);
+}
+
+export declare class DeploymentUnit extends KBObject {
     constructor(model: KBModel);
 }
 
@@ -539,6 +586,7 @@ export declare class GXObjectClasses {
     static get DATA_PROVIDER(): Guid;
     static get DATA_SELECTOR(): Guid;
     static get DATA_STORE_CATEGORY(): Guid;
+    static get DEPLOYMENT_UNIT(): Guid;
     static get DESIGN_SYSTEM(): Guid;
     static get DOMAIN(): Guid;
     static get EXTERNAL_OBJECT(): Guid;
@@ -624,6 +672,12 @@ export declare class WebPanel extends KBObject {
 export declare class WikiFileKBObject extends KBObject {
     constructor(model: KBModel);
     getBlobPart(): Promise<WikiBlobPart>;
+}
+
+export declare class DeploymentUnitDefinitionPart extends KBObjectPart implements ISourceRegionPart {
+    constructor(kbObject: KBObject);
+    resolveValue(data: ResolveValueData): Promise<ResolveValueResult>;
+    private _getDepoyableObjectName;
 }
 
 export declare class DesignSystemElementsPart extends DesignSystemPart {
@@ -883,6 +937,7 @@ export declare class GXPartClasses {
     static get COLORS(): Guid;
     static get CONVERSATIONAL_FLOWS_SOURCE(): Guid;
     static get DATA_PROVIDER_SOURCE(): Guid;
+    static get DEPLOYMENT_UNIT_DEFINITION(): Guid;
     static get DESIGN_ELEMENTS_PART(): Guid;
     static get DESIGN_STYLES_PART(): Guid;
     static get DESIGN_TOKENS_PART(): Guid;
@@ -897,6 +952,7 @@ export declare class GXPartClasses {
     static get SD_MENU_SOURCE(): Guid;
     static get SD_PANEL_SOURCE(): Guid;
     static get SDT_SOURCE(): Guid;
+    static get SDT_STRUCTURE(): Guid;
     static get STENCIL_LAYOUT(): Guid;
     static get STENCIL_SOURCE(): Guid;
     static get SUBTYPE_GROUP_SOURCE(): Guid;
@@ -1012,6 +1068,17 @@ export declare class SDLayoutPart extends LayoutPart {
 
 export declare class SDPanelSourcePart extends MultiRegionSourcePart {
     constructor(kbObject: KBObject, type?: Guid);
+}
+
+export declare namespace SDTItemTypes {
+    const COLLECTION = "Collection";
+    const ITEM = "Item";
+    const LEVEL = "Level";
+}
+
+export declare class SDTStructurePart extends StructPart {
+    constructor(kbObject: KBObject);
+    cacheProperties(items: StructPartItem[]): Promise<void>;
 }
 
 export declare class StencilLayoutPart extends KBObjectPart {
@@ -1204,6 +1271,7 @@ export declare namespace GXBasicTypes {
 export declare namespace GXProperties {
     const ATTRIBUTE_KEY = "AttributeKey";
     const BASED_ON = "idBasedOn";
+    const COLLECTION_NAME = "idCollectionItemName";
     const DATA_TYPE = "ATTCUSTOMTYPE";
     const DECIMALS = "Decimals";
     const DESCRIPTION = "Description";
@@ -1241,11 +1309,20 @@ export declare type TypedObjectProperties = {
     maxLength: string;
     basedOn: string;
 };
+export declare namespace DataTypeCategories {
+    const NONE = 0;
+    const BASIC = 1;
+    const EXTENDED = 2;
+    const DOMAIN = 4;
+    const SDT = 56;
+    const BUSINESS_COMPONENT = 32;
+    const EXTERNAL_OBJECT = 128;
+}
 export declare class GXPropertiesHelper {
     static get NONE_VALUE(): string;
     static isDescriptorValidInSourceCode(descriptor: IPropertyDescriptor, instance: PropertiesObject): Promise<boolean>;
     static getDataTypeConsolidatedValue(instance: PropertiesObject, typedProperties?: TypedObjectProperties): Promise<string>;
-    static setDataTypeConsolidatedValue(instance: PropertiesObject, text: string, typedProperties?: TypedObjectProperties): Promise<void>;
+    static setDataTypeConsolidatedValue(instance: PropertiesObject, text: string, basePropertyName: string, typedProperties?: TypedObjectProperties): Promise<void>;
     private static _getShortNumberForm;
     private static _getLongNumberForm;
 }

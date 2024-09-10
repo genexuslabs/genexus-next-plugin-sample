@@ -14,6 +14,7 @@ const WizardController = root.WizardController;
 const WizardDialog = root.WizardDialog;
 const WizardPage = root.WizardPage;
 const ViewRegistry = root.ViewRegistry;
+const AssetsManager = root.AssetsManager;
 const Constants = root.Constants;
 const DialogResult = root.DialogResult;
 const EditorCommandManager = root.EditorCommandManager;
@@ -61,6 +62,7 @@ export {
   WizardDialog,
   WizardPage,
   ViewRegistry,
+  AssetsManager,
   Constants,
   DialogResult,
   EditorCommandManager,

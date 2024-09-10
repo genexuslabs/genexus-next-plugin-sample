@@ -25,7 +25,7 @@
       registryProperty("getImagePathCallback", getImagePathCallbackDefinitions);
 
       // Register the assets of the plugin
-      registerAssets("K2BTools", "k2b", ASSETS);
+      registerAssets("sample-vendor", "sv", ASSETS);
 
       defineCustomElements(window);
     </script>
@@ -50,12 +50,14 @@
       // Plugin icons
       const theme3Ref = document.createElement("ch-theme");
       theme3Ref.avoidFlashOfUnstyledContent = false;
-      theme3Ref.model = [{ name: "icons/k2b", url: "global.css" }];
+      theme3Ref.model = [{ name: "icons/sv", url: "global.css" }];
       document.body.appendChild(theme3Ref);
     </script>
-    <k2b-kb-manager-import enable-user-logged="true"></k2b-kb-manager-import>
+    <!--sv-kb-manager-import enable-user-logged="true"></sv-kb-manager-import-->
 
-    <!-- <k2b-connect-gx-server></k2b-connect-gx-server> -->
+    <!--sv-connect-gx-server></sv-connect-gx-server!-->
+
+    <sv-object-selector/>
 
     <script type="module">
       import {
@@ -63,14 +65,14 @@
         getIconPathExpanded
       } from "/mercury/assets-manager.js";
 
-      const kbManagerImport = document.querySelector("k2b-kb-manager-import");
+      const kbManagerImport = document.querySelector("sv-kb-manager-import");
 
       const importCategoryData = [
         {
           id: "api",
           name: "API 1",
           // Plugin icon
-          icon: getIconPath({ category: "objects", name: "api" }, "k2b"),
+          icon: getIconPath({ category: "objects", name: "api" }, "sv"),
           items: [{ id: "plugin-articles-api", name: "Plugin.ArticlesApi" }]
         },
         {
@@ -107,7 +109,7 @@
           // Icon with colorType
           icon: getIconPath(
             { category: "menus", name: "copy", colorType: "gray" },
-            "k2b"
+            "sv"
           ),
           items: [
             { id: "copy-1", name: "Copy 1" },
@@ -153,6 +155,72 @@
             resolve(importCategoryData);
           });
       }
+    </script>
+
+    <script type="module">
+        import {
+          getIconPath,
+        } from "/mercury/assets-manager.js";
+
+        const objectSelector = document.querySelector("sv-object-selector");
+        const typeAllId = '*';
+        const typeId = '1';
+        const typePluginId = '2';
+
+        objectSelector.objectTypes = [
+        {
+          id: typeAllId,
+          name: '*All',
+          fromPlugin: false,
+        },
+        {
+          id: typeId,
+          name: 'Type 1',
+          fromPlugin: false,
+          icon: getIconPath({ category: 'objects', name: 'procedure'}),
+        },
+        {
+          id: typePluginId,
+          name: 'Plugin Type 1',
+          fromPlugin: true,
+          icon: getIconPath({ category: 'objects', name: 'calendars'}, 'sv'),
+        }
+        ];
+
+        objectSelector.loadObjectsCallback = (type) => {
+          const objects = [];
+
+          const obj1 = {
+            id: '1',
+            name: 'Object (type 1)',
+            description: 'Sample procedure object',
+            typeId: typeId
+          }
+          const objPlugin1 = {
+            id: '2',
+            name: 'Object (Plugin type 1)',
+            description: 'Sample plugin object',
+            typeId: typePluginId
+          }          
+
+          switch (type){
+            case typeId:
+              objects.push(obj1);
+              break;
+            case typePluginId:
+              objects.push(objPlugin1);
+              break;
+            default:
+              objects.push(obj1);
+              objects.push(objPlugin1);
+          }
+
+          return objects;
+        };
+
+        objectSelector.openObjectCallback = (id) => {
+          alert(id);
+        }
     </script>
   </body>
 </html>
