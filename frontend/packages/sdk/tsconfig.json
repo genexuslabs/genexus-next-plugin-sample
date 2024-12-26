@@ -1,0 +1,13 @@
+{
+    "extends": "../../configs/base.sdk-tsconfig",
+    "compilerOptions": {
+      "rootDir": "src",
+      "outDir": "lib"
+    },
+    "include": [
+      "src/**/*"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  }

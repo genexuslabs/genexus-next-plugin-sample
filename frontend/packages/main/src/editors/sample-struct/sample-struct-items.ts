@@ -1,6 +1,7 @@
-import { StructColumn, StructItem, StructItemCell } from "@genexusm-sdk/common-components";
+import { StructColumn, StructItem, StructItemCell } from "@genexusm/sdk/common-components";
+import { StructPartItem } from "@genexusm/sdk/architecture-common";
 import { SampleStructPartEditor } from "../sample-struct-part-editor";
-import { StructPartItem } from "@genexusm-sdk/architecture-common";
+
 import { SamplePartColumns, SamplePartItemKinds } from "./sample-struct-definitions";
 import { SampleStructKBObjectNameCell } from "./sample-struct-cells";
 

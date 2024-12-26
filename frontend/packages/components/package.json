@@ -65,7 +65,7 @@
     "@genexus/web-standard-functions": ">= 0.65.0"
   },
   "dependencies": {
-    "@genexusm-sdk/common-components": "*"
+    "@genexusm-plugin-sample/common": "*"
   },
   "license": "MIT"
 }

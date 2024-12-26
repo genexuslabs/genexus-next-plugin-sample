@@ -1,8 +1,8 @@
-import { IPropertyDescriptor, StringConverter, TypeConverter, TypeDescriptorContext, UITypeEditor, IUIValidator } from "@genexusm-sdk/common-properties";
-import { UIServices } from "@genexusm-sdk/architecture-ui-framework";
-import { KBObjectDescriptor, KBObjectInfoFilters, PropertyContextHelper } from "@genexusm-sdk/architecture-common";
+import { IPropertyDescriptor, StringConverter, TypeConverter, TypeDescriptorContext, UITypeEditor, IUIValidator } from "@genexusm/sdk/common-properties";
+import { UIServices } from "@genexusm/sdk/architecture-ui-framework";
+import { KBObjectDescriptor, KBObjectInfoFilters, PropertyContextHelper, StructPartItem } from "@genexusm/sdk/architecture-common";
+
 import { SampleStructPartEditor } from "../sample-struct-part-editor";
-import { StructPartItem } from "@genexusm-sdk/architecture-common";
 import { SampleObjectProperties } from "./sample-struct-definitions";
 
 export class SampleKBObjectNamePropertyDescriptor implements IPropertyDescriptor {

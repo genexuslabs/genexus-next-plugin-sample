@@ -1,5 +1,6 @@
+import { AssetsManager } from "@genexusm/sdk/common-components";
+
 import { ASSETS } from "@genexusm-plugin-sample/components";
-import { AssetsManager  } from "@genexusm-sdk/common-components";
 import { Locale } from "@genexusm-plugin-sample/components";
 
 export function registerAssets(){

@@ -1,4 +1,4 @@
-import { GXCommLayer, PluginModule } from "@genexusm-sdk/architecture-common";
+
 import { interfaces } from "inversify";
 
 import { defineCustomElements } from "@genexusm-plugin-sample/components/loader";
@@ -11,9 +11,10 @@ import { bindMenus } from "./contributions/bind-menus";
 import { bindPatternHelpers } from "./contributions/bind-pattern-helpers";
 import { registerAssets } from "./contributions/register-assets";
 import { GrammarsProvider } from "./contributions/grammars-provider";
-import { IGrammarsProvider } from "@genexusm-sdk/architecture-ui-framework";
 import { SourceEditorAstNodeHelpersContribution } from "./contributions/source-editor-contribution";
-import { ISourceEditorAstNodeHelpersContribution } from "@genexusm-sdk/language-common";
+import { GXCommLayer, PluginModule } from "@genexusm/sdk/architecture-common";
+import { IGrammarsProvider } from "@genexusm/sdk/architecture-ui-framework";
+import { ISourceEditorAstNodeHelpersContribution } from "@genexusm/sdk/language-common";
 
 defineCustomElements(window);
 registerAssets();

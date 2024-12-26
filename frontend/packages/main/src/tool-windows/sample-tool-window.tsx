@@ -2,12 +2,13 @@
 
 import { ContextMenuInfo, ObjectDescription } from "@genexusm-plugin-sample/components/dist/types/components/object-selector/types";
 import { ObjectType } from "@genexusm-plugin-sample/components/loader";
-import { KBObjectDescriptor, KBObjectInfo, ObjectTypeFlags } from "@genexusm-sdk/architecture-common";
-import { AbstractToolWindow, UIServices } from "@genexusm-sdk/architecture-ui-framework";
-import { Guid } from "@genexusm-sdk/common";
-import { AssetsManager } from "@genexusm-sdk/common-components";
 import { Consts } from "../consts";
 import { Menus } from "../contributions/bind-menus";
+
+import { Guid } from "@genexusm/sdk/common";
+import { AbstractToolWindow, UIServices } from "@genexusm/sdk/architecture-ui-framework";
+import { AssetsManager } from "@genexusm/sdk/common-components";
+import { KBObjectDescriptor, KBObjectInfo, ObjectTypeFlags } from "@genexusm/sdk/architecture-common";
 
 declare global {
     namespace JSX {
@@ -32,8 +33,8 @@ export class SampleToolWindow extends AbstractToolWindow {
         return 'gx.plugin_sample.sampleToolWindow'
     }
 
-    get title(){
-        return 'Sample Tool Window';
+    get title() {
+        return 'Sample Tool Window 2';
 
     }
 
@@ -48,17 +49,17 @@ export class SampleToolWindow extends AbstractToolWindow {
         UIServices.kb.currentKBChanged(() => this.update());
     }
 
-    private _getAllTypes():KBObjectDescriptor[]{
-        return KBObjectDescriptor.getAll().filter(descriptor => 
+    private _getAllTypes(): KBObjectDescriptor[] {
+        return KBObjectDescriptor.getAll().filter(descriptor =>
             (descriptor.flags & ObjectTypeFlags.NO_OPENABLE) === 0 && (descriptor.flags & ObjectTypeFlags.NO_SHOW) === 0);
     }
 
-    private _getDescriptorId(descriptor:KBObjectDescriptor):string{
+    private _getDescriptorId(descriptor: KBObjectDescriptor): string {
         return descriptor.id.toString();
     }
 
-    private _getTypes():ObjectType[]{
-        const types:ObjectType[] = [ SampleToolWindow.ALL_TYPE ];
+    private _getTypes(): ObjectType[] {
+        const types: ObjectType[] = [SampleToolWindow.ALL_TYPE];
         const descriptors = this._getAllTypes();
         descriptors.map(descriptor => types.push({
             id: this._getDescriptorId(descriptor),
@@ -69,15 +70,15 @@ export class SampleToolWindow extends AbstractToolWindow {
         return types;
     }
 
-    private async _getObjects(type:string) {
+    private async _getObjects(type: string) {
         if (!type)
             return [];
 
         const model = UIServices.kb.currentModel;
         if (!model)
             return [];
-        
-        let objectsInfo:KBObjectInfo[] = [];
+
+        let objectsInfo: KBObjectInfo[] = [];
         if (type === SampleToolWindow.ALL_TYPE.id) {
             const result = await model.objects.searchInfos({
                 typeIds: this._getAllTypes().map(type => type.id)
@@ -86,33 +87,33 @@ export class SampleToolWindow extends AbstractToolWindow {
         }
         else {
             const typeGuid = new Guid(type);
-            const resultObjects:Iterable<KBObjectInfo> = await model.objects.getObjectsInfoByType(typeGuid);
-            for(let obj of resultObjects)
+            const resultObjects: Iterable<KBObjectInfo> = await model.objects.getObjectsInfoByType(typeGuid);
+            for (let obj of resultObjects)
                 objectsInfo.push(obj);
         }
 
         return objectsInfo;
     }
 
-    private _contextMenuCallback = async (contextMenuInfo:ContextMenuInfo) => {
-        UIServices.menu.showContextMenu({ 
-            menuPath: Menus.SAMPLE_TOOLWINDOW_MENU, 
+    private _contextMenuCallback = async (contextMenuInfo: ContextMenuInfo) => {
+        UIServices.menu.showContextMenu({
+            menuPath: Menus.SAMPLE_TOOLWINDOW_MENU,
             anchor: {
                 x: contextMenuInfo.clientX,
                 y: contextMenuInfo.clientY
-            }, 
+            },
             data: {
                 context: {
                     objectGuid: new Guid(contextMenuInfo.id)
                 }
-            } 
+            }
         });
     }
 
-    private _loadObjectsCallback = async (type:string) => {                
-        const objects:ObjectDescription[] = [];
-        const objectsInfo:KBObjectInfo[] = await this._getObjects(type);
-        for(let obj of objectsInfo){
+    private _loadObjectsCallback = async (type: string) => {
+        const objects: ObjectDescription[] = [];
+        const objectsInfo: KBObjectInfo[] = await this._getObjects(type);
+        for (let obj of objectsInfo) {
             objects.push({
                 id: obj.guid.toString(),
                 name: obj.name,
@@ -121,9 +122,9 @@ export class SampleToolWindow extends AbstractToolWindow {
             })
         }
         return objects;
-    }  
-    
-    private _openObjectCallback = async (id:string) => {
+    }
+
+    private _openObjectCallback = async (id: string) => {
         const model = UIServices.kb.currentModel;
         if (model) {
             const guid = new Guid(id);
@@ -133,13 +134,13 @@ export class SampleToolWindow extends AbstractToolWindow {
         }
     }
 
-    private _selectObjectCallback = async (id:string) => {
+    private _selectObjectCallback = async (id: string) => {
         const model = UIServices.kb.currentModel;
         if (model) {
             const guid = new Guid(id);
             const obj = await model.objects.getByGuid(guid);
             if (obj)
-                this.setSelection([ obj ]);
+                this.setSelection([obj]);
         }
     }
 
@@ -147,8 +148,8 @@ export class SampleToolWindow extends AbstractToolWindow {
         if (!UIServices.kb.currentKB)
             return (<div />);
 
-        return (<sv-object-selector 
-            style={{height:"100%"}}
+        return (<sv-object-selector
+            style={{ height: "100%" }}
             objectTypes={this._getTypes()}
             contextMenuCallback={this._contextMenuCallback}
             loadObjectsCallback={this._loadObjectsCallback}

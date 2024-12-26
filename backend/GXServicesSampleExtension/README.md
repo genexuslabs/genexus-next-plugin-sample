@@ -6,21 +6,19 @@ This guide will help you set up the **GX Services Sample Extension** project, wh
 
 ### Setting Up Custom NuGet Sources
 
-The project relies on custom NuGet sources to fetch required dependencies. There are two custom sources that need to be configured:
-
-- **BL_NUGET_SOURCE**
-- **SERVICES_NUGET_SOURCE**
+The project relies on a custom NuGet source to fetch required dependencies.
 
 #### Steps
 
-1. **Identify the paths**: Obtain the real paths to the custom NuGet sources for `BL_NUGET_SOURCE` and `SERVICES_NUGET_SOURCE`. These should point to the directories or URLs where your NuGet packages are hosted.
+1. **Identify the path**: Obtain the real path to the custom NuGet source for `GX_BL_NUGET_SOURCE`. This should point to the directory or URL where your NuGet package s are hosted.
 
-2. **Create environment variables**: Set up environment variables for your system:
+2. **Create environment variable**: Set up an environment variable for your system:
 
-   - **BL_NUGET_SOURCE**: Set this environment variable to the path of the BL NuGet source.
-   - **SERVICES_NUGET_SOURCE**: Set this environment variable to the path of the Services NuGet source.
+   - **GX_BL_NUGET_SOURCE**: Set this environment variable to the path of the BL NuGet source.
 
-   Ensure that these variables are correctly set up so the project can resolve its dependencies during the build process.
+   Ensure that this variable is correctly set up so the project can resolve its dependencies during the build process.
+
+   As an alternative to the environment variable, you can edit the NuGet.confg file that is located at `backend/GXServicesSampleExtension`.
 
 3. **Build the Project**: Once the environment variables are configured, you can run ```dotnet build``` for GXServicesSampleExtension.csproj. 
 

@@ -21,14 +21,7 @@
     "preview": "vite preview --port 5200 --outDir dist"
   },
   "dependencies": {
-    "@genexusm-sdk/common": "*",
-    "@genexusm-sdk/common-components": "*",
-    "@genexusm-sdk/architecture-common": "*",
-    "@genexusm-sdk/architecture-ui-framework": "*",
-    "@genexusm-sdk/patterns-common": "*",
-    "@genexusm-sdk/genexus-common": "*",
-    "@genexusm-plugin-sample/components": "*",
-    "@genexusm-plugin-sample/comm-layer": "*"
+    "@genexusm/sdk": "*"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",

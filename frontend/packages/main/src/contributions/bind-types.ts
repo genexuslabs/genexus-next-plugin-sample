@@ -1,18 +1,14 @@
 
 import { interfaces } from 'inversify';
+import { Guid } from '@genexusm/sdk/common';
+import { AssetsManager } from '@genexusm/sdk/common-components';
+import { IKBObjectCategoryDescriptor, IKBObjectDescriptor, IKBObjectPartDescriptor } from '@genexusm/sdk/architecture-common';
+import { PartClasses, SourcePart } from '@genexusm/sdk/language-common';
 
-import {
-    IKBObjectCategoryDescriptor,
-    IKBObjectDescriptor,
-    IKBObjectPartDescriptor,
-} from '@genexusm-sdk/architecture-common';
 import { Consts } from '../consts';
 import { SampleObject } from '../objects/sample-object';
 import { SampleStructPart } from '../parts/sample-struct-part';
-import { PartClasses, SourcePart } from '@genexusm-sdk/language-common';
-import { Guid } from '@genexusm-sdk/common';
 import { SampleSourceObject } from '../objects/sample-source-object';
-import { AssetsManager } from '@genexusm-sdk/common-components';
 
 export function bindTypes(bind: interfaces.Bind) {
 
@@ -46,7 +42,7 @@ export function bindTypes(bind: interfaces.Bind) {
     // KBObjectPart Descriptors
 
     bind<IKBObjectPartDescriptor>(IKBObjectPartDescriptor).toConstantValue({
-        id: Consts.PartClasses.SAMPLE_STRUCT_PART,        
+        id: Consts.PartClasses.SAMPLE_STRUCT_PART,
         iconName: '',
         isInterface: false,
         factory: (kbObject) => new SampleStructPart(kbObject)
@@ -60,6 +56,6 @@ export function bindTypes(bind: interfaces.Bind) {
     });
 }
 
-const moveToFirstPosition = (guids:Guid[], target:Guid) => {
+const moveToFirstPosition = (guids: Guid[], target: Guid) => {
     return guids.sort((g1, g2) => Guid.equals(g1, g2) ? 0 : Guid.equals(g1, target) ? -1 : 1);
 }

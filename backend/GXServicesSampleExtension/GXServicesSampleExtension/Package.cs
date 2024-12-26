@@ -6,6 +6,7 @@ using Artech.Architecture.Common.Objects;
 using Artech.Architecture.Common.Packages;
 using Artech.Architecture.Common.Services;
 using Artech.Common.Exceptions;
+using GeneXus.Services.Architecture.Packages;
 using GeneXus.Services.Architecture.Services;
 using GeneXus.Services.Language.Common.Parts;
 
@@ -20,7 +21,7 @@ using GxmServices = GeneXus.Services.Architecture.Services.CommonServices;
 namespace GXServicesSampleExtension;
 
 [Guid("CD4B71F0-E246-4985-93E5-6CBED453E90B")]
-public class Package : AbstractPackage, IGxPackageBL
+public class Package : AbstractPackageServices, IGxPackageBL
 {
     private const string NAME = "Sample Services Extension";
 
@@ -75,12 +76,12 @@ public class Package : AbstractPackage, IGxPackageBL
     {
         AddKBObjectControllers();
         AddKBObjectPartControllers();
-        AddServiceControllers();
+        AddApiControllers();
     }
 
-    private void AddServiceControllers()
+    private void AddApiControllers()
     {
-        GxmServices.Communication.AddService(typeof(SampleApiController), true);
+        AddApiController<SampleApiController>();
     }
 
     private void AddKBObjectControllers()
@@ -93,15 +94,5 @@ public class Package : AbstractPackage, IGxPackageBL
     {
         AddKBObjectPartController<SampleSourcePart>((owner, part) => new SampleSourcePartController(owner, part));
         AddKBObjectPartController<SampleStructPart>((owner, part) => new SampleStructPartController(owner, part));        
-    }
-
-    private static void AddKBObjectController<TKBObject>(KBObjectControllerFactory<TKBObject> factory) where TKBObject : KBObject
-    {
-        GxmServices.ControllerManager.ReplaceKBObjectController<TKBObject>(factory);
-    }
-
-    private static void AddKBObjectPartController<TKBObjectPart>(KBObjectPartControllerFactory<TKBObjectPart> factory) where TKBObjectPart : KBObjectPart
-    {
-        GxmServices.ControllerManager.ReplaceKBObjectPartController(factory);
     }
 }
