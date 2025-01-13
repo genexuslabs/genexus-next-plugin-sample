@@ -1,4 +1,5 @@
 import * as url from 'url';
+import { Guid, MaybePromise } from '@genexusm/sdk/common'; 
 import { GXHttpCommLayer } from '@genexusm/sdk/common-comm-layer'; 
 import { EchoData } from '../types'; 
 
@@ -14,22 +15,22 @@ export class HttpSampleApiController implements ISampleApiController {
       this._commLayer = commLayer;
    }
 
-   async getData(kbId: string ): Promise<string> {
+   async getData(kbGuid: string ): Promise<string> {
       let httpOptions = this._commLayer.createHttpOptions();   
 
-      return (await this._commLayer.httpGet(this._getOperationUrl(`get_datakb_id=${encodeURIComponent(kbId)}`), httpOptions)).data;   
+      return (await this._commLayer.httpGet(this._getOperationUrl(`get_data?kb_guid=${encodeURIComponent(kbGuid)}`), httpOptions)).data;   
    }
 
-   async echo(kbId: string , value: string ): Promise<EchoData> {
+   async echo(kbGuid: string , modelGuid: string , value: string ): Promise<EchoData> {
       let httpOptions = this._commLayer.createHttpOptions();   
 
-      return (await this._commLayer.httpPostJson(this._getOperationUrl(`echo?kb_id=${encodeURIComponent(kbId)}&value=${encodeURIComponent(value)}`), undefined, httpOptions)).data;   
+      return (await this._commLayer.httpPostJson(this._getOperationUrl(`echo?kb_guid=${encodeURIComponent(kbGuid)}&model_guid=${encodeURIComponent(modelGuid)}`), value, httpOptions)).data;   
    }
 
    async echo2(value: string ): Promise<EchoData> {
       let httpOptions = this._commLayer.createHttpOptions();   
 
-      return (await this._commLayer.httpPostJson(this._getOperationUrl(`echo2?value=${encodeURIComponent(value)}`), undefined, httpOptions)).data;   
+      return (await this._commLayer.httpPostJson(this._getOperationUrl(`echo2`), value, httpOptions)).data;   
    }
 
    private _getOperationUrl(operation: string) {

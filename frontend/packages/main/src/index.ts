@@ -15,6 +15,7 @@ import { SourceEditorAstNodeHelpersContribution } from "./contributions/source-e
 import { GXCommLayer, PluginModule } from "@genexusm/sdk/architecture-common";
 import { IGrammarsProvider } from "@genexusm/sdk/architecture-ui-framework";
 import { ISourceEditorAstNodeHelpersContribution } from "@genexusm/sdk/language-common";
+import { bindUITypeEditorDescriptors } from "./contributions/bind-ui-type-editors";
 
 defineCustomElements(window);
 registerAssets();
@@ -22,6 +23,7 @@ registerAssets();
 export default new PluginModule(
     (bind: interfaces.Bind) => {
         bindCommands(bind);
+        bindUITypeEditorDescriptors(bind);
         bindMenus(bind);
         bindTypes(bind);
         bindToolWindows(bind);
@@ -37,7 +39,7 @@ export default new PluginModule(
         bind(ISourceEditorAstNodeHelpersContribution).to(SourceEditorAstNodeHelpersContribution);
     },
     () => {
-        console.log('Activate plugin ');
+        console.log('Activate plugin 2 ');
         CommServices.setCommLayer(GXCommLayer.get());
     }
 );

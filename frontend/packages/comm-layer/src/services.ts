@@ -1,5 +1,5 @@
-import { GXHttpCommLayer, IGXCommLayer } from '@genexusm/sdk/common-comm-layer';
-import { ArgumentNullException, GXException } from '@genexusm/sdk/common';
+import { ArgumentNullException, GXException } from '@genexusm/sdk/common'; 
+import { GXHttpCommLayer, IGXCommLayer } from '@genexusm/sdk/common-comm-layer'; 
 import { ISampleApiController } from './isample-api-controller'; 
 import { HttpSampleApiController } from './http/http-sample-api-controller'; 
 

@@ -50,7 +50,6 @@ In this case, we have two controllers:
 
 Additionally, to support text-based editing, the `Package.cs` file includes the `MultiRegionSourcePart` (provided by the SDK) to the `SampleObject`. This part accumulates region providers, allowing unified editing of all parts declared as providers within a single part. Therefore, this controller implements the `ISourceRegionProvider` interface. Note that `SampleStructurePartListener` is used to modify the `SampleStructPart` structure according to the parsed text.
 
-
 In `Package.cs`, both the `SampleObject` and `SampleStructPart`, along with their respective controllers, are declared.
 
 ### SampleSourceObject
@@ -65,3 +64,19 @@ To manage these components, we have defined two controllers:
 
 In this case, we will not use the multi-region editor but will instead use a text editor without regions, so the modifications mentioned in the previous case of `SampleStructPart` are not applied.
 
+## Annex: Generation of Client Communication Layers
+
+To enable the IDE to access custom API Controllers defined by a Plugin, it is necessary to generate the corresponding communication layer that consists of TypeScript client code that abstracts the HTTP calls to these APIs.
+
+The `GXCommLayerGenerator` tool can be used for this purpose. Below is an example of how to run it:
+
+   ```bash
+   dotnet GXCommLayerGenerator.dll -s <ASM_PATH> -o <OUT_DIR>
+   ```
+
+Where:
+
+- <ASM_PATH>: The path to the assembly that contains the API Controllers for which the communication layer needs to be generated. To ensure all dependencies are on site use the directory where the assembly was published.
+- <OUT_DIR>: The output directory where the communication layer will be generated.
+
+The resulting communication layer will be generated as an NPM package. You need to adjust details in package.json (like name of the package). Succesive executions of the tool won't override the package.json or tsconfig.json files, just the client code part.
