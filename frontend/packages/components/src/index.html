@@ -15,6 +15,13 @@
       // only. The IDE Web's SDK implements all this and more
       import { defineCustomElements } from "/chameleon/esm/loader.js";
       import { registryProperty } from "/chameleon/esm/index.js";
+
+      import { 
+        registerMercury 
+      } from "/mercury/register-mercury.js";
+
+      registerMercury();
+
       import {
         getImagePathCallbackDefinitions,
         registerAssets
@@ -34,7 +41,7 @@
   </head>
   <body>
     <script type="module">
-      import { getThemeBundles } from "/mercury/assets-manager.js";
+      import { getThemeBundles } from "/mercury/bundles.js";
 
       // Mercury bundles
       const themeRef = document.createElement("ch-theme");
