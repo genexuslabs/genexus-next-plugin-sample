@@ -15,6 +15,7 @@
     - [Sample Dialog](#sample-dialog)
     - [Sample Object](#sample-object)
     - [Sample Source Object](#sample-source-object)
+    - [Sample Type Editor](#sample-type-editor)
     - [Customize Pattern Editor](#customize-pattern-editor)
 - [Related documentation](#related-documentation)
 
@@ -229,6 +230,14 @@ As mentioned earlier, we also created the [`SampleSourceObject`](./packages/main
 - **Documentation**
 
 For this case, we only want to edit the `SampleSourcePart` using a simple text editor. Since `SampleSourcePart` is just a `SourcePart` and doesn't have any additional structure or logic, we [bind](./packages/main/src/contributions/bind-types.ts) the part identifier to the base `SourcePart` exposed by the SDK. We follow the same approach for the editor by [using the SourcePartEditor](./packages/main/src/contributions/bind-part-editors.ts) exposed by the SDK.
+
+### Sample Type Editor
+
+The sample type editor allows us to customize how the `KBObjectName` property of the `SampleObject` items is edited.
+
+We included the component [`kb-object-name-editor`](./packages/components/src/components/kb-object-name-editor/kb-object-name-editor.tsx) to handle the UI interactions for editing the property value.
+
+From the IDE contribution side, we simply [declared the binding for the type editor ID](./packages/main/src/contributions/bind-ui-type-editors.ts) and added the [SamplePartItemKBObjectNameTypeEditor](./packages/main/src/type-editors/sample-part-item-name-type-editor.ts), which implements the UI type editor interface. This type editor uses the [KBObjectNameDialog](./packages/main/src/dialogs/kb-object-name-dialog.tsx) to resolve the editing process.
 
 ### Customize Pattern Editor
 
