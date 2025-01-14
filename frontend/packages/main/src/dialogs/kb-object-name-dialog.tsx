@@ -4,14 +4,14 @@ import { WindowForm } from "@genexusm/sdk/common-components";
 
 export class KBObjectNameDialog extends WindowForm {
 
-    private _inputEl: HTMLInputElement;
+    private _kbObjectNameEl: HTMLSvKbObjectNameEditorElement;
     private _value: string;
 
     constructor(value: string) {
         super({
             title: 'KBObjectName',
-            width: 800,
-            height: 460,
+            width: 600,
+            height: 250,
             resizable: false,
             showCloseButton: true
         });
@@ -20,12 +20,26 @@ export class KBObjectNameDialog extends WindowForm {
     }
 
     get value() {
-        return this._inputEl.value;
+        return this._value;
+    }
+
+    private _cancelCallback = async () => {
+        this.onCancel();
+    }
+
+    private _confirmCallback = async () => {
+        this._value = this._kbObjectNameEl.value;
+        this.onConfirm();
     }
 
     render() {
         return (
-            <ch-edit value={this._value} ref={(e: HTMLInputElement) => this._inputEl = e} />
+            <sv-kb-object-name-editor 
+                value={this._value}
+                cancelCallback={this._cancelCallback}
+                confirmCallback={this._confirmCallback}
+                ref={(el:HTMLSvKbObjectNameEditorElement) => this._kbObjectNameEl = el}
+            /> 
         )
     }
 }

@@ -1,7 +1,8 @@
 import { Component, Element, h, Host, Prop, State } from "@stencil/core";
 import { AssetsManager } from '@genexusm-plugin-sample/common';
 import { Locale } from "../../common/locale";
-import { CallToServerCallback, CancelCallback, ConfirmCallback } from "./types";
+import { CancelCallback, ConfirmCallback } from "../../common/types";
+import { CallToServerCallback } from "./types";
 
 const CSS_BUNDLES = [
     "resets/box-sizing",
