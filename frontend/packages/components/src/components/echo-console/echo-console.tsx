@@ -78,7 +78,7 @@ export class SVEchoConsole {
                 <div class="header">
                     <ch-edit
                         id="input"
-                        class="form-input"
+                        class="input"
                         type="text"
                         placeholder="Message to send..."
                         value="Test value"
