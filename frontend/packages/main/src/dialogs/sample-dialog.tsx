@@ -16,7 +16,7 @@ export class SampleDialog extends WindowForm {
     }
 
     private _callToServerCallback = async (text:string) => {        
-        const data = await CommServices.get().sample.echo(UIServices.kb.currentKB.guid.toString(), text);
+        const data = await CommServices.get().sample.echo(UIServices.kb.currentKB.guid.toString(), UIServices.kb.currentModel.guid.toString(), text);
         return data ? `${data.id.toString()}: ${data.value}` : text;  
     }
 
