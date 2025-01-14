@@ -1,8 +1,8 @@
 /** @jsx WindowForm.dom  */
 
-import { WindowForm } from "@genexusm-sdk/common-components";
+import { WindowForm } from "@genexusm/sdk/common-components";
 import { CommServices } from "../communication/comm-services";
-import { UIServices } from "@genexusm-sdk/architecture-ui-framework";
+import { UIServices } from "@genexusm/sdk/architecture-ui-framework";
 
 export class SampleDialog extends WindowForm {
     constructor() {
@@ -15,9 +15,8 @@ export class SampleDialog extends WindowForm {
         });
     }
 
-    private _callToServerCallback = async (text:string) => {
-        const connInfo = UIServices.kb.currentKB.connectionInfo;
-        const data = await CommServices.get().sample.echo(connInfo.location, connInfo.id, text);
+    private _callToServerCallback = async (text:string) => {        
+        const data = await CommServices.get().sample.echo(UIServices.kb.currentKB.guid.toString(), UIServices.kb.currentModel.guid.toString(), text);
         return data ? `${data.id.toString()}: ${data.value}` : text;  
     }
 

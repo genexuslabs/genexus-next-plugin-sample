@@ -13,20 +13,20 @@ public class SampleApiController : ControllerBase
     }
     
     [HttpGet("get_data")]
-    public string GetData([FromQuery(Name = "kb_id")] string kbId)
+    public string GetData([FromQuery(Name = "kb_guid")] string kbGuid)
     {
         var result = "Data5";
         return result;
     }
     
     [HttpPost("echo")]
-    public ActionResult<EchoData> Echo([FromQuery(Name = "kb_id")] string kbId, [FromQuery(Name = "value")] string value)
+    public ActionResult<EchoData> Echo([FromQuery(Name = "kb_guid")] string kbGuid, [FromQuery(Name = "model_guid")] string modelGuid, [FromBody] string value)
     {
         return Ok(new EchoData(Guid.NewGuid(), value));
     }
     
     [HttpPost("echo2")]
-    public ActionResult<EchoData> Echo2([FromQuery(Name = "value")] string value)
+    public ActionResult<EchoData> Echo2(string value)
     {
         return Ok(new EchoData(Guid.NewGuid(), value));
     }

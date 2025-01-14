@@ -1,0 +1,122 @@
+{
+	"name": "@genexusm/sdk",
+	"version": "0.0.28",
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"lib/"
+	],
+	"scripts": {
+		"clean": "rimraf lib",
+		"build": "tsc && yarn run  postBuild",
+		"prebuild": "yarn run clean",
+		"watch": "tsc -w",
+		"postBuild": "copyfiles -u 1 src/**/*.d.ts lib"
+	},
+	"dependencies": {
+		"inversify": "6.0.2"
+	},
+	"devDependencies": {
+		"rimraf": "3.0.2",
+		"typescript": "4.5.5",
+		"copyfiles": "2.4.0"
+	},
+	"exports": {
+		"./architecture-common": {
+			"types": "./lib/architecture-common/index.d.ts",
+			"import": "./lib/architecture-common/index.js"
+		},
+		"./architecture-ui-framework": {
+			"types": "./lib/architecture-ui-framework/index.d.ts",
+			"import": "./lib/architecture-ui-framework/index.js"
+		},
+		"./common": {
+			"types": "./lib/common/index.d.ts",
+			"import": "./lib/common/index.js"
+		},
+		"./common-comm-layer": {
+			"types": "./lib/common-comm-layer/index.d.ts",
+			"import": "./lib/common-comm-layer/index.js"
+		},
+		"./common-components": {
+			"types": "./lib/common-components/index.d.ts",
+			"import": "./lib/common-components/index.js"
+		},
+		"./common-properties": {
+			"types": "./lib/common-properties/index.d.ts",
+			"import": "./lib/common-properties/index.js"
+		},
+		"./core-comm-layer": {
+			"types": "./lib/core-comm-layer/index.d.ts",
+			"import": "./lib/core-comm-layer/index.js"
+		},
+		"./genexus-comm-layer": {
+			"types": "./lib/genexus-comm-layer/index.d.ts",
+			"import": "./lib/genexus-comm-layer/index.js"
+		},
+		"./genexus-common": {
+			"types": "./lib/genexus-common/index.d.ts",
+			"import": "./lib/genexus-common/index.js"
+		},
+		"./language-comm-layer": {
+			"types": "./lib/language-comm-layer/index.d.ts",
+			"import": "./lib/language-comm-layer/index.js"
+		},
+		"./language-common": {
+			"types": "./lib/language-common/index.d.ts",
+			"import": "./lib/language-common/index.js"
+		},
+		"./patterns-common": {
+			"types": "./lib/patterns-common/index.d.ts",
+			"import": "./lib/patterns-common/index.js"
+		},
+		"./team-dev-comm-layer": {
+			"types": "./lib/team-dev-comm-layer/index.d.ts",
+			"import": "./lib/team-dev-comm-layer/index.js"
+		}
+	},
+	"typesVersions": {
+		"*": {
+			"architecture-common": [
+				"./lib/architecture-common}/index.d.ts"
+			],
+			"architecture-ui-framework": [
+				"./lib/architecture-ui-framework}/index.d.ts"
+			],
+			"common": [
+				"./lib/common}/index.d.ts"
+			],
+			"common-comm-layer": [
+				"./lib/common-comm-layer}/index.d.ts"
+			],
+			"common-components": [
+				"./lib/common-components}/index.d.ts"
+			],
+			"common-properties": [
+				"./lib/common-properties}/index.d.ts"
+			],
+			"core-comm-layer": [
+				"./lib/core-comm-layer}/index.d.ts"
+			],
+			"genexus-comm-layer": [
+				"./lib/genexus-comm-layer}/index.d.ts"
+			],
+			"genexus-common": [
+				"./lib/genexus-common}/index.d.ts"
+			],
+			"language-comm-layer": [
+				"./lib/language-comm-layer}/index.d.ts"
+			],
+			"language-common": [
+				"./lib/language-common}/index.d.ts"
+			],
+			"patterns-common": [
+				"./lib/patterns-common}/index.d.ts"
+			],
+			"team-dev-comm-layer": [
+				"./lib/team-dev-comm-layer}/index.d.ts"
+			]
+		}
+	}
+}

@@ -490,10 +490,10 @@
   resolved "https://registry.npmjs.org/@gar/promisify/-/promisify-1.1.3.tgz"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@genexus/chameleon-controls-library@>=6.0.0-next.28":
-  version "6.0.0-next.28"
-  resolved "https://registry.yarnpkg.com/@genexus/chameleon-controls-library/-/chameleon-controls-library-6.0.0-next.28.tgz#c2bec2a251ca525a83027391c529f4ada57664a4"
-  integrity sha512-GXiKLjyZWwDtem3noPhiaQpjXne/ZAgU21QsY8FQDHkv8gko06Yhn/XgdzGqByJDmjDnHj7DajiPQgJaA7WqsA==
+"@genexus/chameleon-controls-library@6.0.0-next.55":
+  version "6.0.0-next.55"
+  resolved "https://registry.yarnpkg.com/@genexus/chameleon-controls-library/-/chameleon-controls-library-6.0.0-next.55.tgz#45384591f6e3034c6440c49a8e5b61112dfa1c20"
+  integrity sha512-mQ9fch9+wX0IkwogYPQVo38zgceISpN/j02bJbnmjfECfM6ReTeC56aBFLuPceoyW9Q6zB5dv39qky5iNIqv9A==
   dependencies:
     "@genexus/markdown-parser" "~0.1.1"
     html5-qrcode "^2.3.8"
@@ -514,10 +514,10 @@
     mdast-util-gfm "^3.0.0"
     micromark-extension-gfm "^3.0.0"
 
-"@genexus/mercury@>=0.6.0":
-  version "0.6.7"
-  resolved "https://registry.yarnpkg.com/@genexus/mercury/-/mercury-0.6.7.tgz#8ce821e8df8671495d5ce183d2a13a8f49cc78e6"
-  integrity sha512-VTzAtQrG94mADoQnVvf99vB/UNm/G7GupuiFrVCRZruVEEnSc4dP/NQ48+yLAHLQMQoaEqA4tC+67z7grNPe2g==
+"@genexus/mercury@0.12.5":
+  version "0.12.5"
+  resolved "https://registry.yarnpkg.com/@genexus/mercury/-/mercury-0.12.5.tgz#ce384aebdcfadfc4835b57ffafebc8d6dfb76081"
+  integrity sha512-TkQ/g0mig1I8K6+gFuA3IddZSwUdf6Pi6tY4AwhAfWl/tisophSSKI2h7tuO2FUxexqRRxnJQxtwqFX5Xr5VsQ==
 
 "@genexus/svg-sass-generator@>=1.1.20":
   version "1.1.20"
@@ -5634,9 +5634,9 @@ internal-slot@^1.0.7:
     hasown "^2.0.0"
     side-channel "^1.0.4"
 
-inversify@^6.0.1:
+inversify@6.0.2:
   version "6.0.2"
-  resolved "https://registry.npmjs.org/inversify/-/inversify-6.0.2.tgz"
+  resolved "https://registry.yarnpkg.com/inversify/-/inversify-6.0.2.tgz#dc7fa0348213d789d35ffb719dea9685570989c7"
   integrity sha512-i9m8j/7YIv4mDuYXUAcrpKPSaju/CIly9AHK5jvCBeoiM/2KEsuCQTTP+rzSWWpLYWRukdXFSl6ZTk2/uumbiA==
 
 ip-address@^9.0.5:

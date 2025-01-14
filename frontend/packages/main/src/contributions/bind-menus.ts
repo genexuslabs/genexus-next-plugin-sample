@@ -1,5 +1,6 @@
-import { CommonMenus, IMenuContribution, IMenuRegistry } from '@genexusm-sdk/architecture-ui-framework';
+
 import { injectable, interfaces } from 'inversify';
+import { CommonMenus, IMenuContribution, IMenuRegistry } from '@genexusm/sdk/architecture-ui-framework';
 import { Commands } from './bind-commands';
 
 export function bindMenus(bind: interfaces.Bind) {

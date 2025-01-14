@@ -14,8 +14,8 @@
         "emitDecoratorMetadata": true,
         "downlevelIteration": true,
         "resolveJsonModule": true,
-        "module": "es2022",
-        "moduleResolution": "node",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
         "target": "ES2022",
         "jsx": "react",
         "lib": [

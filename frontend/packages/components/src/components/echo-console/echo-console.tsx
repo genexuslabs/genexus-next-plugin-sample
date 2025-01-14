@@ -1,7 +1,8 @@
 import { Component, Element, h, Host, Prop, State } from "@stencil/core";
+import { AssetsManager } from '@genexusm-plugin-sample/common';
 import { Locale } from "../../common/locale";
-import { CallToServerCallback, CancelCallback, ConfirmCallback } from "./types";
-import { AssetsManager } from "@genexusm-sdk/common-components";
+import { CancelCallback, ConfirmCallback } from "../../common/types";
+import { CallToServerCallback } from "./types";
 
 const CSS_BUNDLES = [
     "resets/box-sizing",
@@ -20,12 +21,12 @@ const CSS_BUNDLES = [
 export class SVEchoConsole {
     // eslint-disable-next-line @stencil-community/own-props-must-be-private
     #componentLocale!: { [key in string]: any };
-    #inputRef: HTMLChEditElement|undefined;
+    #inputRef: HTMLChEditElement | undefined;
     #callServerIcon!: string;
 
     @Element() el!: HTMLSvEchoConsoleElement;
-    
-    @State() consoleText:string[] = [];
+
+    @State() consoleText: string[] = [];
 
     /**
      * Callback invoked to call server.
@@ -47,8 +48,10 @@ export class SVEchoConsole {
         if (value) {
             const newText = await this.callToServerCallback(value);
             this.consoleText.push(newText);
-            this.consoleText = [ ...this.consoleText ];
-        }        
+            this.consoleText = [...this.consoleText];
+        }
+
+
     }
 
     #cancelHandler = () => this.cancelCallback();
@@ -69,37 +72,37 @@ export class SVEchoConsole {
         this.#componentLocale = await Locale.getComponentStrings(this.el);
     }
 
-    render(){
+    render() {
         return (
             <Host class="layout">
                 <ch-theme model={CSS_BUNDLES} />
                 <div class="header">
-                    <ch-edit 
+                    <ch-edit
                         id="input"
-                        class="form-input"
+                        class="input"
                         type="text"
                         placeholder="Message to send..."
                         value="Test value"
-                        ref={ (el) => this.#inputRef = el }
+                        ref={(el) => this.#inputRef = el}
                     />
                     <button class="button-secondary button-icon-and-text" onClick={this.#callToServerHandler}>
-                        <ch-image src={this.#getCallServerIcon()} class="icon-sm"></ch-image>   
-                        { this.#componentLocale.callServer }
+                        <ch-image src={this.#getCallServerIcon()} class="icon-sm"></ch-image>
+                        {this.#componentLocale.callServer}
                     </button>
-                </div>                
+                </div>
                 <div class="console">
                     {
-                        this.consoleText.map(text => 
+                        this.consoleText.map(text =>
                             <p>{text}</p>
                         )
                     }
                 </div>
                 <div class="footer">
                     <button class="button-secondary" onClick={this.#cancelHandler}>
-                        { this.#componentLocale.cancel }
+                        {this.#componentLocale.cancel}
                     </button>
                     <button class="button-primary" onClick={this.#confirmHandler}>
-                        { this.#componentLocale.confirm }
+                        {this.#componentLocale.confirm}
                     </button>
                 </div>
             </Host>

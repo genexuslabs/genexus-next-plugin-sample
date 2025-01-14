@@ -1,8 +1,8 @@
 import { injectable, interfaces } from 'inversify';
-import { CommandData, CommandState, CommandStatus, ICommandsContribution, ICommandsRegistry, UIServices } from "@genexusm-sdk/architecture-ui-framework";
+import { Guid } from '@genexusm/sdk/common';
+import { DialogResult } from '@genexusm/sdk/common-components';
+import { CommandData, CommandState, CommandStatus, ICommandsContribution, ICommandsRegistry, UIServices } from '@genexusm/sdk/architecture-ui-framework';
 import { SampleDialog } from '../dialogs/sample-dialog';
-import { DialogResult } from '@genexusm-sdk/common-components';
-import { Guid } from '@genexusm-sdk/common';
 
 export function bindCommands(bind: interfaces.Bind) {
     bind(CommmandsContribution).toSelf().inSingletonScope();
@@ -28,7 +28,7 @@ export class CommmandsContribution implements ICommandsContribution {
 
     registerCommands(registry: ICommandsRegistry): void {
 
-        registry.registerCommand(Commands.SAMPLE_CMD, 
+        registry.registerCommand(Commands.SAMPLE_CMD,
             (_data: CommandData,) => {
                 this._echo();
                 return true;
@@ -39,7 +39,7 @@ export class CommmandsContribution implements ICommandsContribution {
             }
         );
 
-        registry.registerCommand(Commands.SAMPLE_OPEN_OBJECT, 
+        registry.registerCommand(Commands.SAMPLE_OPEN_OBJECT,
             (data: CommandData,) => {
                 if (data.context?.objectGuid)
                     this._openObject(data.context.objectGuid);
@@ -63,8 +63,8 @@ export class CommmandsContribution implements ICommandsContribution {
         }
     }
 
-    private async _openObject(guid:Guid){
-        if (UIServices.kb.currentModel){
+    private async _openObject(guid: Guid) {
+        if (UIServices.kb.currentModel) {
             const obj = await UIServices.kb.currentModel.objects.getByGuid(guid);
             UIServices.documentManager.open(obj);
         }

@@ -1,5 +1,5 @@
 
-import { PatternEditorHelper, PatternInstanceElement } from '@genexusm-sdk/patterns-common';
+import { PatternEditorHelper, PatternInstanceElement } from '@genexusm/sdk/patterns-common';
 import { SettingsElementTypes } from './element-types';
 
 export class WorkWithWebSettingsEditorHelper extends PatternEditorHelper {

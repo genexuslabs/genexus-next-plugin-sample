@@ -1,12 +1,13 @@
 
 /** @jsx SampleSourcePartEditor.dom */
 
-import { BLEvents, StructPart, StructPartItem } from "@genexusm-sdk/architecture-common";
-import { StructPartEditor } from "@genexusm-sdk/architecture-ui-framework";
-import { EventBroker, Guid, MaybePromise } from "@genexusm-sdk/common";
-import { KBObjectPartChangedEventData } from "@genexusm-sdk/common-comm-layer";
+import { EventBroker, Guid, MaybePromise } from "@genexusm/sdk/common";
+import { StructColumn, StructColumns, StructEditorSettings, StructItem, StructItemKind, StructPosition } from "@genexusm/sdk/common-components";
+import { KBObjectPartChangedEventData } from "@genexusm/sdk/common-comm-layer";
+import { BLEvents, StructPart, StructPartItem } from "@genexusm/sdk/architecture-common";
+import { StructPartEditor } from "@genexusm/sdk/architecture-ui-framework";
+
 import { SampleStructPart } from "../parts/sample-struct-part";
-import { StructColumn, StructColumns, StructEditorSettings, StructItem, StructItemKind, StructPosition } from "@genexusm-sdk/common-components";
 import { SamplePartColumns, SamplePartItemKinds } from "./sample-struct/sample-struct-definitions";
 import { SamplePartItemTypes } from "../parts/sample-part-structure/sample-part-item-types";
 import { SampleStructItem } from "./sample-struct/sample-struct-items";
@@ -24,7 +25,7 @@ export class SampleStructPartEditor extends StructPartEditor {
 
     get structurePart(): SampleStructPart {
         return this.part as SampleStructPart;
-    }    
+    }
 
     async activate(): Promise<void> {
         let initialized = this._initialized;
@@ -140,7 +141,7 @@ export class SampleStructPartEditor extends StructPartEditor {
             data: rootItem
         });
 
-        for (let samplePartItem of rootItem.getItems()) { 
+        for (let samplePartItem of rootItem.getItems()) {
             if (samplePartItem.type === SamplePartItemTypes.ITEM) {
                 rootStructItem.items.add(new SampleStructItem(this, samplePartItem));
             }

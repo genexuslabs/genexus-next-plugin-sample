@@ -1,4 +1,4 @@
-import { Guid } from '@genexusm-sdk/common'; 
+import { Guid } from '@genexusm/sdk/common'; 
 
 
 export type EchoData = {

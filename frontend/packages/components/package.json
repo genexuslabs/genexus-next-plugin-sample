@@ -35,8 +35,8 @@
     "icons-sass": "ssg-sass --srcDir=src/assets/generated/icons/ --outDir=src/assets/generated/sass/ --configFilePath=src/icons/config/color-states.json --vendorAlias=sv"
   },
   "devDependencies": {
-    "@genexus/chameleon-controls-library": ">=6.0.0-next.28",
-    "@genexus/mercury": ">=0.6.0",
+    "@genexus/chameleon-controls-library": "6.0.0-next.55",
+    "@genexus/mercury": "0.12.5",
     "@genexus/svg-sass-generator": ">=1.1.20",
     "@genexus/web-standard-functions": ">= 0.65.0",
     "@stencil-community/eslint-plugin": "~0.7.1",
@@ -59,13 +59,13 @@
     "typescript": "~5.4.5"
   },
   "peerDependencies": {
-    "@genexus/chameleon-controls-library": ">=6.0.0-next.28",
-    "@genexus/mercury": ">=0.6.0",
+    "@genexus/chameleon-controls-library": "6.0.0-next.55",
+    "@genexus/mercury": "0.12.5",
     "@genexus/svg-sass-generator": ">=1.1.20",
     "@genexus/web-standard-functions": ">= 0.65.0"
   },
   "dependencies": {
-    "@genexusm-sdk/common-components": "*"
+    "@genexusm-plugin-sample/common": "*"
   },
   "license": "MIT"
 }

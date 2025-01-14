@@ -1,0 +1,17 @@
+:host {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    height: 100%;
+    padding: var(--mer-spacing--xs);
+    gap: var(--mer-spacing--xs);
+}
+
+.content {
+    height: 100%;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--mer-spacing--xs);
+}

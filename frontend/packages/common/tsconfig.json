@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "skipLibCheck": true,
+        "declaration": true,
+        "declarationMap": true,
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "noEmitOnError": false,
+        "noImplicitThis": true,
+        "noUnusedLocals": false,
+        "strictNullChecks": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "downlevelIteration": true,
+        "resolveJsonModule": true,
+        "module": "es2022",
+        "moduleResolution": "bundler",
+        "target": "ES2022",
+        "jsx": "react",
+        "lib": [
+            "ES2022"
+        ],
+        "sourceMap": true,
+        "rootDir": "src",
+        "outDir": "lib"
+    },
+    "include": [
+        "src/**/*"
+    ]
+}

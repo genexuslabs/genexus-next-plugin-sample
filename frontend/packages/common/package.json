@@ -1,0 +1,23 @@
+{
+   "name": "@genexusm-plugin-sample/common",
+   "version": "0.0.13",
+   "main": "lib/index.js",
+   "typings": "lib/index.d.ts",
+   "publishConfig": {
+      "access": "public"
+   },
+   "scripts": {
+      "clean": "rimraf lib",
+      "build": "tsc",
+      "prebuild": "yarn run clean",
+      "watch": "tsc -w"
+   },
+   "dependencies": {
+      "@genexusm/sdk": "*",
+      "url": "0.11.0"
+   },
+   "devDependencies": {
+      "rimraf": "3.0.2",
+      "typescript": "~5.2.2"
+   }
+}

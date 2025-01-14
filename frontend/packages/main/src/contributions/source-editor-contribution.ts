@@ -1,6 +1,7 @@
+import { AssetsManager } from "@genexusm/sdk/common-components";
+import { ISourceEditorAstNodeHelpersContribution, ISourceEditorAstNodeHelpersRegistry } from "@genexusm/sdk/language-common";
+
 import { injectable } from "inversify";
-import { ISourceEditorAstNodeHelpersContribution, ISourceEditorAstNodeHelpersRegistry } from "@genexusm-sdk/language-common";
-import { AssetsManager } from "@genexusm-sdk/common-components";
 import { Consts } from "../consts";
 
 @injectable()
