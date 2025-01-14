@@ -20,7 +20,7 @@ public class SampleApiController : ControllerBase
     }
     
     [HttpPost("echo")]
-    public ActionResult<EchoData> Echo([FromQuery(Name = "kb_guid")] string kbGuid, [FromQuery(Name = "model_guid")] string modelGuid, string value)
+    public ActionResult<EchoData> Echo([FromQuery(Name = "kb_guid")] string kbGuid, [FromQuery(Name = "model_guid")] string modelGuid, [FromBody] string value)
     {
         return Ok(new EchoData(Guid.NewGuid(), value));
     }
