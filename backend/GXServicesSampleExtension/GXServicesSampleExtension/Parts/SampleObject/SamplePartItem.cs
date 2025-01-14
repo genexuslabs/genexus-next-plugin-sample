@@ -36,9 +36,9 @@ public class SamplePartItem : PropertiesObject
     protected override void ExtendObjectPropertyDefinition(PropertiesDefinition propDefinition)
     {
         base.ExtendObjectPropertyDefinition(propDefinition);
-        propDefinition.AddDefinition(SamplePartItemProperties.NAME, typeof(string), string.Empty, [new UITypeEditorInfoAttribute("SamplePartItemNameTypeEditor")]);
+        propDefinition.AddDefinition(SamplePartItemProperties.NAME, typeof(string), string.Empty,  Array.Empty<Attribute>());
         propDefinition.AddDefinition(SamplePartItemProperties.DESCRIPTION, typeof(string), string.Empty, Array.Empty<Attribute>());
-        propDefinition.AddDefinition(SamplePartItemProperties.KB_OBJECT_NAME, typeof(string), string.Empty, Array.Empty<Attribute>());
+        propDefinition.AddDefinition(SamplePartItemProperties.KB_OBJECT_NAME, typeof(string), string.Empty, [new UITypeEditorInfoAttribute("SamplePartItemNameTypeEditor")]);
     }
 }
 
