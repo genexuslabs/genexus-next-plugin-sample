@@ -1,7 +1,7 @@
 
 
-import { TypeDescriptorContext, UITypeEditor, UITypeEditorEditOptions, UITypeEditorEditStyle } from '@genexusm/sdk/common-properties';
-import { DialogResult } from '@genexusm/sdk/common-components';
+import { TypeDescriptorContext, UITypeEditor, UITypeEditorEditOptions, UITypeEditorEditStyle } from '@genexus/ide-sdk/common-properties';
+import { DialogResult } from '@genexus/ide-sdk/common-components';
 import { KBObjectNameDialog } from '../dialogs/kb-object-name-dialog';
 
 export  class SamplePartItemKBObjectNameTypeEditor extends UITypeEditor {

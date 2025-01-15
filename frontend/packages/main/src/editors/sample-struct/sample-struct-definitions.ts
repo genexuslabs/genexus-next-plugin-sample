@@ -1,4 +1,4 @@
-import { AssetsManager, StructItemKind } from "@genexusm/sdk/common-components";
+import { AssetsManager, StructItemKind } from "@genexus/ide-sdk/common-components";
 import { Consts } from "../../consts";
 
 export namespace SampleObjectProperties {

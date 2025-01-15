@@ -7,3 +7,4 @@ lib
 frontend/packages/main/dist
 .DS_Store
 vite.config.ts.timestamp*
+*.user

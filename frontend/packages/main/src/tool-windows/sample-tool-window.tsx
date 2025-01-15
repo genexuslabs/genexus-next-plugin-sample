@@ -5,10 +5,10 @@ import { ObjectType } from "@genexusm-plugin-sample/components/loader";
 import { Consts } from "../consts";
 import { Menus } from "../contributions/bind-menus";
 
-import { Guid } from "@genexusm/sdk/common";
-import { AbstractToolWindow, UIServices } from "@genexusm/sdk/architecture-ui-framework";
-import { AssetsManager } from "@genexusm/sdk/common-components";
-import { KBObjectDescriptor, KBObjectInfo, ObjectTypeFlags } from "@genexusm/sdk/architecture-common";
+import { Guid } from "@genexus/ide-sdk/common";
+import { AbstractToolWindow, UIServices } from "@genexus/ide-sdk/architecture-ui-framework";
+import { AssetsManager } from "@genexus/ide-sdk/common-components";
+import { KBObjectDescriptor, KBObjectInfo, ObjectTypeFlags } from "@genexus/ide-sdk/architecture-common";
 
 declare global {
     namespace JSX {
@@ -34,7 +34,7 @@ export class SampleToolWindow extends AbstractToolWindow {
     }
 
     get title() {
-        return 'Sample Tool Window';
+        return 'Sample Tool Window 2';
 
     }
 

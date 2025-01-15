@@ -1,5 +1,5 @@
 
-import { KBObject, StructPart } from "@genexusm/sdk/architecture-common";
+import { KBObject, StructPart } from "@genexus/ide-sdk/architecture-common";
 import { Consts } from "../consts";
 
 export class SampleStructPart extends StructPart {

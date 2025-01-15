@@ -1,6 +1,6 @@
 
-import { BaseEditor } from '@genexusm/sdk/architecture-ui-framework';
-import { PatternBasePart, PatternEditorHelper, PatternInstanceElement, PatternTreeEditor } from '@genexusm/sdk/patterns-common';
+import { BaseEditor } from '@genexus/ide-sdk/architecture-ui-framework';
+import { PatternBasePart, PatternEditorHelper, PatternInstanceElement, PatternTreeEditor } from '@genexus/ide-sdk/patterns-common';
 import { ElementTypes } from './element-types';
 
 export class WorkWithWebEditorHelper extends PatternEditorHelper {

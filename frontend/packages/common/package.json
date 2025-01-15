@@ -3,6 +3,7 @@
    "version": "0.0.13",
    "main": "lib/index.js",
    "typings": "lib/index.d.ts",
+   "license": "Apache-2.0",
    "publishConfig": {
       "access": "public"
    },
@@ -13,7 +14,7 @@
       "watch": "tsc -w"
    },
    "dependencies": {
-      "@genexusm/sdk": "*",
+      "@genexus/ide-sdk": "0.0.30",
       "url": "0.11.0"
    },
    "devDependencies": {

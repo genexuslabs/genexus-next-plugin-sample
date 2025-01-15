@@ -13,3 +13,7 @@ To begin, clone this repository and follow the setup instructions for both the b
 1. See the requirements for [Frontend](./frontend/README.md).
 
 2. See the requirements for [Backend](./backend/GXServicesSampleExtension/README.md).
+
+## License
+
+This project is licensed under the [Apache License 2.0](./LICENSE).

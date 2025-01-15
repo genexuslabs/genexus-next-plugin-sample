@@ -1,6 +1,6 @@
 import * as url from 'url';
-import { Guid, MaybePromise } from '@genexusm/sdk/common'; 
-import { GXHttpCommLayer } from '@genexusm/sdk/common-comm-layer'; 
+import { Guid, MaybePromise } from '@genexus/ide-sdk/common'; 
+import { GXHttpCommLayer } from '@genexus/ide-sdk/common-comm-layer'; 
 import { EchoData } from '../types'; 
 
 import { ISampleApiController } from '../isample-api-controller';

@@ -1,11 +1,11 @@
 
 /** @jsx SampleSourcePartEditor.dom */
 
-import { EventBroker, Guid, MaybePromise } from "@genexusm/sdk/common";
-import { StructColumn, StructColumns, StructEditorSettings, StructItem, StructItemKind, StructPosition } from "@genexusm/sdk/common-components";
-import { KBObjectPartChangedEventData } from "@genexusm/sdk/common-comm-layer";
-import { BLEvents, StructPart, StructPartItem } from "@genexusm/sdk/architecture-common";
-import { StructPartEditor } from "@genexusm/sdk/architecture-ui-framework";
+import { EventBroker, Guid, MaybePromise } from "@genexus/ide-sdk/common";
+import { StructColumn, StructColumns, StructEditorSettings, StructItem, StructItemKind, StructPosition } from "@genexus/ide-sdk/common-components";
+import { KBObjectPartChangedEventData } from "@genexus/ide-sdk/common-comm-layer";
+import { BLEvents, StructPart, StructPartItem } from "@genexus/ide-sdk/architecture-common";
+import { StructPartEditor } from "@genexus/ide-sdk/architecture-ui-framework";
 
 import { SampleStructPart } from "../parts/sample-struct-part";
 import { SamplePartColumns, SamplePartItemKinds } from "./sample-struct/sample-struct-definitions";

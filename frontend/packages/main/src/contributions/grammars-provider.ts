@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { IGrammarsProvider } from '@genexusm/sdk/architecture-ui-framework';
+import { IGrammarsProvider } from '@genexus/ide-sdk/architecture-ui-framework';
 
 import grammars from "../language/grammars.json";
 import sampleObjectSyntax from "../language/syntaxes/object-sample-object.tmLanguage.json";

@@ -1,8 +1,8 @@
 /** @jsx WindowForm.dom  */
 
-import { WindowForm } from "@genexusm/sdk/common-components";
+import { WindowForm } from "@genexus/ide-sdk/common-components";
 import { CommServices } from "../communication/comm-services";
-import { UIServices } from "@genexusm/sdk/architecture-ui-framework";
+import { UIServices } from "@genexus/ide-sdk/architecture-ui-framework";
 
 export class SampleDialog extends WindowForm {
     constructor() {

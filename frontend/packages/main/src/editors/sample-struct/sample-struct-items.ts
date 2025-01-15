@@ -1,5 +1,5 @@
-import { StructColumn, StructItem, StructItemCell } from "@genexusm/sdk/common-components";
-import { StructPartItem } from "@genexusm/sdk/architecture-common";
+import { StructColumn, StructItem, StructItemCell } from "@genexus/ide-sdk/common-components";
+import { StructPartItem } from "@genexus/ide-sdk/architecture-common";
 import { SampleStructPartEditor } from "../sample-struct-part-editor";
 
 import { SamplePartColumns, SamplePartItemKinds } from "./sample-struct-definitions";

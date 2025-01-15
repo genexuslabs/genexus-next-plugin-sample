@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <GXBLVersion>18.11.184387-beta</GXBLVersion>
+    <GXBLVersion>19.0.185175-beta</GXBLVersion>
     <GXServicesVersion>1.0.0</GXServicesVersion>
   </PropertyGroup>
 
@@ -16,5 +16,3 @@
     <SignAssembly Condition="'$(AssemblyOriginatorKeyFile)'!=''">true</SignAssembly> -->
   </PropertyGroup>
 </Project>
-
-

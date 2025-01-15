@@ -1,6 +1,6 @@
 
 import { interfaces } from 'inversify';
-import { IToolWindowDescriptor, ToolWindowDockLocation } from '@genexusm/sdk/architecture-ui-framework';
+import { IToolWindowDescriptor, ToolWindowDockLocation } from '@genexus/ide-sdk/architecture-ui-framework';
 
 import { SampleToolWindow } from '../tool-windows/sample-tool-window';
 
