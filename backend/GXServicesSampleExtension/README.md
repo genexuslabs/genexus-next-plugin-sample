@@ -10,19 +10,21 @@ The project relies on a custom NuGet source to fetch required dependencies.
 
 #### Steps
 
-1. **Identify the path**: Obtain the real path to the custom NuGet source for `GX_BL_NUGET_SOURCE`. This should point to the directory or URL where your NuGet package s are hosted.
+1. **Verify dependencies**: Verify nuget source and dependency version numbers declared in files `Nuget.config` and `Directory.Build.props`. This is already declared for this example but it is good to keep this in mind.
 
-2. **Create environment variable**: Set up an environment variable for your system:
+2. **Build the Project**: Once the environment variables are configured, you can run ```dotnet build``` for GXServicesSampleExtension.csproj. 
 
-   - **GX_BL_NUGET_SOURCE**: Set this environment variable to the path of the BL NuGet source.
+3. **Deploy the Project**: Once the build completes, you can copy the package .dll and related files to the services deploy folder. If the services are running on a Docker container you can use the Docker CLI to copy the files.
 
-   Ensure that this variable is correctly set up so the project can resolve its dependencies during the build process.
+   ```bash
+   docker cp "<FILE_PATH>" <CONTAINER_NAME>:app
+   ```
 
-   As an alternative to the environment variable, you can edit the NuGet.confg file that is located at `backend/GXServicesSampleExtension`.
+Where `CONTAINER_NAME` usually is  `genexus-gxms-1`.
 
-3. **Build the Project**: Once the environment variables are configured, you can run ```dotnet build``` for GXServicesSampleExtension.csproj. 
+4. **Restart the services host**: With docker just restart the container.
 
-4. **Deploy the Project**: Once the build is success, you can copy the package .dll to the services deploy folder.
+5. **Debugging (optional)**: You can attach a debugger to the services host, the process will be listed with the name `GeneXus.Services.Host` or `dotnet GeneXus.Services.Host`. You can even debug the services host inside a Docker but details on how to do it vary depending on your IDE.
 
 ## Content
 
