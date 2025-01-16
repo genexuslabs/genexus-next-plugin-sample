@@ -12,9 +12,9 @@ import { bindPatternHelpers } from "./contributions/bind-pattern-helpers";
 import { registerAssets } from "./contributions/register-assets";
 import { GrammarsProvider } from "./contributions/grammars-provider";
 import { SourceEditorAstNodeHelpersContribution } from "./contributions/source-editor-contribution";
-import { GXCommLayer, PluginModule } from "@genexusm/sdk/architecture-common";
-import { IGrammarsProvider } from "@genexusm/sdk/architecture-ui-framework";
-import { ISourceEditorAstNodeHelpersContribution } from "@genexusm/sdk/language-common";
+import { GXCommLayer, PluginModule } from "@genexus/ide-sdk/architecture-common";
+import { IGrammarsProvider } from "@genexus/ide-sdk/architecture-ui-framework";
+import { ISourceEditorAstNodeHelpersContribution } from "@genexus/ide-sdk/language-common";
 import { bindUITypeEditorDescriptors } from "./contributions/bind-ui-type-editors";
 
 defineCustomElements(window);

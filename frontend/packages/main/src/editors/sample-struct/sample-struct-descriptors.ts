@@ -1,6 +1,6 @@
-import { IPropertyDescriptor, StringConverter, TypeConverter, TypeDescriptorContext, UITypeEditor, IUIValidator } from "@genexusm/sdk/common-properties";
-import { UIServices } from "@genexusm/sdk/architecture-ui-framework";
-import { KBObjectDescriptor, KBObjectInfoFilters, PropertyContextHelper, StructPartItem } from "@genexusm/sdk/architecture-common";
+import { IPropertyDescriptor, StringConverter, TypeConverter, TypeDescriptorContext, UITypeEditor, IUIValidator } from "@genexus/ide-sdk/common-properties";
+import { UIServices } from "@genexus/ide-sdk/architecture-ui-framework";
+import { KBObjectDescriptor, KBObjectInfoFilters, PropertyContextHelper, StructPartItem } from "@genexus/ide-sdk/architecture-common";
 
 import { SampleStructPartEditor } from "../sample-struct-part-editor";
 import { SampleObjectProperties } from "./sample-struct-definitions";

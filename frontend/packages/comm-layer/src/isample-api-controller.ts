@@ -1,4 +1,4 @@
-import { Guid, MaybePromise } from '@genexusm/sdk/common'; 
+import { Guid, MaybePromise } from '@genexus/ide-sdk/common'; 
 import { EchoData } from './types'; 
 
 export interface ISampleApiController {

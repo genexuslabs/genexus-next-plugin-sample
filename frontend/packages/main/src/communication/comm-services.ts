@@ -1,5 +1,5 @@
 
-import { IGXCommLayer } from '@genexusm/sdk/common-comm-layer';
+import { IGXCommLayer } from '@genexus/ide-sdk/common-comm-layer';
 import { Services} from  '@genexusm-plugin-sample/comm-layer';
 
 export class CommServices {

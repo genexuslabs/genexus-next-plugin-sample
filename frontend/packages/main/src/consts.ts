@@ -1,5 +1,5 @@
 
-import { Guid } from '@genexusm/sdk/common';
+import { Guid } from '@genexus/ide-sdk/common';
 
 export namespace Consts {
 

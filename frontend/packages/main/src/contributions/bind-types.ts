@@ -1,9 +1,9 @@
 
 import { interfaces } from 'inversify';
-import { Guid } from '@genexusm/sdk/common';
-import { AssetsManager } from '@genexusm/sdk/common-components';
-import { IKBObjectCategoryDescriptor, IKBObjectDescriptor, IKBObjectPartDescriptor } from '@genexusm/sdk/architecture-common';
-import { PartClasses, SourcePart } from '@genexusm/sdk/language-common';
+import { Guid } from '@genexus/ide-sdk/common';
+import { AssetsManager } from '@genexus/ide-sdk/common-components';
+import { IKBObjectCategoryDescriptor, IKBObjectDescriptor, IKBObjectPartDescriptor } from '@genexus/ide-sdk/architecture-common';
+import { PartClasses, SourcePart } from '@genexus/ide-sdk/language-common';
 
 import { Consts } from '../consts';
 import { SampleObject } from '../objects/sample-object';

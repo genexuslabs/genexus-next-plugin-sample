@@ -1,5 +1,5 @@
-import { AssetsManager } from "@genexusm/sdk/common-components";
-import { ISourceEditorAstNodeHelpersContribution, ISourceEditorAstNodeHelpersRegistry } from "@genexusm/sdk/language-common";
+import { AssetsManager } from "@genexus/ide-sdk/common-components";
+import { ISourceEditorAstNodeHelpersContribution, ISourceEditorAstNodeHelpersRegistry } from "@genexus/ide-sdk/language-common";
 
 import { injectable } from "inversify";
 import { Consts } from "../consts";

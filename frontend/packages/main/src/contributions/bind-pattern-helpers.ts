@@ -1,6 +1,6 @@
 import { interfaces } from 'inversify';
-import { IPatternHelperDescriptor } from '@genexusm/sdk/patterns-common';
-import { GXObjectClasses } from '@genexusm/sdk/genexus-common';
+import { IPatternHelperDescriptor } from '@genexus/ide-sdk/patterns-common';
+import { GXObjectClasses } from '@genexus/ide-sdk/genexus-common';
 
 import { WorkWithWebEditorHelper } from '../editors/ww-web-pattern/work-with-web-editor-helper';
 import { WorkWithWebSettingsEditorHelper } from '../editors/ww-web-pattern/work-with-web-settings-editor-helper';

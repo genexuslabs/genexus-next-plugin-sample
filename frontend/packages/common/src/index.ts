@@ -1,4 +1,4 @@
-import { AssetsManager } from "@genexusm/sdk/common-components"
+import { AssetsManager } from "@genexus/ide-sdk/common-components";
 
 export {
     AssetsManager

@@ -1,6 +1,6 @@
 /** @jsx WindowForm.dom  */
 
-import { WindowForm } from "@genexusm/sdk/common-components";
+import { WindowForm } from "@genexus/ide-sdk/common-components";
 
 export class KBObjectNameDialog extends WindowForm {
 

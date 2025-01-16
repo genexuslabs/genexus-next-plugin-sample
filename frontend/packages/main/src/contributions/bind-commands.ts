@@ -1,7 +1,7 @@
 import { injectable, interfaces } from 'inversify';
-import { Guid } from '@genexusm/sdk/common';
-import { DialogResult } from '@genexusm/sdk/common-components';
-import { CommandData, CommandState, CommandStatus, ICommandsContribution, ICommandsRegistry, UIServices } from '@genexusm/sdk/architecture-ui-framework';
+import { Guid } from '@genexus/ide-sdk/common';
+import { DialogResult } from '@genexus/ide-sdk/common-components';
+import { CommandData, CommandState, CommandStatus, ICommandsContribution, ICommandsRegistry, UIServices } from '@genexus/ide-sdk/architecture-ui-framework';
 import { SampleDialog } from '../dialogs/sample-dialog';
 
 export function bindCommands(bind: interfaces.Bind) {

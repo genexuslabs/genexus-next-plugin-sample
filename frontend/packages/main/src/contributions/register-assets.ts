@@ -1,4 +1,4 @@
-import { AssetsManager } from "@genexusm/sdk/common-components";
+import { AssetsManager } from "@genexus/ide-sdk/common-components";
 
 import { ASSETS } from "@genexusm-plugin-sample/components";
 import { Locale } from "@genexusm-plugin-sample/components";

@@ -1,6 +1,6 @@
 
-import { IPropertyDescriptor } from "@genexusm/sdk/common-properties";
-import { StructItemCellDefault } from "@genexusm/sdk/common-components";
+import { IPropertyDescriptor } from "@genexus/ide-sdk/common-properties";
+import { StructItemCellDefault } from "@genexus/ide-sdk/common-components";
 
 import { SampleStructPartEditor } from "../sample-struct-part-editor";
 import { SampleKBObjectNamePropertyDescriptor } from "./sample-struct-descriptors";
