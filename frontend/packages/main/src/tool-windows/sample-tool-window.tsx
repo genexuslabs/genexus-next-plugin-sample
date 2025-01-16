@@ -34,7 +34,7 @@ export class SampleToolWindow extends AbstractToolWindow {
     }
 
     get title() {
-        return 'Sample Tool Window';
+        return 'Sample Tool Window 2';
 
     }
 
