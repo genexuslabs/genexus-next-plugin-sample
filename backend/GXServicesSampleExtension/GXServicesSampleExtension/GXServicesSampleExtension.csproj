@@ -10,11 +10,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Artech.Architecture.Common.Sdk" Version="$(GXBLVersion)" />
-      <PackageReference Include="Artech.Genexus.Common.Sdk" Version="$(GXBLVersion)" />
-      <PackageReference Include="GeneXus.Services.Architecture.Sdk" Version="$(GXServicesVersion)" />
-      <PackageReference Include="GeneXus.Services.Language.Common.Sdk" Version="$(GXServicesVersion)" />
-      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+      <PackageReference Include="Artech.Architecture.Common.Sdk" Version="$(GXBLVersion)" PrivateAssets="all" />
+      <PackageReference Include="Artech.Genexus.Common.Sdk" Version="$(GXBLVersion)" PrivateAssets="all" />
+      <PackageReference Include="GeneXus.Services.Architecture.Sdk" Version="$(GXServicesVersion)" PrivateAssets="all" />
+      <PackageReference Include="GeneXus.Services.Language.Common.Sdk" Version="$(GXServicesVersion)" PrivateAssets="all" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" PrivateAssets="all" />
     </ItemGroup>
 
 </Project>
