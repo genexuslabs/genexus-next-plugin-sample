@@ -70,7 +70,9 @@ In this case, we will not use the multi-region editor but will instead use a tex
 
 To enable the IDE to access custom API Controllers defined by a Plugin, it is necessary to generate the corresponding communication layer that consists of TypeScript client code that abstracts the HTTP calls to these APIs.
 
-The `GXCommLayerGenerator` tool can be used for this purpose. Below is an example of how to run it:
+The `GXCommLayerGenerator` tool can be used for this purpose. It can be downloaded from this [link](https://drive.google.com/file/d/1sqZNxKRTkiD1_PhtWHDr4YB9mDHDQ2mx/view?usp=drive_link).
+
+Below is an example of how to run it:
 
    ```bash
    dotnet GXCommLayerGenerator.dll -s <ASM_PATH> -o <OUT_DIR>
