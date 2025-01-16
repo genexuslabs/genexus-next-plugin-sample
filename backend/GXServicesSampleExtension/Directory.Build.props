@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
-    <GXBLVersion>19.0.185175-beta</GXBLVersion>
-    <GXServicesVersion>1.0.0</GXServicesVersion>
+    <GXBLVersion>18.12.2</GXBLVersion>
+    <GXServicesVersion>19.0.3</GXServicesVersion>
   </PropertyGroup>
 
   <PropertyGroup>
