@@ -247,7 +247,8 @@ To customize how we edit or display pattern instances, we can [bind a custom `Pa
 
 In this section, we've listed some documents and links that may interest you if you're looking to gain a deeper understanding of the entire solution.
 
-- [Chameleon documentation](https://github.com/genexuslabs/chameleon-controls-library)
-- [Mercury documentation](https://github.com/genexuslabs/design-systems/tree/main/packages/mercury)
+- [Mercury showcase](https://genexus.com/mercury)
+- [Mercury repo](https://github.com/genexuslabs/design-systems/tree/main/packages/mercury)
+- [Chameleon showcase](https://gx-chameleon.netlify.app/)
+- [Chameleon repo](https://github.com/genexuslabs/chameleon-controls-library)
 - [SVG SASS Generator documentation](https://github.com/genexuslabs/design-systems/tree/main/packages/svg-sass-generator)
-
