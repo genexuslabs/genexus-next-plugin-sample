@@ -28,7 +28,7 @@
   "publisher": "GeneXus",
   "publisherUrl": "https://example.com/publisher",
   "url": "https://example.com/sample-plugin-1",
-  "resources": [                  // "Resources" section in the Marketplace
+  "resources": [                  // Optional links that will be shown in the Resources section in the details view for the plugin in the IDE
     {
       "text": "%resources.doc.text%",
       "url": "%resources.doc.url%"
