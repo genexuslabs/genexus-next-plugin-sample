@@ -14,6 +14,10 @@ To begin, clone this repository and follow the setup instructions for both the b
 
 2. See the requirements for [Backend](./backend/GXServicesSampleExtension/README.md).
 
+## Packaging
+
+For distribution see [Packaging](./PACKAGING.md).
+
 ## License
 
 This project is licensed under the [Apache License 2.0](./LICENSE).
