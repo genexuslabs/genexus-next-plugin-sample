@@ -93,32 +93,4 @@ frontend.zip/
 
 Note that the `gxPlgin` section is needed so that the IDE can locate the bundle to be loaded.
 
-## Dev Mode (local install)
 
-During development, a plugin can be installed manually at:
-
-```
-<USER_HOME>/.genexus/Next/plugins/<pluginId>/
-```
-
-Inside that folder:
-
-1. Create a minimal `plugin.json`:
-
-   ```json
-   {
-     "id": "sample-1", // Plugin ID
-     "version": "1.0.0" // Version installed
-   }
-   ```
-
-2. Add `backend/` and `frontend/` directories with the corresponding content.
-
-3. For front‑end **hot reload**, add `baseUrl` in `gxPlugin` and serve the bundle in watch mode:
-
-   ```json
-   "gxPlugin": {
-     "bundle": "dist/main.js",
-     "baseUrl": "http://localhost:5001/"
-   }
-   ```
