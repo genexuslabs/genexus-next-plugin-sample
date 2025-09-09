@@ -14,17 +14,9 @@ The project relies on a custom NuGet source to fetch required dependencies.
 
 2. **Build the Project**: Once the environment variables are configured, you can run ```dotnet build``` for GXServicesSampleExtension.csproj. 
 
-3. **Deploy the Project**: Once the build completes, you can copy the package .dll and related files to the services deploy folder. If the services are running on a Docker container you can use the Docker CLI to copy the files.
+3. **Deploy the Project**: Once the build completes, you can copy the package .dll and related files to the services deploy folder. See [Testing](../../TESTING.md) for details on how to test a plugin during development.
 
-   ```bash
-   docker cp "<FILE_PATH>" <CONTAINER_NAME>:app
-   ```
-
-Where `CONTAINER_NAME` usually is  `genexus-gxms-1`.
-
-4. **Restart the services host**: With docker just restart the container.
-
-5. **Debugging (optional)**: You can attach a debugger to the services host, the process will be listed with the name `GeneXus.Services.Host` or `dotnet GeneXus.Services.Host`. You can even debug the services host inside a Docker but details on how to do it vary depending on your IDE.
+4. **Debugging (optional)**: You can attach a debugger to the services host, the process will be listed with the name `GeneXus.Services.Host` or `dotnet GeneXus.Services.Host`. You can even debug the services host inside a Docker but details on how to do it vary depending on your IDE.
 
 ## Content
 

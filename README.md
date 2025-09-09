@@ -18,6 +18,10 @@ To begin, clone this repository and follow the setup instructions for both the b
 
 For distribution see [Packaging](./PACKAGING.md).
 
+## Testing
+
+For details about testing a plugin during development see [Testing](./TESTING.md).
+
 ## License
 
 This project is licensed under the [Apache License 2.0](./LICENSE).

@@ -86,23 +86,7 @@ npm i -g yarn
 
 Executing the preview command from the main project will start a server that exposes the plugin. By default, this server listens on `http://localhost:5200`. 
 
-To use the plugin from the IDE, we need to inform the IDE about its existence:
-
-1. Create a `config.json` file with the following content:
-
-    ```json
-    "plugins": [
-        {
-            "id": "@sample-vendor/sample-plugin",
-            "name": "PluginSample",
-            "baseUrl": "http://localhost:5200",
-            "bundle": "main.js"
-        }
-    ]
-    ```
-2. Define an environment variable called `GX_IDE_CONFIG_PATH` with the path of the `config.json`.
-
-3. Restart the IDE server (if you are using Docker, you need to restart the frontend container).
+See [Testing](../TESTING.md) for details on how to test a plugin during development in the IDE.
 
 ### Watch mode
 
