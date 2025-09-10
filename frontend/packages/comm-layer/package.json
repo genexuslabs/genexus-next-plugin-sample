@@ -14,7 +14,7 @@
       "watch": "tsc -w"
    },
    "dependencies": {
-      "@genexus/ide-sdk": "0.0.30",
+      "@genexus/ide-sdk": "0.0.31",
       "url": "0.11.0"
    },
    "devDependencies": {

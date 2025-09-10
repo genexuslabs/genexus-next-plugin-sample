@@ -21,7 +21,7 @@
     "preview": "vite preview --port 5200 --outDir dist"
   },
   "dependencies": {
-    "@genexus/ide-sdk": "0.0.30",
+    "@genexus/ide-sdk": "0.0.31",
     "@genexusm-plugin-sample/components": "*",
     "@genexusm-plugin-sample/comm-layer": "*"
   },

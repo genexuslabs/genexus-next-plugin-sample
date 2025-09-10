@@ -502,10 +502,10 @@
     qr-creator "^1.0.0"
     stencil-click-outside "^1.8.0"
 
-"@genexus/ide-sdk@0.0.30":
-  version "0.0.30"
-  resolved "https://registry.yarnpkg.com/@genexus/ide-sdk/-/ide-sdk-0.0.30.tgz#aebaaa0c114aad1a78adf2b212833524b3f9aab8"
-  integrity sha512-JSgsXDhzq9Wv6q1q9CANrkAAzhvUECwFdRPG9qyZC/iEF/fNStc93+ZzAWHrmeXE44NrotASdRp+YBOZIQrN/Q==
+"@genexus/ide-sdk@0.0.31":
+  version "0.0.31"
+  resolved "https://registry.yarnpkg.com/@genexus/ide-sdk/-/ide-sdk-0.0.31.tgz#f445de562916a55722753e934f3f93714e38397b"
+  integrity sha512-2Ec1pUv8Xbgw4tklZBb+eDq5PxfhmBhezMYIyC+h4VByRe1OePNe7fcNl/M5vpkovTC3JxcAiAKzfhps05YyoQ==
   dependencies:
     inversify "6.0.2"
 
